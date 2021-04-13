@@ -6,7 +6,7 @@ import Colors from "../../constants/Colors";
 import styles from "./styles";
 import helpers from "../../helpers";
 import services from "../../mock/services.json";
-// import Button from '../../components/Buttons'
+
 const buttonAdd = {
   id: "1",
   fullName: "template",

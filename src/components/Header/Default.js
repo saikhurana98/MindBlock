@@ -16,7 +16,7 @@ const MainHeader = ({ nomargin = false, openDrawer }) => (
         justifyContent: "space-between",
         paddingHorizontal: 13,
       },
-      // getHeaderContainerStyle(nomargin),
+      getHeaderContainerStyle(nomargin),
     ]}
   >
     <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -36,9 +36,9 @@ const MainHeader = ({ nomargin = false, openDrawer }) => (
         eWallet
       </Text>
     </View>
-    {/* <TouchableOpacity onPress={openDrawer}>
+    <TouchableOpacity onPress={openDrawer}>
       <AntDesign name="appstore1" size={24} color={Colors.darkBlue} />
-    </TouchableOpacity> */}
+    </TouchableOpacity>
   </View>
 );
 
