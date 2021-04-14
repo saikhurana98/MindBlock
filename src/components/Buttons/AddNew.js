@@ -8,7 +8,7 @@ const AddNew = ({ onPress }) => {
   return (
     <TouchableOpacity
       style={{
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.grey,
         justifyContent: "center",
         alignItems: "center",
         width: 50,

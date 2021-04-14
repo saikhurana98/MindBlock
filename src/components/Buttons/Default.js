@@ -18,7 +18,7 @@ const Default = ({ label, icon, onPress }) => {
 
 const style = StyleSheet.create({
   container: {
-    backgroundColor: Colors.yellow,
+    backgroundColor: Colors.grey,
     flexDirection: "row",
     paddingVertical: 10,
     justifyContent: "center",

@@ -3,7 +3,7 @@ import Colors from "../../constants/Colors";
 
 const styles = StyleSheet.create({
   container: { flexDirection: "row", backgroundColor: Colors.white },
-  buttonContainer: { position: "absolute", bottom: 100, width: "100%" },
+  buttonContainer: { position: "absolute", bottom: 100, width: "100%", marginLeft: 20 },
   eWalleText: {
     marginVertical: 20,
     fontWeight: "bold",

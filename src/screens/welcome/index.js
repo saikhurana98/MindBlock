@@ -9,27 +9,29 @@ const Welcome = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <Image
-        source={require("../../assets/artwork.png")}
+        source={require("../../assets/blockchain.jpg")}
         style={{ height, width: 120 }}
         resizeMode="cover"
       />
 
       <View style={styles.textContainer}>
         <View>
-          <Image source={require("../../assets/logo.png")} />
-          <Text style={styles.eWalleText}>eWallet</Text>
+          <Image source={require("../../assets/paybtc_logo.png")} />
           <Text style={{ color: Colors.defaultText, fontSize: 16 }}>
-            {`Open An Account For Digital\nE-Wallet Solutions. Instant Payouts.\n\n Join For Free.`}
+            {'Generate an address to transact on the blockchain NOW!'}
           </Text>
         </View>
 
         <View style={styles.buttonContainer}>
           <Buttons.Default
-            label="Sign in"
+            label="Already have an address"
             icon="long-arrow-right"
             onPress={() => navigation.navigate("@main")}
           />
-          <Buttons.Transparent label="Create an Account" onPress={() => {}} />
+          <Buttons.Default label="Need one" 
+            icon="long-arrow-right"
+            onPress={() => navigation.navigate("@main")}
+            />
         </View>
       </View>
     </SafeAreaView>
