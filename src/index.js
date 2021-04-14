@@ -19,6 +19,7 @@ export default function App() {
                     screenOptions={StackOptions}
                 >
                     <Stack.Screen name="@welcome" component={Screens.Welcome} />
+                    <Stack.Screen name="@address" component={Screens.Address} />
                     <Stack.Screen name="@main" component={Main} />
                 </Stack.Navigator>
             </NavigationContainer>

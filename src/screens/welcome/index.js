@@ -4,8 +4,14 @@ import Colors from "../../constants/Colors";
 import { Buttons } from "../../components";
 import styles from "./styles";
 const { height } = Dimensions.get("window");
+// for bitcoin: 
+import '_shim';
+const bitcoin = require("bitcoinjs-lib");
 
 const Welcome = ({ navigation }) => {
+  const keyPair = bitcoin.ECPair.makeRandom();
+  const { address } = bitcoin.payments.p2pkh({ pubkey: keyPair.publicKey });
+  console.log(address);
   return (
     <SafeAreaView style={styles.container}>
       <Image
@@ -24,14 +30,14 @@ const Welcome = ({ navigation }) => {
 
         <View style={styles.buttonContainer}>
           <Buttons.Default
-            label="Already have an address"
+            label="Have an address"
             icon="long-arrow-right"
             onPress={() => navigation.navigate("@main")}
           />
-          <Buttons.Default label="Need one" 
+          <Buttons.Default label="Need one"
             icon="long-arrow-right"
-            onPress={() => navigation.navigate("@main")}
-            />
+            onPress={() => navigation.navigate("@address")}
+          />
         </View>
       </View>
     </SafeAreaView>

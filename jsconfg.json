@@ -34,6 +34,9 @@
             ],
             "_utils": [
                 "src/utils/*"
+            ],
+            "_shim": [
+                "shim.js"
             ]
         }
     }

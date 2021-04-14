@@ -17,6 +17,7 @@ module.exports = {
           _services: './src/services',
           _styles: './src/styles',
           _utils: './src/utils',
+          _shim: './shim.js'
         },
       },
     },
