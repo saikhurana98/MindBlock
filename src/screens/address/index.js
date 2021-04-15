@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Image, SafeAreaView, Dimensions, Text } from "react-native";
+import { Alert, View, Image, SafeAreaView, Dimensions, Text } from "react-native";
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -13,49 +13,33 @@ import '_shim';
 const bitcoin = require("bitcoinjs-lib");
 const TESTNET = bitcoin.networks.testnet;
 
-const Welcome = ({ navigation }) => {
+const Address = ({ navigation }) => {
+    // Generating a p2pkh address: 
     const keyPair = bitcoin.ECPair.makeRandom({ network: TESTNET });
     const { address } = bitcoin.payments.p2pkh({ pubkey: keyPair.publicKey });
     const seckey = keyPair.privateKey.toString('hex');
-    // console.log("SK: ", keyPair.privateKey.toString('hex'));
 
     useEffect(() => {
+
+        // API call to get the address details
+        // and save the keys in local storage of the phone: 
         fetch(`https://api.blockcypher.com/v1/btc/main/addrs/${address}`)
             .then(function (response) {
                 return response.json();
             }).then(function (data) {
-                setAddress(data.address);
-                setSeckey(data.private);
                 try {
-                    AsyncStorage.setItem('@privateKey', data.private);
-                    AsyncStorage.setItem('@address', data.address);
+                    AsyncStorage.setItem('@privateKey', seckey);
+                    AsyncStorage.setItem('@address', address);
+                    Alert.alert("We've saved your address! You should note it down as well")
                 } catch (e) {
                     console.log("Error in saving to local storage: ", e);
                 }
-                console.log('Addresses:', data);
+                
             })
             .catch((err) => {
+                Alert.alert("An error occurred: ", err)
                 console.log("Error in generating address: ", err)
             });
-
-        // fetch("https://api.blockcypher.com/v1/btc/test3/addrs", {
-        //     method: 'POST',
-        // }).then(function (response) {
-        //     return response.json();
-        // }).then(function (data) {
-        //     setAddress(data.address);
-        //     setSeckey(data.private);
-        //     try {
-        //         AsyncStorage.setItem('@privateKey', data.private);
-        //         AsyncStorage.setItem('@address', data.address);
-        //     } catch (e) {
-        //         console.log("Error in saving to local storage: ", e);
-        //     }
-        //     console.log('Addresses:', data);
-        // })
-        //     .catch((err) => {
-        //         console.log("Error in generating address: ", err)
-        //     });
     }, [])
 
     return (
@@ -75,11 +59,12 @@ const Welcome = ({ navigation }) => {
                 <Button
                     icon={<Icon name='code' color='#ffffff' />}
                     buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-                    title='Start!' />
+                    title='Start!'
+                    onPress={() => navigation.navigate("@main")} />
             </Card>
 
         </SafeAreaView>
     );
 };
 
-export default Welcome;
+export default Address;
