@@ -16,7 +16,7 @@ const AddNew = ({ onPress }) => {
         borderRadius: 25,
       }}
     >
-      <Feather name="minus" color={Colors.blackText} size={20} />
+      <Feather name="plus" color={Colors.blackText} size={20} />
     </TouchableOpacity>
   );
 };

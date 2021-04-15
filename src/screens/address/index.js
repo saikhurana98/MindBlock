@@ -16,30 +16,21 @@ const TESTNET = bitcoin.networks.testnet;
 const Address = ({ navigation }) => {
     // Generating a p2pkh address: 
     const keyPair = bitcoin.ECPair.makeRandom({ network: TESTNET });
-    const { address } = bitcoin.payments.p2pkh({ pubkey: keyPair.publicKey });
+    const { address } = bitcoin.payments.p2pkh({
+        pubkey: keyPair.publicKey,
+        network: TESTNET,
+    });
     const seckey = keyPair.privateKey.toString('hex');
 
     useEffect(() => {
-
-        // API call to get the address details
-        // and save the keys in local storage of the phone: 
-        fetch(`https://api.blockcypher.com/v1/btc/main/addrs/${address}`)
-            .then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                try {
-                    AsyncStorage.setItem('@privateKey', seckey);
-                    AsyncStorage.setItem('@address', address);
-                    Alert.alert("We've saved your address! You should note it down as well")
-                } catch (e) {
-                    console.log("Error in saving to local storage: ", e);
-                }
-                
-            })
-            .catch((err) => {
-                Alert.alert("An error occurred: ", err)
-                console.log("Error in generating address: ", err)
-            });
+        // save the keys in local storage of the phone: 
+        try {
+            AsyncStorage.setItem('@privateKey', seckey);
+            AsyncStorage.setItem('@address', address);
+            Alert.alert("We've saved your address! You should note it down as well")
+        } catch (e) {
+            console.log("Error in saving to local storage: ", e);
+        }
     }, [])
 
     return (

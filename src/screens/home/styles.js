@@ -23,6 +23,11 @@ const styles = StyleSheet.create({
     color: Colors.darkBlue,
     fontSize: 12,
   },
+  addressText: {
+    color: Colors.blackText,
+    fontWeight: "bold",
+    fontSize: 12,
+  }
 });
 
 export default styles;
