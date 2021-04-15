@@ -28,7 +28,6 @@ const Home = ({ navigation }) => {
 
   // For refresh: 
   const [refreshing, setRefreshing] = React.useState(false);
-
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     wait(2000).then(() => setRefreshing(false));
@@ -56,17 +55,17 @@ const Home = ({ navigation }) => {
     console.log("ASDSA", address)
     if (!address) {return;}
     // API call to get the address details
-    fetch(`https://api.blockcypher.com/v1/btc/test3/addrs/${address}`)
-      .then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        console.log("TXN: ", data);
-        setAccountBalance(data.final_balance);
-      })
-      .catch((err) => {
-        Alert.alert("An error occurred: ", err)
-        console.log("Error in getting details: ", err)
-      });
+    // fetch(`https://api.blockcypher.com/v1/btc/test3/addrs/${address}`)
+    //   .then(function (response) {
+    //     return response.json();
+    //   }).then(function (data) {
+    //     console.log("TXN: ", data);
+    //     setAccountBalance(data.final_balance);
+    //   })
+    //   .catch((err) => {
+    //     Alert.alert("An error occurred: ", err)
+    //     console.log("Error in getting details: ", err)
+    //   });
   }, [address, refreshing]);
 
   return (
@@ -89,7 +88,7 @@ const Home = ({ navigation }) => {
             <Text style={styles.currentAmountLabelText}>Current Balance</Text>
             <Text style={styles.addressText}>{address}</Text>
           </View>
-          <Buttons.Default label="See More" icon="" onPress={() => { }} />
+          <Buttons.Default label="See More" icon="" onPress={() => {navigation.navigate("@details") }} />
         </View>
 
         <Separators.Default label="Send Money" />

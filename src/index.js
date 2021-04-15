@@ -20,6 +20,7 @@ export default function App() {
                 >
                     <Stack.Screen name="@welcome" component={Screens.Welcome} />
                     <Stack.Screen name="@address" component={Screens.Address} />
+                    <Stack.Screen name="@details" component={Screens.Details} />
                     <Stack.Screen name="@main" component={Main} />
                 </Stack.Navigator>
             </NavigationContainer>
