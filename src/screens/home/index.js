@@ -23,6 +23,7 @@ const wait = (timeout) => {
 const Home = ({ navigation }) => {
 
   const [accountBalance, setAccountBalance] = useState('Loading');
+  const [accountDetails, setAccountDetails] = useState(null);
   const friends = helpers.genFriendsList();
   const [address, setAddress] = useState('');
 
@@ -55,17 +56,18 @@ const Home = ({ navigation }) => {
     console.log("ASDSA", address)
     if (!address) {return;}
     // API call to get the address details
-    // fetch(`https://api.blockcypher.com/v1/btc/test3/addrs/${address}`)
-    //   .then(function (response) {
-    //     return response.json();
-    //   }).then(function (data) {
-    //     console.log("TXN: ", data);
-    //     setAccountBalance(data.final_balance);
-    //   })
-    //   .catch((err) => {
-    //     Alert.alert("An error occurred: ", err)
-    //     console.log("Error in getting details: ", err)
-    //   });
+    fetch(`https://api.blockcypher.com/v1/btc/test3/addrs/${address}`)
+      .then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        console.log("TXN: ", data);
+        setAccountBalance(data.final_balance);
+        setAccountDetails(data); 
+      })
+      .catch((err) => {
+        Alert.alert("An error occurred: ", err)
+        console.log("Error in getting details: ", err)
+      });
   }, [address, refreshing]);
 
   return (
@@ -88,7 +90,7 @@ const Home = ({ navigation }) => {
             <Text style={styles.currentAmountLabelText}>Current Balance</Text>
             <Text style={styles.addressText}>{address}</Text>
           </View>
-          <Buttons.Default label="See More" icon="" onPress={() => {navigation.navigate("@details") }} />
+          <Buttons.Default label="See More" icon="" onPress={() => {navigation.navigate("@details", {accountDetails: accountDetails}) }} />
         </View>
 
         <Separators.Default label="Send Money" />

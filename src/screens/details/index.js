@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native';
 import {
-    View, Text, StyleSheet, TouchableOpacity, LayoutAnimation, Platform, UIManager,
+    Text, View, Platform, UIManager,
 } from 'react-native';
 
 if (Platform.OS === 'android') {
@@ -9,44 +8,29 @@ if (Platform.OS === 'android') {
         UIManager.setLayoutAnimationEnabledExperimental(true);
     }
 }
+import { Lists } from '_components'
 import styles from "./styles";
 
 
-export default function TestFile() {
-    return (
-        <View style={styles.container}>
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-        </View>
-    );
-}
+export default function TestFile({ route, navigation }) {
+    const { accountDetails } = route.params;
+    console.log(accountDetails);
+    const txnRefs = accountDetails.txrefs
+    console.log("TXREFS: ", txnRefs)
 
-
-function Item() {
-    const [open, setopen] = useState(false);
-    const onPress = () => {
-        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-        setopen(!open);
-    };
     return (
-        <SafeAreaView style={styles.balanceContainer}>
-            <TouchableOpacity style={[styles.item, !open && { height: 60 }]} onPress={onPress} activeOpacity={1}>
-                <Text style={styles.sectionHeading}>Header</Text>
-                {open && (
-                    <View>
-                        <Text> SOME DATA</Text>
-                        <Text> SOME DATA</Text>
-                        <Text> SOME DATA</Text>
-                        <Text> SOME DATA</Text>
-                        <Text> SOME DATA</Text>
-                        <Text> SOME DATA</Text>
-                    </View>
-                )}
-            </TouchableOpacity>
-        </SafeAreaView>
+        < View style={styles.container} >
+            {
+                txnRefs.map((item) => {
+                    return (
+                        <View>
+                            <Lists.CollapsibleList item={item} header={item.tx_hash} />
+                        </View>
+                    )
+                })
+            }
+
+        </View >
+
     );
 }
