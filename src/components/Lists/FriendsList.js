@@ -5,7 +5,7 @@ import Avatar from "../Avatars/Menu";
 import Colors from "../../constants/Colors";
 import { User } from "../../helpers/interfaces";
 
-const FriendsList = ({ list }) => {
+const FriendsList = ({ list, onPress }) => {
   return (
     <View>
       <FlatList
@@ -20,7 +20,26 @@ const FriendsList = ({ list }) => {
         renderItem={({ item, index }) => (
           <>
             {index === 0 ? (
-              <AddNew key={item.fullName} onPress={() => {}} />
+              <AddNew key={item.fullName} onPress={onPress} />
+            ) : index === 1 ? (
+              <TouchableOpacity
+                key={item.id}
+                onPress={() => onPress()}
+                style={{
+                  backgroundColor: Colors.offWhite,
+                  marginHorizontal: 10,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  paddingHorizontal: 10,
+                  paddingVertical: 20,
+                  borderRadius: 8,
+                }}
+              >
+                <Avatar uri={item.avatar} />
+                <Text style={{ marginTop: 10, color: Colors.darkBlue }}>
+                  {"Test-Address"}
+                </Text>
+              </TouchableOpacity>
             ) : (
               <TouchableOpacity
                 key={item.id}

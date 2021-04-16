@@ -27,6 +27,11 @@ const styles = StyleSheet.create({
     color: Colors.blackText,
     fontWeight: "bold",
     fontSize: 12,
+  },
+
+  overlayButtons: {
+    marginBottom: 10,
+    justifyContent: "space-between"
   }
 });
 

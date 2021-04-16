@@ -23,7 +23,7 @@
                     "_scenes": "./src/scenes",
                     "_services": "./src/services",
                     "_styles": "./src/styles",
-                    "_utils": "./src/utils",
+                    "_constant": "./src/constant",
                     "_shim": "./shim.js"
                 }
             }

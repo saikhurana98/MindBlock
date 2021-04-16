@@ -15,6 +15,7 @@ const AddNew = ({ onPress }) => {
         height: 50,
         borderRadius: 25,
       }}
+      onPress={() => {onPress()}}
     >
       <Feather name="plus" color={Colors.blackText} size={20} />
     </TouchableOpacity>

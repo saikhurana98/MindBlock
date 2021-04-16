@@ -16,7 +16,7 @@ module.exports = {
           _scenes: './src/scenes',
           _services: './src/services',
           _styles: './src/styles',
-          _utils: './src/utils',
+          _constants: './src/constants',
           _shim: './shim.js'
         },
       },

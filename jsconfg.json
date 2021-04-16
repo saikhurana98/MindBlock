@@ -37,6 +37,9 @@
             ],
             "_shim": [
                 "shim.js"
+            ],
+            "_constants": [
+                "src/constants"
             ]
         }
     }
