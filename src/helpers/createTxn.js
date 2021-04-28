@@ -5,14 +5,14 @@ import '_shim';
 const bitcoin = require("bitcoinjs-lib");
 
 const createP2PKH = async (inputAddress, outputAddress, amountSatoshi) => {
-    const privateKey = await AsyncStorage.getItem("@privateKey");
-    const publicKey = await AsyncStorage.getItem("@publicKey");
-    const address = await AsyncStorage.getItem("@address");
-    const keyBuffer = Buffer.from(privateKey, 'hex')
+    var privateKey = await AsyncStorage.getItem("@privateKey");
+    var publicKey = await AsyncStorage.getItem("@publicKey");
+    var address = await AsyncStorage.getItem("@address");
+    var keyBuffer = Buffer.from(privateKey, 'hex')
     var keys = bitcoin.ECPair.fromPrivateKey(keyBuffer);
     var newtx = {
         inputs: [{ addresses: [inputAddress] }],
-        outputs: [{ addresses: [outputAddress], value: amountSatoshi }]
+        outputs: [{ addresses: [outputAddress], value: parseInt(amountSatoshi) }]
     };
     fetch("https://api.blockcypher.com/v1/bcy/test/txs/new",
         {
@@ -21,10 +21,12 @@ const createP2PKH = async (inputAddress, outputAddress, amountSatoshi) => {
         })
         .then(function (response) {
             return response.json();
-        }).then(function (tmptx) {
+        }).then(function (oldTmptx) {
+            let tmptx = oldTmptx;
             console.log(tmptx);
             // signing each of the hex-encoded string required to finalize the transaction
             tmptx.pubkeys = [];
+            console.log("HERE: ", tmptx);
             tmptx.signatures = tmptx.tosign.map(function (tosign, n) {
                 tmptx.pubkeys.push(publicKey);
                 return bitcoin.script.signature.encode(
@@ -40,13 +42,16 @@ const createP2PKH = async (inputAddress, outputAddress, amountSatoshi) => {
                     body: JSON.stringify(tmptx)
                 })
                 .then(function (response) {
-                    return response.json();
+                    return response.text();
                 }).then(function (finaltx) {
                     console.log(finaltx);
                 })
                 .catch(function (xhr) {
                     console.log(xhr.responseText);
                 });
+        })
+        .catch((err) => {
+            console.log("Error occurred: ", err)
         });
 
 }

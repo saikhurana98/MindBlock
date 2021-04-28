@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native';
 import {
-    Text, View,
+    Text, View, SafeAreaView
 } from 'react-native';
-import { Card, Input, Button } from 'react-native-elements'
+import { Card, Input, Button, Overlay } from 'react-native-elements'
 import styles from "./styles";
 import createP2PKH from '../../helpers/createTxn'
 
 
 export default function MakeTransaction({ route, navigation }) {
+    // For overlay: 
+    const [visible, setVisible] = useState(false);
+    const toggleOverlay = () => {
+        setVisible(!visible);
+    };
+
     const { currentAddress, payeeProp } = route.params;
     if (!currentAddress) { return };
 
@@ -18,6 +23,7 @@ export default function MakeTransaction({ route, navigation }) {
 
     const makeTXN = async () => {
         await createP2PKH(currentAddress, payee, amount)
+        toggleOverlay();
     }
     return (
         <SafeAreaView>
@@ -43,6 +49,11 @@ export default function MakeTransaction({ route, navigation }) {
                 />
                 <Button title="Pay" onPress={() => makeTXN()} />
             </Card>
+            <Overlay isVisible={visible} onBackdropPress={toggleOverlay} >
+                <View style={{ "justifyContent": "center", "width": 200, "height": 200 }}>
+                    <Text> TXN Success!</Text>
+                </View>
+            </Overlay>
         </SafeAreaView>
     );
 }

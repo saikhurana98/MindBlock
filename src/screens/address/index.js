@@ -14,8 +14,10 @@ const bitcoin = require("bitcoinjs-lib");
 const TESTNET = bitcoin.networks.testnet;
 
 const Address = ({ navigation }) => {
+    const [seckey, setseckey] = useState("")
+    const [address, setaddress] = useState("")
     /* The code below is used in generating a p2pkh address locally: */
-    
+
     // const keyPair = bitcoin.ECPair.makeRandom({ network: TESTNET });
     // const { address } = bitcoin.payments.p2pkh({
     //     pubkey: keyPair.publicKey,
@@ -33,6 +35,8 @@ const Address = ({ navigation }) => {
                 return response.json();
             }).then(function (finalRes) { 
                 console.log(finalRes) 
+                setseckey(finalRes.private);
+                setaddress(finalRes.address);
                 AsyncStorage.setItem('@privateKey', finalRes.private);
                 AsyncStorage.setItem('@address', finalRes.address);
                 AsyncStorage.setItem('@publicKey', finalRes.public)
@@ -58,10 +62,10 @@ const Address = ({ navigation }) => {
                 <Card.Title>There you go!</Card.Title>
                 <Card.Divider />
                 <Text style={{ marginBottom: 10 }}>
-                    Your Secret Key: {}
+                    Your Secret Key: {seckey}
                 </Text>
                 <Text style={{ marginBottom: 10 }}>
-                    Your Address: {}
+                    Your Address: {address}
                 </Text>
                 <Button
                     icon={<Icon name='code' color='#ffffff' />}
