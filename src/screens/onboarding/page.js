@@ -8,48 +8,60 @@ const Page = ({ backgroundColor, iconName, title, imgSrc, numPages, isLight, sel
     return (
         <View
             style={{
-                flex: 1,
                 // justifyContent: 'center',
+                flex: 1,
+                flexDirection: "column",
                 alignItems: 'center',
                 backgroundColor
             }}
         >
-            <View style={{ marginTop: 16 }}>
-                
+            <View style={{ marginTop: 16, flex: 2 }}>
                 <Image source={imgSrc} height={200} />
-                <Text style={{ fontSize: 24, fontWeight: 'bold', color: 'white' }}>
-                    {title}
-                </Text>
             </View>
-            <ImageBackground style={styles.image} source={require("_assets/walk-bottom.png")}>
-                <View style={styles.progressBar}>
-                    <Dots Dot={Dot} numPages={10} selected={selected} isLight={true}/>  
-                </View>
-                {/* <Text style={styles.text}>Hello</Text> */}
-            </ImageBackground>
+            <View style={styles.imgContainer}>
+                <ImageBackground style={styles.image} source={require("_assets/walk-bottom.png")}>
+                    <View style={styles.progressBar}>
+                        <Dots Dot={Dot} numPages={10} selected={selected} isLight={true} />
+                    </View>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.text}>Hello</Text>
+                    </View>
+                </ImageBackground>
+            </View>
         </View>
     );
-}; 
+};
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: "column"
+
+    imgContainer: {
+        flex: 4,
+        flexDirection: "column",
     },
     image: {
         flex: 1,
         // resizeMode: "cover",
         justifyContent: "center",
-        width: windowWidth 
+        width: windowWidth
     },
     progressBar: {
-        marginBottom: 500,
-        alignItems: 'center'
+        // marginBottom: 500,
+        flex: 1,
+        marginTop: 20,
+        alignItems: 'center',
+        position: 'relative'
     },
+
+    textContainer: {
+        flex: 5, 
+        marginBottom: 300,
+        alignSelf: 'center'
+    }, 
 
     text: {
         color: "white",
         fontSize: 42,
+        alignSelf: "flex-start",
         // fontWeight: "bold",
         textAlign: "center",
         backgroundColor: "#000000a0",
