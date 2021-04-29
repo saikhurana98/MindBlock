@@ -12,11 +12,12 @@ const OnboardingScreen = () => {
                     <Page
                         backgroundColor="#F2F2F2"
                         iconName="sun"
-                        title="Welcome to the weather app"
+                        title="Welcome to the BTC App"
                         imgSrc={require("_assets/walk1.png")}
                     />
                 </View>
             </PagerView>
+            
         </View>
     )
 };

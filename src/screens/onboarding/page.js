@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, Image, Dimensions, ImageBackground, StyleSheet } from 'react-native';
 import { Dots, Dot } from '../../components/DotProgressBar'
+import { Buttons } from '../../components'
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const Page = ({ backgroundColor, iconName, title, imgSrc, numPages, isLight, selected }) => {
+const Page = ({ navigation, backgroundColor, iconName, title, imgSrc, numPages, isLight, selected }) => {
     return (
         <View
             style={{
@@ -23,9 +24,23 @@ const Page = ({ backgroundColor, iconName, title, imgSrc, numPages, isLight, sel
                     <View style={styles.progressBar}>
                         <Dots Dot={Dot} numPages={10} selected={selected} isLight={true} />
                     </View>
-                    <View style={styles.textContainer}>
-                        <Text style={styles.text}>Hello</Text>
+                    <View style={styles.headingContainer}>
+                        <Text style={styles.heading}>{title}</Text>
                     </View>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.text}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Molestie adipiscing est eu volutpat scelerisque senectus sit.
+                            Tempus, lobortis tellus nulla eget pellentesque egestas.
+                        </Text>
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <Buttons.Next
+                            label="Next"
+                            onPress={() => navigation.navigate("@main")}
+                        />
+                    </View>
+
                 </ImageBackground>
             </View>
         </View>
@@ -52,22 +67,36 @@ const styles = StyleSheet.create({
         position: 'relative'
     },
 
-    textContainer: {
-        flex: 5, 
+    headingContainer: {
+        flex: 5,
         marginBottom: 300,
-        alignSelf: 'center'
-    }, 
+        alignSelf: 'center',
+        width: 0.6 * windowWidth
+    },
+
+    textContainer: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        width: 0.8 * windowWidth
+        // marginTop: 200,
+    },
 
     text: {
-        color: "white",
-        fontSize: 42,
-        alignSelf: "flex-start",
-        // fontWeight: "bold",
+        color: "black",
+        fontSize: 15,
         textAlign: "center",
-        backgroundColor: "#000000a0",
-        fontFamily: "TitilliumWeb-Black",
-        // marginBottom: 500
-    }
+        fontFamily: "TitilliumWeb-Regular",
+    },
+
+    heading: {
+        color: "black",
+        fontSize: 45,
+        alignSelf: "flex-start",
+        textAlign: "center",
+        fontFamily: "TitilliumWeb-Bold",
+    },
+    buttonContainer: { position: "absolute", bottom: 100, alignSelf: 'center' },
 });
 
 export default Page;
