@@ -5,7 +5,12 @@ import { Buttons } from '../../components'
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const Page = ({ navigation, backgroundColor, iconName, title, imgSrc, numPages, isLight, selected }) => {
+const Page = ({ 
+    navigation, backgroundColor, 
+    iconName, title, 
+    imgSrc, numPages,
+    isLight, currentPage,
+    nextLabel, nextButtonPress, fill  }) => {
     return (
         <View
             style={{
@@ -22,7 +27,7 @@ const Page = ({ navigation, backgroundColor, iconName, title, imgSrc, numPages, 
             <View style={styles.imgContainer}>
                 <ImageBackground style={styles.image} source={require("_assets/walk-bottom.png")}>
                     <View style={styles.progressBar}>
-                        <Dots Dot={Dot} numPages={10} selected={selected} isLight={true} />
+                        <Dots Dot={Dot} numPages={3} currentPage={currentPage} isLight={true} />
                     </View>
                     <View style={styles.headingContainer}>
                         <Text style={styles.heading}>{title}</Text>
@@ -36,8 +41,9 @@ const Page = ({ navigation, backgroundColor, iconName, title, imgSrc, numPages, 
                     </View>
                     <View style={styles.buttonContainer}>
                         <Buttons.Next
-                            label="Next"
-                            onPress={() => navigation.navigate("@main")}
+                            label={nextLabel}
+                            onPress={nextButtonPress}
+                            fill={fill}
                         />
                     </View>
 
@@ -71,7 +77,8 @@ const styles = StyleSheet.create({
         flex: 5,
         marginBottom: 300,
         alignSelf: 'center',
-        width: 0.6 * windowWidth
+        width: 0.8 * windowWidth,
+        left: 20
     },
 
     textContainer: {

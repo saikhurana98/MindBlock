@@ -1,23 +1,59 @@
-import React from 'react';
-// import Onboarding from 'react-native-onboarding-swiper';
+import React, { useRef } from 'react';
 import { Image, View, StyleSheet, Text } from 'react-native'
 import PagerView from 'react-native-pager-view';
 import Page from './page';
 
 const OnboardingScreen = () => {
+    const pagerRef = useRef(null);
+
+    const handlePageChange = pageNumber => {
+        pagerRef.current.setPage(pageNumber);
+    };
+
     return (
         <View style={{ flex: 1 }}>
-            <PagerView style={{ flex: 1 }}>
-                <View key="1">
+            <PagerView style={{ flex: 1 }} initialPage={0} ref={pagerRef}>
+                <View key="0">
                     <Page
+                        currentPage={0}
                         backgroundColor="#F2F2F2"
                         iconName="sun"
-                        title="Welcome to the BTC App"
+                        title="Walkthrough Heading"
                         imgSrc={require("_assets/walk1.png")}
+                        nextLabel="Next"
+                        nextButtonPress={() => {
+                            handlePageChange(1);
+                        }}
+                    />
+                </View>
+                <View key="1">
+                    <Page
+                        currentPage={1}
+                        backgroundColor="#F2F2F2"
+                        iconName="sun"
+                        title="Walkthrough Heading"
+                        imgSrc={require("_assets/walk1.png")}
+                        nextLabel="Next"
+                        nextButtonPress={() => {
+                            handlePageChange(2);
+                        }}
+                    />
+                </View>
+                <View key="2">
+                    <Page
+                        currentPage={2}
+                        backgroundColor="#F2F2F2"
+                        title="Walkthrough Heading"
+                        imgSrc={require("_assets/walk1.png")}
+                        nextLabel="Let's Get Started"
+                        nextButtonPress={() => {
+                            handlePageChange(1);
+                        }}
+                        fill={true}
                     />
                 </View>
             </PagerView>
-            
+
         </View>
     )
 };
