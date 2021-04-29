@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Image, Alert, RefreshControl, View, Text, SafeAreaView, ScrollView, StyleSheet, Dimensions } from "react-native";
+import { Image, Alert, RefreshControl, View, Text, SafeAreaView, ScrollView, StyleSheet, Dimensions, FlatList } from "react-native";
 import { Button, Overlay } from 'react-native-elements';
 import { DrawerActions } from "@react-navigation/native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Separators, Buttons, Lists, Header } from "_components";
+import styles from './styles';
 import Colors from "../../constants/Colors";
 import helpers from "../../helpers";
 import services from "../../mock/services.json";
@@ -24,92 +25,54 @@ const wait = (timeout) => {
 
 
 const Home = ({ navigation }) => {
+    const [accountBalance, setAccountBalance] = useState(0.0);
+    const [accountDetails, setAccountDetails] = useState(null);
+    const [friends, setFriends] = useState(helpers.genFriendsList());
+    const [address, setAddress] = useState('');
+
     return (
         <View style={styles.pageContainer}>
+            <Header.Default
+                openDrawer={() => navigation.dispatch(DrawerActions.openDrawer())}
+            />
             <View style={styles.topContainer} >
+                <View style={styles.balanceContainer}>
+                    <View>
+                        <Text style={styles.currentAmountValeuText}>{accountBalance / satoshiToB}฿</Text>
+                        <Text style={styles.currentAmountLabelText}>Wallet Balance</Text>
+                        <Text style={styles.addressText}>{address}</Text>
+                    </View>
+                    <Buttons.Default label="See More" icon="" onPress={() => { navigation.navigate("@details", { accountDetails: accountDetails }) }} />
+                </View>
             </View>
             <View style={styles.cardContainer}>
-                <View style={styles.image}>
-                    <View style={styles.headingContainer}>
-                        <Text style={styles.heading}>Hello</Text>
-                    </View>
-                    <View style={styles.textContainer}>
-                        <Text style={styles.text}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Molestie adipiscing est eu volutpat scelerisque senectus sit.
-                            Tempus, lobortis tellus nulla eget pellentesque egestas.
-                    </Text>
-                    </View>
-
+                <View style={styles.subHeadingContainer}>
+                    <Text style={styles.subHeading}>Learning Modules</Text>
+                </View>
+                <View style={styles.modulesContainer}>
+                    <FlatList
+                        style={styles.listContainer}
+                        data={[
+                            { key: 'Devin' },
+                            { key: 'Dan' },
+                            { key: 'Dominic' },
+                            { key: 'Jackson' },
+                            { key: 'James' },
+                            { key: 'Joel' },
+                            { key: 'John' },
+                            { key: 'Jillian' },
+                            { key: 'Jimmy' },
+                            { key: 'Julie' },
+                        ]}
+                        renderItem={({ item }) => <Buttons.ModuleButton/>}
+                    />
+                </View>
+                <View style={styles.textContainer}>
                 </View>
             </View>
         </View>
     );
 };
 
-const styles = StyleSheet.create({
-
-    pageContainer: {
-        flex: 1,
-        flexDirection: "column",
-        alignItems: 'center',
-        backgroundColor: "#347AF0"
-    },
-
-    topContainer: {
-        // marginTop: 16, 
-        flex: 2,
-        backgroundColor: "#347AF0"
-    },
-
-    cardContainer: {
-        flex: 4,
-        flexDirection: "column",
-        backgroundColor: "white",
-        borderRadius: 50
-    },
-    image: {
-        flex: 1,
-        justifyContent: "center",
-        width: windowWidth
-    },
-    progressBar: {
-        flex: 1,
-        marginTop: 20,
-        alignItems: 'center',
-        position: 'relative'
-    },
-
-    headingContainer: {
-        flex: 5,
-        marginBottom: 300,
-        alignSelf: 'center',
-        width: 0.8 * windowWidth,
-        left: 20
-    },
-
-    textContainer: {
-        alignSelf: 'center',
-        justifyContent: 'center',
-        position: 'absolute',
-        width: 0.8 * windowWidth
-    },
-
-    text: {
-        color: "black",
-        fontSize: 15,
-        textAlign: "center",
-        fontFamily: "TitilliumWeb-Regular",
-    },
-
-    heading: {
-        color: "black",
-        fontSize: 45,
-        alignSelf: "flex-start",
-        textAlign: "center",
-        fontFamily: "TitilliumWeb-Bold",
-    },
-    buttonContainer: { position: "absolute", bottom: 100, alignSelf: 'center' },
-});
 
 export default Home;
