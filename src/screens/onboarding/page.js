@@ -24,8 +24,8 @@ const Page = ({
             <View style={{ marginTop: 16, flex: 2 }}>
                 <Image source={imgSrc} height={200} />
             </View>
-            <View style={styles.imgContainer}>
-                <ImageBackground style={styles.image} source={require("_assets/walk-bottom.png")}>
+            <View style={styles.cardContainer}>
+                <View style={styles.image} source={require("_assets/walk-bottom.png")}>
                     <View style={styles.progressBar}>
                         <Dots Dot={Dot} numPages={3} currentPage={currentPage} isLight={true} />
                     </View>
@@ -47,7 +47,7 @@ const Page = ({
                         />
                     </View>
 
-                </ImageBackground>
+                </View>
             </View>
         </View>
     );
@@ -55,9 +55,11 @@ const Page = ({
 
 const styles = StyleSheet.create({
 
-    imgContainer: {
+    cardContainer: {
         flex: 4,
         flexDirection: "column",
+        backgroundColor: "white",
+        borderRadius: 50
     },
     image: {
         flex: 1,
