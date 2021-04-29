@@ -1,9 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View, StatusBar } from "react-native";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Home from '../home'
 import Transactions from '../transactions'
+import { Buttons } from '../../components'
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Tab = createBottomTabNavigator();
@@ -20,7 +21,7 @@ const CustomTabButton = ({ children, onPress }) => {
                 style={{
                     width: 80,
                     height: 80,
-                    paddingBottom:30, 
+                    paddingBottom: 30,
                     borderRadius: 40,
                     backgroundColor: '#EDF1F9'
                 }}>
@@ -35,13 +36,21 @@ const Main = () => {
 
     return (
         <Tab.Navigator initialRouteName="Transactions"
+            tabBar={(props) => (
+                <View style={styles.navigatorContainer}>
+                    <BottomTabBar
+                        {...props}
+                    />
+                </View>
+            )}
             tabBarOptions={{
-                style: {
-                    backgroundColor: "#EDF1F9",
-                    borderRadius: 100,
-                    elevation: 3,
+                showIcon: true,
+                style: styles.navigator,
+                tabStyle: {
+                    backgroundColor: "#EDF1F9"
                 }
             }}>
+
             <Tab.Screen name="Transactions" component={Transactions}
                 options={{
                     showIcon: true,
@@ -54,19 +63,14 @@ const Main = () => {
 
             <Tab.Screen name="Deposit" component={Transactions}
                 options={{
-                    showIcon: true,
-                    tabBarIcon: () => {
-                        return (
-                            <Icon name="plus" size={30} color={"black"} />
-                        )
-                    },
-                    tabBarButton: (props) => {
-                        return (
-                            <CustomTabButton {...props} />
-                        )
-
-                    }
-                }} />
+                    tabBarButton: (props) => (
+                        <Buttons.TabBarAdvancedButton
+                            bgColor={"#EDF1F9"}
+                            {...props}
+                        />
+                    )
+                }}
+            />
 
             <Tab.Screen name="Learning" component={Home}
                 options={{
@@ -80,5 +84,36 @@ const Main = () => {
         </Tab.Navigator>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
+    navigatorContainer: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+    },
+    navigator: {
+        borderTopWidth: 0,
+        backgroundColor: 'transparent',
+        elevation: 30
+    },
+    xFillLine: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: 34
+    }
+});
 
 export default Main;
