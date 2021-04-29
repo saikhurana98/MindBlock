@@ -4,3 +4,5 @@ export {default as Address} from "./address"
 export {default as Details} from './details'
 export {default as MakeTransaction} from "./makeTransaction"
 export {default as Onboarding} from './onboarding';
+export {default as Transactions} from './transactions';
+export {default as MainModule} from './main';

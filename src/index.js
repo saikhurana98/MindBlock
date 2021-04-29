@@ -34,6 +34,7 @@ export default function App() {
                     <Stack.Screen name="@address" component={Screens.Address} />
                     <Stack.Screen name="@details" component={Screens.Details} />
                     <Stack.Screen name="@makeTransaction" component={Screens.MakeTransaction} />
+                    <Stack.Screen name="@mainModule" component={Screens.MainModule} />
                     <Stack.Screen name="@main" component={Main} />
                 </Stack.Navigator>
             </NavigationContainer>

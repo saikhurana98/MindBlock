@@ -3,11 +3,14 @@ import { Image, View, StyleSheet, Text } from 'react-native'
 import PagerView from 'react-native-pager-view';
 import Page from './page';
 
-const OnboardingScreen = () => {
+const OnboardingScreen = ({ navigation }) => {
     const pagerRef = useRef(null);
 
     const handlePageChange = pageNumber => {
-        pagerRef.current.setPage(pageNumber);
+        if (pageNumber == 3) {
+            navigation.navigate("@mainModule")
+        }
+            pagerRef.current.setPage(pageNumber);
     };
 
     return (
@@ -47,7 +50,7 @@ const OnboardingScreen = () => {
                         imgSrc={require("_assets/walk1.png")}
                         nextLabel="Let's Get Started"
                         nextButtonPress={() => {
-                            handlePageChange(1);
+                            handlePageChange(3);
                         }}
                         fill={true}
                     />
