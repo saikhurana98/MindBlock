@@ -30,6 +30,13 @@ const Home = ({ navigation }) => {
     const [friends, setFriends] = useState(helpers.genFriendsList());
     const [address, setAddress] = useState('');
 
+
+    // For overlay: 
+    const [visible, setVisible] = useState(false);
+    const toggleOverlay = () => {
+        setVisible(!visible);
+    };
+
     return (
         <View style={styles.pageContainer}>
             <Header.Default
@@ -42,35 +49,33 @@ const Home = ({ navigation }) => {
                         <Text style={styles.currentAmountLabelText}>Wallet Balance</Text>
                         <Text style={styles.addressText}>{address}</Text>
                     </View>
-                    <Buttons.Default label="See More" icon="" onPress={() => { navigation.navigate("@details", { accountDetails: accountDetails }) }} />
+                    {/* <Buttons.Default label="See More" icon="" onPress={() => { navigation.navigate("@details", { accountDetails: accountDetails }) }} /> */}
                 </View>
             </View>
             <View style={styles.cardContainer}>
-                <View style={styles.subHeadingContainer}>
-                    <Text style={styles.subHeading}>Learning Modules</Text>
-                </View>
-                <View style={styles.modulesContainer}>
-                    <FlatList
-                        style={styles.listContainer}
-                        data={[
-                            { key: 'Devin' },
-                            { key: 'Dan' },
-                            { key: 'Dominic' },
-                            { key: 'Jackson' },
-                            { key: 'James' },
-                            { key: 'Joel' },
-                            { key: 'John' },
-                            { key: 'Jillian' },
-                            { key: 'Jimmy' },
-                            { key: 'Julie' },
-                        ]}
-                        renderItem={({ item }) => <Buttons.ModuleButton/>}
-                    />
-                </View>
-                <View style={styles.textContainer}>
-                </View>
+                <ScrollView >
+                    <View style={styles.subHeadingContainer}>
+                        <Text style={styles.subHeading}>Learning Modules</Text>
+                    </View>
+                    <View style={styles.modulesContainer}>
+                        {
+                            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item, index) => {
+                                return (
+                                    <View style={{ padding: 10 }}>
+                                        <Buttons.ModuleButton fill={true} />
+                                    </View>
+                                )
+                            })
+                        }
+                    </View>
+                    <View style={styles.textContainer}/>
+                    <Separators.Default label="Send Money" />
+                    <Lists.FriendsList list={[buttonAdd, ...friends]} onPress={toggleOverlay} />
+                </ScrollView>
             </View>
+
         </View>
+
     );
 };
 

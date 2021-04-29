@@ -9,7 +9,11 @@ interface Props {
 const Default: React.FC<Props> = ({ label }) => {
   return (
     <View style={{ paddingHorizontal: 13, marginBottom: 15 }}>
-      <Text style={{ color: Colors.darkBlue, fontWeight: "bold" }}>
+      <Text style={{
+        fontFamily: "TitilliumWeb-SemiBold",
+        fontSize: 15,
+        color: "#0D1F3C"
+      }}>
         {label}
       </Text>
     </View>

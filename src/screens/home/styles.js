@@ -37,6 +37,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     justifyContent: "space-between"
   },
+  scrollContainer: {
+    flex: 1,
+    flexDirection: "column",
+    // alignItems: 'center',
+    // backgroundColor: "#347AF0"
+  },
   pageContainer: {
     flex: 1,
     flexDirection: "column",
@@ -55,6 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 14,
     width: windowWidth,
+    
   },
 
   subHeadingContainer: {
@@ -64,15 +71,16 @@ const styles = StyleSheet.create({
 
   subHeading: {
     fontFamily: "TitilliumWeb-SemiBold",
-    fontSize: 15
+    fontSize: 15,
+    color: "#0D1F3C"
   },
 
   modulesContainer: {
     // flex: 1,
-    top: 50,
+    top: 30,
     alignSelf: 'center',
     width:0.6*windowWidth,
-    height: 0.4*windowHeight
+    // height: 0.4*windowHeight
   }, 
 
   listContainer: {
@@ -87,9 +95,10 @@ const styles = StyleSheet.create({
   },
 
   textContainer: {
-    alignSelf: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
+    // alignSelf: 'center',
+    // justifyContent: 'center',
+    // position: 'absolute',
+    marginTop: 70,
     width: 0.8 * windowWidth
   },
 
