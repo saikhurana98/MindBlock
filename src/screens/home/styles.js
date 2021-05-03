@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     fontFamily: "TitilliumWeb-Regular",
     color: "#FFFFFF70",
     fontSize: 15,
+    alignSelf:'center'
   },
   addressText: {
     color: Colors.blackText,

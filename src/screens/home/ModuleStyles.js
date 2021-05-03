@@ -147,6 +147,27 @@ const styles = StyleSheet.create({
     rewardNextButton: {
         alignSelf: 'center',
         top: 0.25 * windowHeight,
+    },
+
+    // Transactions:
+    cardsContainerTxn: {
+        flex: 3,
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        marginLeft: 25
+        // alignContent: 'ce'
+    },
+    cardsContainerStyleTxn: {
+        borderRadius: 16,
+        padding: 10,
+        backgroundColor: 'white',
+        borderWidth:0,
+        marginBottom:10,
+        marginLeft:10,
+        marginRight:10,
+        borderColor:'#808080',
+        marginTop:50,
+        elevation: 10
     }
 
 });

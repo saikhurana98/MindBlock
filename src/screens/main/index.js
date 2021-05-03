@@ -35,7 +35,7 @@ const CustomTabButton = ({ children, onPress }) => {
 const Main = () => {
 
     return (
-        <Tab.Navigator initialRouteName="Home"
+        <Tab.Navigator initialRouteName="Learning"
             tabBar={(props) => (
                 <View style={styles.navigatorContainer}>
                     <BottomTabBar
