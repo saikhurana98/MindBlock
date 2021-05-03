@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, StatusBar } from "react-native";
 import HomeScreen from './HomeScreen';
 import ModuleInfo from './ModuleInfo';
-import ModuleAddress from './AddressGenActivity';
+import ModuleAddress from './Address';
 
 import StackOptions from '../../constants/StackOptions'
 import { createStackNavigator } from "@react-navigation/stack";

@@ -20,16 +20,14 @@ const ModuleActivityButton = ({ label, onPress, fill }) => {
 
 const styles = (fill) => StyleSheet.create({
     container: {
-        // width: 200,
-        // height: 2000,
         alignItems: 'center',
-        borderRadius: 50,
+        borderRadius: 30,
         padding: 5,
         backgroundColor: fill ? "#EDF1F9" : 'white',
         height: 140,
-        width: 360,
-        right: 40,
-        elevation: 5,
+        width: 340,
+        right: 30,
+        elevation: 3,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 0.1,

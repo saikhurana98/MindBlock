@@ -18,12 +18,12 @@ const ModuleButton = ({ label, onPress, fill }) => {
 const styles = (fill) => StyleSheet.create({
     container: {
         alignItems: 'center',
-        borderRadius: 50,
+        borderRadius: 30,
         padding: 5,
         backgroundColor: fill ? "#EDF1F9" : 'white',
         height: 60,
-        width: 360,
-        right: 40,
+        width: 340,
+        right: 30,
         shadowColor: '#000000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.9,

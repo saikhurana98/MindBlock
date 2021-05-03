@@ -40,8 +40,6 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
     flexDirection: "column",
-    // alignItems: 'center',
-    // backgroundColor: "#347AF0"
   },
   pageContainer: {
     flex: 1,
@@ -56,7 +54,7 @@ const styles = StyleSheet.create({
   },
 
   cardContainer: {
-    flex: 4,
+    flex: 3,
     flexDirection: "column",
     backgroundColor: "white",
     borderRadius: 14,
@@ -66,7 +64,7 @@ const styles = StyleSheet.create({
 
   subHeadingContainer: {
     top: 20,
-    left: 20
+    left: 35
   },
 
   subHeading: {
@@ -80,9 +78,6 @@ const styles = StyleSheet.create({
     top: 30,
     justifyContent: 'center',
     left: 50,
-    // alignContent: 'center'
-    // width:0.9*windowWidth,
-    // height: 0.4*windowHeight
   }, 
 
   listContainer: {
@@ -97,9 +92,6 @@ const styles = StyleSheet.create({
   },
 
   textContainer: {
-    // alignSelf: 'center',
-    // justifyContent: 'center',
-    // position: 'absolute',
     marginTop: 70,
     width: 0.8 * windowWidth
   },

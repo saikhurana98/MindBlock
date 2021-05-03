@@ -80,6 +80,73 @@ const styles = StyleSheet.create({
     addressNextButton: {
         alignSelf: 'center',
         top: 0.3 * windowHeight,
+    },
+    loadingContainer: {
+        top: 80,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        backgroundColor: '#F5FCFF',
+        width: 0.6 * windowWidth,
+    },
+    lottie: {
+        width: 100,
+        height: 100,
+    },
+    addressCard: {
+        top: 80,
+        borderRadius: 20,
+        height: 280,
+        padding: 20,
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+    },
+    addressCardHeading: {
+        marginTop: 20,
+        fontFamily: "TitilliumWeb-SemiBold",
+        color: "#0D1F3C",
+        fontSize: 26,
+    },
+    addressCardContentContainer: {
+        marginTop: 15,
+        width: 300,
+        height: 50
+    },
+
+    addressCardContent: {
+        textAlign: 'left',
+        width: 250,
+    },
+    copyButton: {
+        alignSelf: 'flex-end',
+        // left: 30,
+        bottom: 35,
+    },
+    rewardContainer: {
+        alignSelf: 'center',
+        top: 80,
+    },
+
+    rewardHeading: {
+        fontFamily: "TitilliumWeb-SemiBold",
+        fontSize: 28,
+        textAlign: 'center'
+    },
+
+    rewardAmount: {
+        fontFamily: "TitilliumWeb-Black",
+        fontSize: 40,
+    },
+    rewardImage: {
+        alignSelf: "center",
+        top: 0.15 * windowHeight
+    },
+    rewardNextButton: {
+        alignSelf: 'center',
+        top: 0.25 * windowHeight,
     }
 
 });

@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import { Image, Alert, RefreshControl, View, Text, SafeAreaView, ScrollView, StyleSheet, Dimensions, FlatList } from "react-native";
-import { Button, Overlay } from 'react-native-elements';
 import { DrawerActions } from "@react-navigation/native";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Separators, Buttons, Lists, Header } from "_components";
 import styles from './styles';
-import Colors from "../../constants/Colors";
 import helpers from "../../helpers";
-import services from "../../mock/services.json";
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -48,8 +44,8 @@ const Home = ({ navigation }) => {
                         <Text style={styles.currentAmountValeuText}>{accountBalance / satoshiToB}฿</Text>
                         <Text style={styles.currentAmountLabelText}>Wallet Balance</Text>
                         <Text style={styles.addressText}>{address}</Text>
+                        <Image source={require("_assets/btcGraph.png")} />
                     </View>
-                    {/* <Buttons.Default label="See More" icon="" onPress={() => { navigation.navigate("@details", { accountDetails: accountDetails }) }} /> */}
                 </View>
             </View>
             <View style={styles.cardContainer}>
@@ -62,8 +58,8 @@ const Home = ({ navigation }) => {
                             [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item, index) => {
                                 return (
                                     <View key={index} style={{ padding: 10 }}>
-                                        {index!=3 ? <Buttons.ModuleButton key={index} fill={true} onPress={() => navigation.navigate('@moduleInfo')}/>
-                                        : <Buttons.ModuleActivityButton key={index} fill={true} onPress={() => navigation.navigate('@moduleAddress')}/> }
+                                        {index != 3 ? <Buttons.ModuleButton key={index} fill={true} onPress={() => navigation.navigate('@moduleInfo')} />
+                                            : <Buttons.ModuleActivityButton key={index} fill={true} onPress={() => navigation.navigate('@moduleAddress')} />}
                                     </View>
                                 )
                             })

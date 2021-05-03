@@ -20,10 +20,6 @@ const TabBarAdvancedButton = ({
             onPress={props.onPress}
         >
             <Image source={require('_assets/plusIcon.png')} style={styles.buttonIcon}/>
-            {/* <Icon
-                name="rocket"
-                style={styles.buttonIcon}
-            /> */}
         </TouchableOpacity>
     </View>
 );
@@ -48,8 +44,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#E94F37',
     },
     buttonIcon: {
-        fontSize: 16,
-        color: '#F6F7EB'
     }
 });
 export default TabBarAdvancedButton;
