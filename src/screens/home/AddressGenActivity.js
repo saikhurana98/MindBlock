@@ -6,6 +6,8 @@ import Carousel from 'react-native-snap-carousel';
 import styles from "./ModuleStyles";
 
 const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').width;
+
 const ITEM_WIDTH = Math.round(windowWidth * 0.7);
 const ITEM_HEIGHT = Math.round(ITEM_WIDTH * 3 / 4);
 
@@ -13,14 +15,13 @@ const DATA = [];
 for (let i = 0; i < 10; i++) {
     DATA.push(i)
 }
-
-const ModuleInfo = ({ navigation }) => {
+const AddressActivity = ({ navigation }) => {
     const [index, setIndex] = useState(0);
     const renderSlides = ({ item }) => {
         return (
             <View style={styles.itemContainer}>
                 <View style={styles.carouselHeading}>
-                    <Text style={styles.carouselHeadingText}>Section Heading</Text>
+                    <Text style={styles.carouselHeadingText}>Address Generation</Text>
                 </View>
                 <View style={styles.carouselTextContainer}>
                     <Text style={styles.carouselText}>
@@ -34,28 +35,19 @@ const ModuleInfo = ({ navigation }) => {
         <SafeAreaView style={styles.mainContainer}>
             <Header.Default />
             <View style={styles.headingContainer}>
-                <Text style={styles.headingText}>Module Name</Text>
+                <Text style={styles.headingText}>Address Generation</Text>
             </View>
             <View style={styles.descriptionContainer}>
                 <Text style={styles.descriptionText}>A short description of what the topics that this module covers. cannto be longer than this much. </Text>
             </View>
-            <View style={styles.carouselContainer}>
-                <Carousel
-                    data={DATA}
-                    layout={"default"}
-                    renderItem={renderSlides}
-                    sliderWidth={windowWidth}
-                    itemWidth={295}
-                    onSnapToItem={(index) => setIndex(index)}
-                    useScrollView={false}
-                />
+            <View style={styles.addressImage}>
+                <Image source={require("_assets/addressImage.png")} />
             </View>
-            <Text style={styles.counter}
-            >
-                {index}
-            </Text>
+            <View style={styles.addressNextButton}>
+                <Buttons.Next fill={true} label={"Generate Address"} />
+            </View>
         </SafeAreaView>
     )
-};
+}
 
-export default ModuleInfo;
+export default AddressActivity;

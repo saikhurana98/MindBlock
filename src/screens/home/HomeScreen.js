@@ -61,8 +61,9 @@ const Home = ({ navigation }) => {
                         {
                             [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item, index) => {
                                 return (
-                                    <View style={{ padding: 10 }}>
-                                        <Buttons.ModuleButton key={index} fill={true} onPress={() => navigation.navigate('@moduleInfo')}/>
+                                    <View key={index} style={{ padding: 10 }}>
+                                        {index!=3 ? <Buttons.ModuleButton key={index} fill={true} onPress={() => navigation.navigate('@moduleInfo')}/>
+                                        : <Buttons.ModuleActivityButton key={index} fill={true} onPress={() => navigation.navigate('@moduleAddress')}/> }
                                     </View>
                                 )
                             })

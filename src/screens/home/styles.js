@@ -76,10 +76,12 @@ const styles = StyleSheet.create({
   },
 
   modulesContainer: {
-    // flex: 1,
+    flex: 1,
     top: 30,
-    alignSelf: 'center',
-    width:0.6*windowWidth,
+    justifyContent: 'center',
+    left: 50,
+    // alignContent: 'center'
+    // width:0.9*windowWidth,
     // height: 0.4*windowHeight
   }, 
 

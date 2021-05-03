@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { StyleSheet, TouchableOpacity, View, Image } from 'react-native';
 import { TabBg } from '../SVG/TabBg';
 
 
@@ -20,10 +19,11 @@ const TabBarAdvancedButton = ({
             style={styles.button}
             onPress={props.onPress}
         >
-            <Icon
+            <Image source={require('_assets/plusIcon.png')} style={styles.buttonIcon}/>
+            {/* <Icon
                 name="rocket"
                 style={styles.buttonIcon}
-            />
+            /> */}
         </TouchableOpacity>
     </View>
 );

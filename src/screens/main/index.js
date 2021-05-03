@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import { StyleSheet, Text, View, StatusBar, Image } from "react-native";
 import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Home from '../home'
@@ -56,7 +56,7 @@ const Main = () => {
                     showIcon: true,
                     tabBarIcon: () => {
                         return (
-                            <Icon name="money-check" size={30} color={"black"} />
+                            <Image source={require("_assets/txnIcon.png")} /> 
                         )
                     }
                 }} />
@@ -77,7 +77,7 @@ const Main = () => {
                     showIcon: true,
                     tabBarIcon: () => {
                         return (
-                            <Icon name="book-reader" size={30} color={"black"} />
+                            <Image source={require("_assets/learningIcon.png")} /> 
                         )
                     }
                 }} />

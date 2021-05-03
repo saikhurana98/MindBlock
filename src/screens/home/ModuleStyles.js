@@ -11,16 +11,16 @@ const styles = StyleSheet.create({
         backgroundColor: "#EDF1F9",
     },
     headingContainer: {
-        alignSelf:'center'
-    }, 
+        alignSelf: 'center'
+    },
     headingText: {
         fontFamily: "TitilliumWeb-SemiBold",
         color: "#0D1F3C",
         fontSize: 26,
-    }, 
+    },
     descriptionContainer: {
         top: 10,
-        width: windowHeight*0.4,
+        width: windowHeight * 0.4,
         alignSelf: 'center'
     },
     descriptionText: {
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     },
     carouselHeading: {
         alignItems: 'center',
-        top:20,
+        top: 20,
     },
     carouselHeadingText: {
         fontFamily: "TitilliumWeb-SemiBold",
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 
     carouselTextContainer: {
         top: 150,
-        alignSelf:'center',
+        alignSelf: 'center',
         width: windowWidth * 0.7
     },
     carouselText: {
@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
     },
 
     carouselContainer: {
-        marginTop: 100
+        flex: 1,
+        right: 10,
     },
     itemContainer: {
         top: 80,
@@ -69,6 +70,16 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         textAlign: 'center'
+    },
+
+    // FOR ADDRESS ACTIVITY: 
+    addressImage: {
+        top: 0.2 * windowHeight,
+        alignSelf: 'center'
+    },
+    addressNextButton: {
+        alignSelf: 'center',
+        top: 0.3 * windowHeight,
     }
 
 });
