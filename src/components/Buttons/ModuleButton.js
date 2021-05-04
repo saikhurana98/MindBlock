@@ -1,16 +1,19 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, ImageBackground, StyleSheet, Button } from "react-native";
+import { View, TouchableOpacity, Text, Image, StyleSheet, Button } from "react-native";
 import Colors from "../../constants/Colors";
 
-const ModuleButton = ({ label, onPress, fill }) => {
+const ModuleButton = ({ label, timeReqdInMins, onPress, isComplete }) => {
     return (
         <TouchableOpacity
             onPress={() => (onPress ? onPress() : {})}
-            style={styles(fill).container}
+            style={styles(isComplete).container}
         >
-            <View style={styles(fill).circle} />
-            <Text style={styles(fill).text}>Module Name</Text>
-            <Text style={styles(fill).time}>3 Mins</Text>
+            {isComplete ?
+                <Image style={styles(isComplete).circle} source={require("_assets/check-circle.png")} />
+                : <View style={styles(isComplete).circle} />
+            }
+            <Text style={styles(isComplete).text}>{label}</Text>
+            <Text style={styles(isComplete).time}>{timeReqdInMins} Mins</Text>
         </TouchableOpacity>
     );
 };
@@ -20,7 +23,7 @@ const styles = (fill) => StyleSheet.create({
         alignItems: 'center',
         borderRadius: 30,
         padding: 5,
-        backgroundColor: fill ? "#EDF1F9" : 'white',
+        backgroundColor: "#EDF1F9",
         height: 60,
         width: 340,
         right: 30,
@@ -31,16 +34,16 @@ const styles = (fill) => StyleSheet.create({
         elevation: 3,
     },
     text: {
-        color: fill ? "#0D1F3C60" : "#347AF0",
+        color: !fill ? "#0D1F3C60" : "#0D1F3C",
         marginRight: 140,
         fontFamily: 'TitilliumWeb-SemiBold',
         fontSize: 15,
         bottom: 20,
     },
     time: {
-        color: fill ? "#485068" : "#347AF0",
+        color: "#485068",
         marginRight: 180,
-        fontFamily: 'TitilliumWeb-SemiBold',
+        fontFamily: 'TitilliumWeb-Regular',
         fontSize: 15,
         bottom: 15,
     },

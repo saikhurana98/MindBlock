@@ -1,18 +1,21 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, ImageBackground, StyleSheet, Button } from "react-native";
+import { View, TouchableOpacity, Text, Image, StyleSheet, Button } from "react-native";
 import Colors from "../../constants/Colors";
 
-const ModuleActivityButton = ({ label, onPress, fill }) => {
+const ModuleActivityButton = ({ label, label2, onPress, isComplete, fill }) => {
     return (
         <TouchableOpacity
             onPress={() => (onPress ? onPress() : {})}
             style={styles(fill).container}
         >
             {/* <View style={styles(fill).TextView}> */}
-                <View style={styles(fill).circle} />
-                <Text style={styles(fill).text}>Address Generation</Text>
-                <Text style={styles(fill).subText}>Milestone 1</Text>
-                <Text style={styles(fill).status}>Not Completed</Text>
+            {isComplete ?
+                <Image style={styles(isComplete).circle} source={require("_assets/check-circle.png")} />
+                : <View style={styles(isComplete).circle} />
+            }
+            <Text style={styles(isComplete).text}>{label}</Text>
+            <Text style={styles(isComplete).subText}>{label2}</Text>
+            <Text style={styles(isComplete).status}>{isComplete ? "Completed" : "Not Completed"}</Text>
             {/* </View> */}
         </TouchableOpacity>
     );
@@ -23,7 +26,7 @@ const styles = (fill) => StyleSheet.create({
         alignItems: 'center',
         borderRadius: 30,
         padding: 5,
-        backgroundColor: fill ? "#EDF1F9" : 'white',
+        backgroundColor: "#EDF1F9",
         height: 140,
         width: 340,
         right: 30,
@@ -34,22 +37,24 @@ const styles = (fill) => StyleSheet.create({
         shadowRadius: 5,
     },
     text: {
-        color: fill ? "#0D1F3C60" : "#347AF0",
-        marginRight: 25,
+        color: !fill ? "#0D1F3C60" : "#0D1F3C",
+        marginLeft: 45,
+        alignSelf: 'flex-start',
         fontFamily: 'TitilliumWeb-SemiBold',
         fontSize: 24,
         bottom: 20,
     },
     subText: {
-        color: fill ? "#0D1F3C60" : "#347AF0",
+        color: "#0D1F3C60",
         marginRight: 155,
         fontFamily: 'TitilliumWeb-SemiBold',
         fontSize: 15,
         bottom: 20,
     },
     status: {
-        color: fill ? "#0D1F3C60" : "#0D1F3C",
-        marginRight: 110,
+        color: !fill ? "#0D1F3C60" : "#0D1F3C",
+        marginLeft: 45,
+        alignSelf: 'flex-start',
         fontFamily: 'TitilliumWeb-SemiBold',
         fontSize: 20,
         top: 15,

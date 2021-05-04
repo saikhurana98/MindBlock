@@ -116,8 +116,26 @@ const Home = ({ navigation }) => {
                                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item, index) => {
                                     return (
                                         <View key={index} style={{ padding: 10 }}>
-                                            {index != 3 ? <Buttons.ModuleButton key={index} fill={true} onPress={() => navigation.navigate('@moduleInfo')} />
-                                                : <Buttons.ModuleActivityButton key={index} fill={true} onPress={() => navigation.navigate('@moduleTxn')} />}
+                                            {index != 3 ?
+                                                index === 5 ? <Buttons.ModuleActivityButton
+                                                    key={index} fill={true} label={"Transaction"}
+                                                    label2={"Milestone 2"}
+                                                    isComplete={true}
+                                                    onPress={() => navigation.navigate('@moduleTxn')} />
+
+                                                    : <Buttons.ModuleButton
+                                                        key={index} fill={true}
+                                                        label={"Module Name"}
+                                                        timeReqdInMins={"3"}
+                                                        isComplete={true}
+                                                        onPress={() => navigation.navigate('@moduleInfo')} />
+
+                                                : <Buttons.ModuleActivityButton
+                                                    key={index} fill={true}
+                                                    label={"Address Generation"}
+                                                    label2={"Milestone 1"}
+                                                    isComplete={false}
+                                                    onPress={() => navigation.navigate('@ModuleAddress')} />}
                                         </View>
                                     )
                                 })
