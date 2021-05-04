@@ -1,6 +1,6 @@
 import React from "react";
 import ScreenOne from './ScreenOneTxn.js';
-// import ScreenTwo from './ScreenTwoTxn.js';
+import ScreenTwo from './ScreenTwoTxn.js';
 // import ScreenThree from './ScreenThreeTxn.js';
 import StackOptions from '../../../constants/StackOptions'
 import { createStackNavigator } from "@react-navigation/stack";
@@ -15,8 +15,8 @@ const HomeIndex = () => {
             screenOptions={StackOptions}
         >
             <Stack.Screen name="@ScreenOne" component={ScreenOne} />
-            {/* <Stack.Screen name="@ScreenTwo" component={ScreenTwo} />
-            <Stack.Screen name="@ScreenThree" component={ScreenThree} /> */}
+            <Stack.Screen name="@ScreenTwo" component={ScreenTwo} />
+            {/* <Stack.Screen name="@ScreenThree" component={ScreenThree} /> */}
 
         </Stack.Navigator>
     )

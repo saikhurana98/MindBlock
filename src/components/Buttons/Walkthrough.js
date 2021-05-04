@@ -2,20 +2,20 @@ import React from 'react';
 import { View, TouchableOpacity, Text, ImageBackground, StyleSheet } from "react-native";
 import Colors from "../../constants/Colors";
 
-const Next = ({ label, onPress, fill }) => {
+const Next = ({ label, onPress, fill, disabled }) => {
     return (
         <TouchableOpacity
             onPress={() => (onPress ? onPress() : {})}
             style={styles.container}
         >
-            <View style={styles(fill).TextView}>
-                <Text style={ styles(fill).text }>{label}</Text>
+            <View style={styles(fill, disabled).TextView}>
+                <Text style={ styles(fill, disabled).text }>{label}</Text>
             </View>
         </TouchableOpacity>
     );
 };
 
-const styles = (fill) => StyleSheet.create({
+const styles = (fill, disabled) => StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -26,15 +26,15 @@ const styles = (fill) => StyleSheet.create({
         justifyContent: 'center',
         borderWidth: 1,
         borderRadius: 50,
-        borderColor: '#347AF0',
+        borderColor: disabled?"#B5BBC9": '#347AF0',
         width: '80%',
         padding: 5,
-        backgroundColor: fill? "#347AF0": 'white',
+        backgroundColor: fill? disabled? "#F2F2F2": "#347AF0": 'white',
         height: 60,
         width: 200
     },
     text: {
-        color: fill? "#FFFFFF": "#347AF0",
+        color: fill? disabled? "#B5BBC9": "#FFFFFF": "#347AF0",
         marginRight: 10,
         fontFamily: 'TitilliumWeb-SemiBold',
         fontSize: 19
