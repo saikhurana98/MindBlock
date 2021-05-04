@@ -62,7 +62,7 @@ const Home = ({ navigation }) => {
             .then(function (response) {
                 return response.json();
             }).then(function (data) {
-                console.log("TXN: ", data);
+                // console.log("TXN: ", address);
                 setAccountBalance(data.final_balance);
                 setAccountDetails(data);
             })
@@ -135,7 +135,7 @@ const Home = ({ navigation }) => {
                                                     label={"Address Generation"}
                                                     label2={"Milestone 1"}
                                                     isComplete={false}
-                                                    onPress={() => navigation.navigate('@ModuleAddress')} />}
+                                                    onPress={() => navigation.navigate('@moduleAddress')} />}
                                         </View>
                                     )
                                 })

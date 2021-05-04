@@ -50,7 +50,6 @@ const AddressActivity = ({ navigation }) => {
                         <Text> bc1qar0srrr7xfk...</Text>
                     </TouchableOpacity>
                 </Card>
-
             </View>
             {index === 3 ? <View style={cardStyle(false).addressNextButton}>
                 <View>

@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     },
     addressNextButton: {
         alignSelf: 'center',
-        top: 0.3 * windowHeight,
+        top: 140,
     },
     loadingContainer: {
         top: 80,
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     },
     rewardNextButton: {
         alignSelf: 'center',
-        top: 0.25 * windowHeight,
+        top: 130,
     },
 
     // Transactions:
@@ -154,8 +154,7 @@ const styles = StyleSheet.create({
         flex: 3,
         flexWrap: 'wrap',
         flexDirection: 'row',
-        marginLeft: 25
-        // alignContent: 'ce'
+        justifyContent: 'center'
     },
     cardsContainerStyleTxn: {
         borderRadius: 16,

@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Image, StyleSheet, Button } from "react-native";
-import Colors from "../../constants/Colors";
 
 const ModuleButton = ({ label, timeReqdInMins, onPress, isComplete }) => {
     return (

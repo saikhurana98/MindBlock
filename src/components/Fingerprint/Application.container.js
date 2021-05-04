@@ -64,7 +64,7 @@ class Application extends Component {
       <View style={styles.container}>
 
         <Text style={styles.heading}>
-          Put your finger on the scanner to proceed
+          Press the image to sign the txn
         </Text>
 
         <TouchableOpacity
