@@ -5,12 +5,17 @@ import { createStackNavigator } from "@react-navigation/stack";
 import * as Screens from "./screens";
 import Main from "./navigation/HomeDrawer";
 import StackOptions from "./constants/StackOptions";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const Stack = createStackNavigator();
 const INITIAL_ROUTE_NAME = "@onboarding";
 
 export default function App() {
+    React.useEffect(() => {
+        AsyncStorage.setItem('@testAddress', "BvSQEFWSZt1pFvBckCAArzYxN99GViERNK");
+    }, [])
 
-    /* The code below is to recieve money from the bcy faucet: */ 
+    /* The code below is to recieve money from the bcy faucet: */
 
     // var data = { "address": "C5ZquCLMdUHDuzpwwzJcAmujgNgmTAwQau", "amount": 1000000 }
     // fetch('https://api.blockcypher.com/v1/bcy/test/faucet?token=02a7199e41fd432ea722e0561762a98e', {

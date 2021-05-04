@@ -161,14 +161,41 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         padding: 10,
         backgroundColor: 'white',
-        borderWidth:0,
-        marginBottom:10,
-        marginLeft:10,
-        marginRight:10,
-        borderColor:'#808080',
-        marginTop:50,
+        borderWidth: 0,
+        marginBottom: 10,
+        marginLeft: 10,
+        marginRight: 10,
+        borderColor: '#808080',
+        marginTop: 50,
         elevation: 10
-    }
+    },
+    txnAddressCardHeading: {
+        marginTop: 20,
+        fontFamily: "TitilliumWeb-SemiBold",
+        color: "#0D1F3C",
+        fontSize: 20,
+    },
+    txnAddressCardContentContainer: {
+        // marginTop: 15,
+        width: 300,
+        height: 50
+    },
+    txnAddressCardContent: {
+        textAlign: 'left',
+        width: 250,
+    },
+    txnAddressCardContentPasteContainer: {
+        alignSelf: 'flex-end',
+        bottom: 20,
+    },
+
+    txnAddressCardContentPaste: {
+        fontFamily: "TitilliumWeb-Regular",
+        fontSize: 14,
+        color: "#78839C",
+        backgroundColor: "white"
+    },
+
 
 });
 
