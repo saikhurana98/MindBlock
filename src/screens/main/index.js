@@ -4,6 +4,7 @@ import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Home from '../home'
 import Transactions from '../transactions'
+import MakeTxn from '../makeTransaction'
 import { Buttons } from '../../components'
 import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -61,7 +62,7 @@ const Main = () => {
                     }
                 }} />
 
-            <Tab.Screen name="Deposit" component={Transactions}
+            <Tab.Screen name="Deposit" component={MakeTxn}
                 options={{
                     tabBarButton: (props) => (
                         <Buttons.TabBarAdvancedButton

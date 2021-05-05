@@ -37,7 +37,7 @@ const OnboardingScreen = ({ navigation }) => {
                         iconName="sun"
                         title="What is this app about?"
                         content={"This application is a learning app. All the topics are arranged in different modules. You need to complete a module to move onto your next one. Some modules are just informative while others are interactive. So have fun learning!"}
-                        imgSrc={require("_assets/walk1.png")}
+                        imgSrc={require("_assets/scene2-walk.png")}
                         nextLabel="Next"
                         nextButtonPress={() => {
                             handlePageChange(2);
@@ -50,7 +50,7 @@ const OnboardingScreen = ({ navigation }) => {
                         backgroundColor="#F2F2F2"
                         title="What the app isn't about?"
                         content={"This application includes features that can let you interact with a blockchain network. Under no circumstances do we promote the use of this application as a wallet. With that important disclaimer out of the way. let’s get started!"}
-                        imgSrc={require("_assets/walk1.png")}
+                        imgSrc={require("_assets/scene3-walk.png")}
                         nextLabel="Let's Get Started"
                         nextButtonPress={() => {
                             handlePageChange(3);
