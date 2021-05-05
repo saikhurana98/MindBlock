@@ -11,8 +11,23 @@ const Stack = createStackNavigator();
 const INITIAL_ROUTE_NAME = "@onboarding";
 
 export default function App() {
-    React.useEffect(() => {
+    const initializeStatuses = async () => {
         AsyncStorage.setItem('@testAddress', "BvSQEFWSZt1pFvBckCAArzYxN99GViERNK");
+        const value = await AsyncStorage.getItem('ModulesInit');
+        if (!value) {
+            AsyncStorage.setItem("@Module1", "false");
+            AsyncStorage.setItem("@Module2", "false");
+            AsyncStorage.setItem("@Module3", "false");
+            AsyncStorage.setItem("@Module4", "false");
+            AsyncStorage.setItem("@Module5", "false");
+            AsyncStorage.setItem("@Module6", "false");
+            AsyncStorage.setItem("@Module6", "false");
+        }
+    }
+
+    React.useEffect(() => {
+        initializeStatuses();
+
     }, [])
 
     /* The code below is to recieve money from the bcy faucet: */

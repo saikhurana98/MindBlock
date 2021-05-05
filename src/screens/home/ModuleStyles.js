@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     carouselContainer: {
         flex: 1,
         right: 10,
+        bottom: 40,
     },
     itemContainer: {
         top: 80,
@@ -70,6 +71,11 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         textAlign: 'center'
+    },
+    moduleInfoNextButton: {
+        alignSelf: 'center',
+        bottom: 90
+
     },
 
     // FOR ADDRESS ACTIVITY: 

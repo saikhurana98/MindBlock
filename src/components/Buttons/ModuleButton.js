@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Image, StyleSheet, Button } from "react-native";
 
-const ModuleButton = ({ label, timeReqdInMins, onPress, isComplete }) => {
+const ModuleButton = ({ label, timeReqdInMins, onPress, isComplete, percentage }) => {
+    isComplete = isComplete === "true"
     return (
         <TouchableOpacity
             onPress={() => (onPress ? onPress() : {})}
@@ -13,6 +14,8 @@ const ModuleButton = ({ label, timeReqdInMins, onPress, isComplete }) => {
             }
             <Text style={styles(isComplete).text}>{label}</Text>
             <Text style={styles(isComplete).time}>{timeReqdInMins} Mins</Text>
+            <Text style={styles(isComplete).percentage}>{isComplete ? 100 : 0}%</Text>
+
         </TouchableOpacity>
     );
 };
@@ -54,6 +57,12 @@ const styles = (fill) => StyleSheet.create({
         borderRadius: 20 / 2,
         borderWidth: 1,
         borderColor: "#0D1F3C60"
+    },
+    percentage: {
+        color: !fill ? "#DF5060" : "#75BF72",
+        alignSelf: 'flex-end',
+        bottom: 60,
+        right: 15,
     },
 });
 

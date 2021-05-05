@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { View, Image, SafeAreaView, Dimensions, Text } from "react-native";
 import { Separators, Buttons, Lists, Header } from "_components";
 import Carousel from 'react-native-snap-carousel';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from "./ModuleStyles";
 
@@ -14,8 +15,11 @@ for (let i = 0; i < 10; i++) {
     DATA.push(i)
 }
 
-const ModuleInfo = ({ navigation }) => {
+const ModuleInfo = ({ route, navigation }) => {
+    const { moduleName } = route.params;
+    console.log(moduleName);
     const [index, setIndex] = useState(0);
+    const carouselRef = useRef(null);
     const renderSlides = ({ item }) => {
         return (
             <View style={styles.itemContainer}>
@@ -41,6 +45,7 @@ const ModuleInfo = ({ navigation }) => {
             </View>
             <View style={styles.carouselContainer}>
                 <Carousel
+                    ref={carouselRef}
                     data={DATA}
                     layout={"default"}
                     renderItem={renderSlides}
@@ -50,11 +55,12 @@ const ModuleInfo = ({ navigation }) => {
                     useScrollView={false}
                 />
             </View>
-            <Text style={styles.counter}
-            >
-                {index}
-            </Text>
-        </SafeAreaView>
+            <View style={styles.moduleInfoNextButton}>
+                {index === 9 ?
+                    <Buttons.Next fill={true} label={"Done"} onPress={() => { AsyncStorage.setItem(moduleName, "true"); navigation.navigate("@home") }} />
+                    : <Buttons.Next fill={true} label={"Next"} onPress={() => carouselRef.current.snapToNext()} />}
+            </View>
+        </SafeAreaView >
     )
 };
 
