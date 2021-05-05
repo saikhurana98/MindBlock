@@ -10,7 +10,7 @@ const OnboardingScreen = ({ navigation }) => {
         if (pageNumber == 3) {
             navigation.navigate("@mainModule")
         }
-            pagerRef.current.setPage(pageNumber);
+        pagerRef.current.setPage(pageNumber);
     };
 
     return (
@@ -21,7 +21,8 @@ const OnboardingScreen = ({ navigation }) => {
                         currentPage={0}
                         backgroundColor="#F2F2F2"
                         iconName="sun"
-                        title="Walkthrough Heading"
+                        title="Welcome"
+                        content={"Welcome to payBTC. \n This app will help you get started with the world of blockchain and cryptocurrencies. "}
                         imgSrc={require("_assets/walk1.png")}
                         nextLabel="Next"
                         nextButtonPress={() => {
@@ -34,7 +35,8 @@ const OnboardingScreen = ({ navigation }) => {
                         currentPage={1}
                         backgroundColor="#F2F2F2"
                         iconName="sun"
-                        title="Walkthrough Heading"
+                        title="What is this app about?"
+                        content={"This application is a learning app. All the topics are arranged in different modules. You need to complete a module to move onto your next one. Some modules are just informative while others are interactive. So have fun learning!"}
                         imgSrc={require("_assets/walk1.png")}
                         nextLabel="Next"
                         nextButtonPress={() => {
@@ -46,7 +48,8 @@ const OnboardingScreen = ({ navigation }) => {
                     <Page
                         currentPage={2}
                         backgroundColor="#F2F2F2"
-                        title="Walkthrough Heading"
+                        title="What the app isn't about?"
+                        content={"This application includes features that can let you interact with a blockchain network. Under no circumstances do we promote the use of this application as a wallet. With that important disclaimer out of the way. let’s get started!"}
                         imgSrc={require("_assets/walk1.png")}
                         nextLabel="Let's Get Started"
                         nextButtonPress={() => {

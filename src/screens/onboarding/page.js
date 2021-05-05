@@ -5,12 +5,12 @@ import { Buttons } from '../../components'
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const Page = ({ 
-    navigation, backgroundColor, 
-    iconName, title, 
+const Page = ({
+    navigation, backgroundColor,
+    iconName, title, content,
     imgSrc, numPages,
     isLight, currentPage,
-    nextLabel, nextButtonPress, fill  }) => {
+    nextLabel, nextButtonPress, fill }) => {
     return (
         <View
             style={{
@@ -34,9 +34,7 @@ const Page = ({
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={styles.text}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Molestie adipiscing est eu volutpat scelerisque senectus sit.
-                            Tempus, lobortis tellus nulla eget pellentesque egestas.
+                            {content}
                         </Text>
                     </View>
                     <View style={styles.buttonContainer}>
@@ -80,12 +78,12 @@ const styles = StyleSheet.create({
         marginBottom: 300,
         alignSelf: 'center',
         width: 0.8 * windowWidth,
-        left: 20
+        // left: 20
     },
 
     textContainer: {
         alignSelf: 'center',
-        justifyContent: 'center',
+        // justifyContent: 'center',
         position: 'absolute',
         width: 0.8 * windowWidth
         // marginTop: 200,
@@ -101,7 +99,6 @@ const styles = StyleSheet.create({
     heading: {
         color: "black",
         fontSize: 45,
-        alignSelf: "flex-start",
         textAlign: "center",
         fontFamily: "TitilliumWeb-Bold",
     },
