@@ -1,25 +1,26 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, Image, StyleSheet, Button } from "react-native";
+import { View, TouchableOpacity, Text, Image, StyleSheet, ToastAndroid } from "react-native";
 import Colors from "../../constants/Colors";
 
 const ModuleActivityButton = ({ label, label2, onPress, isComplete, fill }) => {
     return (
         <TouchableOpacity
-            onPress={() => (onPress ? onPress() : {})}
+            onPress={() => (isComplete !== "100" && isComplete !== "0" ? onPress ? onPress() : {} : ToastAndroid.show("Module Locked !", ToastAndroid.SHORT))}
             style={styles(fill).container}
         >
-            {isComplete === "true" ?
-                <Image style={styles(isComplete === "true").circle} source={require("_assets/check-circle.png")} />
-                : <View style={styles(isComplete === "true").circle} />
+            { isComplete === "100" ?
+                <Image style={styles(isComplete).circle} source={require("_assets/check-circle.png")} />
+                : <View style={styles(isComplete).circle} />
             }
-            <Text style={styles(isComplete === "true").text}>{label}</Text>
-            <Text style={styles(isComplete === "true").subText}>{label2}</Text>
-            <Text style={styles(isComplete === "true").status}>{isComplete === "true" ? "Completed" : "Not Completed"}</Text>
-        </TouchableOpacity>
+            <Text style={styles(isComplete).text}>{label}</Text>
+            <Text style={styles(isComplete).subText}>{label2}</Text>
+            <Text style={styles(isComplete).status}>{isComplete === "100" ? "Completed" : "Not Completed"}</Text>
+            <Text style={styles(isComplete).percentage}>{isComplete}%</Text>
+        </TouchableOpacity >
     );
 };
 
-const styles = (fill) => StyleSheet.create({
+const styles = (isComplete) => StyleSheet.create({
     container: {
         alignItems: 'center',
         borderRadius: 30,
@@ -35,7 +36,7 @@ const styles = (fill) => StyleSheet.create({
         shadowRadius: 5,
     },
     text: {
-        color: !fill ? "#0D1F3C60" : "#0D1F3C",
+        color: isComplete === "0" ? "#0D1F3C60" : "#0D1F3C",
         marginLeft: 45,
         alignSelf: 'flex-start',
         fontFamily: 'TitilliumWeb-SemiBold',
@@ -50,7 +51,7 @@ const styles = (fill) => StyleSheet.create({
         bottom: 20,
     },
     status: {
-        color: !fill ? "#0D1F3C60" : "#0D1F3C",
+        color: isComplete === "0" ? "#0D1F3C60" : "#0D1F3C",
         marginLeft: 45,
         alignSelf: 'flex-start',
         fontFamily: 'TitilliumWeb-SemiBold',
@@ -65,6 +66,12 @@ const styles = (fill) => StyleSheet.create({
         borderRadius: 20 / 2,
         borderWidth: 1,
         borderColor: "#0D1F3C60"
+    },
+    percentage: {
+        color: isComplete === "0" ? "#DF5060" : isComplete === "100" ? "#75BF72" : "#347AF0",
+        alignSelf: 'flex-end',
+        bottom: 90,
+        right: 15,
     },
 });
 

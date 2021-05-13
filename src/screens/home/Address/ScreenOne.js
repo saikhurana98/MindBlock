@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Image, SafeAreaView, Dimensions, Text } from "react-native";
+import ScreenTwo from './ScreenTwo'
 import { Separators, Buttons, Lists, Header } from "_components";
 import styles from "../ModuleStyles";
 
@@ -13,7 +14,9 @@ const DATA = [];
 for (let i = 0; i < 10; i++) {
     DATA.push(i)
 }
-const AddressActivity = ({ navigation }) => {
+const AddressActivity = ({ route, navigation }) => {
+    // console.log("ROUTE ADDR: ", navigation.dangerouslyGetParent().route)
+    const [addgenClicked, setAddgenClicked] = useState(false);
     return (
         <SafeAreaView style={styles.mainContainer}>
             <Header.Default />
@@ -23,13 +26,25 @@ const AddressActivity = ({ navigation }) => {
             <View style={styles.descriptionContainer}>
                 <Text style={styles.descriptionText}>A short description of what the topics that this module covers. cannto be longer than this much. </Text>
             </View>
-            <View style={styles.addressImage}>
-                <Image source={require("_assets/addressImage.png")} />
-            </View>
-            <View style={styles.addressNextButton}>
-                <Buttons.Next fill={true} label={"Generate Address"} onPress={() => navigation.navigate("@ScreenTwo")}/>
-            </View>
+            {
+                addgenClicked ?
+                    <ScreenTwo navigation={navigation} />
+                    :
+                    <>
+                        <View style={styles.addressImage}>
+                            <Image source={require("_assets/addressImage.png")} />
+                        </View>
+                        <View style={styles.addressNextButton}>
+                            <Buttons.Next fill={true} label={"Generate Address"} onPress={() => {
+                                setAddgenClicked(true);
+                            }} />
+                        </View>
+                    </>
+            }
+
+
         </SafeAreaView>
+
     )
 }
 

@@ -1,14 +1,12 @@
 import React, { useState, useRef } from "react";
 import { View, Image, SafeAreaView, Dimensions, Text } from "react-native";
-import { Separators, Buttons, Lists, Header } from "_components";
+import { Buttons, Lists, Header } from "_components";
 import Carousel from 'react-native-snap-carousel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import BeaconContext from '../../constants/contextAPI';
 import styles from "./ModuleStyles";
 
 const windowWidth = Dimensions.get('window').width;
-const ITEM_WIDTH = Math.round(windowWidth * 0.7);
-const ITEM_HEIGHT = Math.round(ITEM_WIDTH * 3 / 4);
 
 const DATA = [];
 for (let i = 0; i < 10; i++) {
@@ -17,7 +15,7 @@ for (let i = 0; i < 10; i++) {
 
 const ModuleInfo = ({ route, navigation }) => {
     const { refresher } = React.useContext(BeaconContext);
-    const { moduleName } = route.params;
+    const { moduleName, nextModule } = route.params;
     const [index, setIndex] = useState(0);
     const carouselRef = useRef(null);
     const renderSlides = ({ item }) => {
@@ -58,7 +56,8 @@ const ModuleInfo = ({ route, navigation }) => {
             <View style={styles.moduleInfoNextButton}>
                 {index === 9 ?
                     <Buttons.Next fill={true} label={"Done"} onPress={() => {
-                        AsyncStorage.setItem(moduleName, "true");
+                        AsyncStorage.setItem(moduleName, "100");
+                        AsyncStorage.setItem(nextModule, "1");
                         refresher();
                         navigation.navigate("@home")
                     }} />

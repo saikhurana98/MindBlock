@@ -29,6 +29,10 @@ const AddressActivity = ({ navigation }) => {
     const [seckey, setSeckey] = useState("")
     const [userAddress, setAddress] = useState("")
 
+    useEffect(() => {
+        handleButtonPress();
+    }, []);
+
     const renderAddressComponent = () => {
         return (
             <View>
@@ -115,14 +119,7 @@ const AddressActivity = ({ navigation }) => {
         )
     }
     return (
-        <SafeAreaView style={styles.mainContainer}>
-            <Header.Default />
-            <View style={styles.headingContainer}>
-                <Text style={styles.headingText}>Screen Two</Text>
-            </View>
-            <View style={styles.descriptionContainer}>
-                <Text style={styles.descriptionText}>A short description of what the topics that this module covers. cannto be longer than this much. </Text>
-            </View>
+        <>
             <View style={styles.addressImage}>
                 <AnimatedLoader
                     visible={visible}
@@ -131,10 +128,8 @@ const AddressActivity = ({ navigation }) => {
                     speed={1}
                 />
             </View>
-            {!addressLoaded ? <View style={styles.addressNextButton}>
-                <Buttons.Next fill={true} label={"Generate Address"} onPress={() => handleButtonPress()} />
-            </View> : renderAddressComponent()}
-        </SafeAreaView>
+            {!addressLoaded ? null : renderAddressComponent()}
+        </>
     )
 }
 

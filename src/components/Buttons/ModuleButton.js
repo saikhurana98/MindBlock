@@ -1,26 +1,26 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, Image, StyleSheet, Button } from "react-native";
+import { View, TouchableOpacity, Text, Image, StyleSheet, ToastAndroid } from "react-native";
 
 const ModuleButton = ({ label, timeReqdInMins, onPress, isComplete, percentage }) => {
-    isComplete = isComplete === "true"
+    // isComplete = isComplete === "100"
     return (
         <TouchableOpacity
-            onPress={() => (onPress ? onPress() : {})}
+            onPress={() => (isComplete !== "0" ? onPress ? onPress() : {} : ToastAndroid.show("Module Locked !", ToastAndroid.SHORT))}
             style={styles(isComplete).container}
         >
-            {isComplete ?
+            {isComplete === "100" ?
                 <Image style={styles(isComplete).circle} source={require("_assets/check-circle.png")} />
                 : <View style={styles(isComplete).circle} />
             }
             <Text style={styles(isComplete).text}>{label}</Text>
             <Text style={styles(isComplete).time}>{timeReqdInMins} Mins</Text>
-            <Text style={styles(isComplete).percentage}>{isComplete ? 100 : 0}%</Text>
+            <Text style={styles(isComplete).percentage}>{isComplete}%</Text>
 
         </TouchableOpacity>
     );
 };
 
-const styles = (fill) => StyleSheet.create({
+const styles = (isComplete) => StyleSheet.create({
     container: {
         alignItems: 'center',
         borderRadius: 30,
@@ -36,7 +36,7 @@ const styles = (fill) => StyleSheet.create({
         elevation: 3,
     },
     text: {
-        color: !fill ? "#0D1F3C60" : "#0D1F3C",
+        color: isComplete === "0" ? "#0D1F3C60" : "#0D1F3C",
         marginRight: 140,
         fontFamily: 'TitilliumWeb-SemiBold',
         fontSize: 15,
@@ -59,7 +59,7 @@ const styles = (fill) => StyleSheet.create({
         borderColor: "#0D1F3C60"
     },
     percentage: {
-        color: !fill ? "#DF5060" : "#75BF72",
+        color: isComplete === "0" ? "#DF5060" : isComplete === "100" ? "#75BF72" : "#347AF0",
         alignSelf: 'flex-end',
         bottom: 60,
         right: 15,

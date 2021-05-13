@@ -16,20 +16,19 @@ export default function App() {
 
     const [refreshPercentages, setRefreshPercentages] = useState(false)
 
-    const [module1, setModule1] = useState("false");
-    const [module2, setModule2] = useState("false");
-    const [module3, setModule3] = useState("false");
-    const [module4, setModule4] = useState("false");
-    const [module5, setModule5] = useState("false");
-    const [module6, setModule6] = useState("false");
-    const [module7, setModule7] = useState("false");
+    const [module1, setModule1] = useState("1");
+    const [module2, setModule2] = useState("0");
+    const [module3, setModule3] = useState("0");
+    const [module4, setModule4] = useState("0");
+    const [module5, setModule5] = useState("0");
+    const [module6, setModule6] = useState("0");
+    const [module7, setModule7] = useState("0");
 
     const moduleSetters = [setModule1, setModule2, setModule3, setModule4, setModule5, setModule6, setModule7];
     const moduleNames = ["@Module1", "@Module2", "@Module3", "@Module4", "@Module5", "@Module6", "@Module7"];
     // var moduleValues = [module1, module2, module3, module4, module5, module6, module7]
 
     const onRefresh = React.useCallback(() => {
-        console.log("I WAS FCALLEDS")
         setRefreshPercentages(true);
         wait(2000).then(() => setRefreshPercentages(false));
     }, []);
@@ -43,8 +42,9 @@ export default function App() {
         console.log("here", value)
         if (!value) {
             AsyncStorage.setItem('@testAddress', "BvSQEFWSZt1pFvBckCAArzYxN99GViERNK");
-            for (let i = 0; i < NUM_MODULES; ++i) {
-                AsyncStorage.setItem(moduleNames[i], "false");
+            AsyncStorage.setItem(moduleNames[0], "1");
+            for (let i = 1; i < NUM_MODULES; ++i) {
+                AsyncStorage.setItem(moduleNames[i], "0");
             }
             AsyncStorage.setItem('ModulesInit', "true");
         } else {

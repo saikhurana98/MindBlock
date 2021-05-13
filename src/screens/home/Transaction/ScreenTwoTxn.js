@@ -34,6 +34,7 @@ const AddressActivity = ({ navigation }) => {
     }, [])
 
     const makeTXN = () => {
+        console.log(currentAddress)
         if (currentAddress) {
             setVisible(true);
             setTimeout(() => {
@@ -52,7 +53,7 @@ const AddressActivity = ({ navigation }) => {
         { label: 'Bech32', value: 'Bech32', disabled: true },
     ]);
     const pasteHandler = async () => {
-        console.log("her")
+        // console.log("her")
         const testAddress = await AsyncStorage.getItem("@testAddress");
         setInputAddress(testAddress);
     }
@@ -93,10 +94,8 @@ const AddressActivity = ({ navigation }) => {
                                 // borderColor: 'red'
                                 borderWidth: 0
                             }}
-                            // itemSeparator={true}
                             onPress={(open) => console.log('was the picker open?', open)}
                             showTickIcon={true}
-                            // disabled={true}
                             open={open}
                             value={value}
                             items={items}
@@ -118,6 +117,7 @@ const AddressActivity = ({ navigation }) => {
                             style={styles.txnAddressCardContent}
                             value={inputAddress}
                             onChangeText={val => setInputAddress(val)}
+                            multiline={true}
                         />
                         <TouchableOpacity
                             style={styles.txnAddressCardContentPasteContainer}

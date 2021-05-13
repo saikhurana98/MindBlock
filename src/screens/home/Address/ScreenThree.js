@@ -2,9 +2,14 @@ import React, { useState, useEffect } from "react";
 import { View, Image, SafeAreaView, Dimensions, Text } from "react-native";
 import { Separators, Buttons, Lists, Header } from "_components";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import AddressIndexContext from './addressContext'
+import BeaconContext from '../../../constants/contextAPI'
 import styles from "../ModuleStyles";
 
-const AddressActivity = ({ navigation }) => {
+const AddressActivity = ({ route, navigation }) => {
+    const { refresher } = React.useContext(BeaconContext);
+    const { moduleName, nextModule } = React.useContext(AddressIndexContext).params;
+    console.log("ROUTE ADDR: ", moduleName, nextModule)
     useEffect(() => {
         const faucetMoney = async () => {
             const value = await AsyncStorage.getItem('@address')
@@ -47,7 +52,12 @@ const AddressActivity = ({ navigation }) => {
                 <Image source={require("_assets/faucetIcon.png")} />
             </View>
             <View style={styles.rewardNextButton}>
-                <Buttons.Next fill={true} label={"Collect Reward"} onPress={() => navigation.navigate("@home")} />
+                <Buttons.Next fill={true} label={"Collect Reward"} onPress={() => {
+                    navigation.navigate("@home");
+                    AsyncStorage.setItem(moduleName, "100");
+                    AsyncStorage.setItem(nextModule, "1");
+                    refresher();
+                }} />
             </View>
         </SafeAreaView>
     )

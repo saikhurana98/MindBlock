@@ -23,7 +23,8 @@ const IntroModule =
                     timeReqdInMins={"3"}
                     isComplete={context.module1}
                     onPress={() => navigation.navigate('@moduleInfo', {
-                        moduleName: "@Module1"
+                        moduleName: "@Module1",
+                        nextModule: "@Module2",
                     })
                     } />
             )
@@ -40,7 +41,8 @@ const AddressInfoModule =
                     timeReqdInMins={"3"}
                     isComplete={context.module2}
                     onPress={() => navigation.navigate('@moduleInfo', {
-                        moduleName: "@Module2"
+                        moduleName: "@Module2",
+                        nextModule: "@Module3",
                     })} />
             )
         }
@@ -56,7 +58,10 @@ const AddModule =
                     label={"Address Generation"}
                     label2={"Milestone 1"}
                     isComplete={context.module3}
-                    onPress={() => navigation.navigate('@moduleAddress')} />
+                    onPress={() => navigation.navigate('@moduleAddress', {
+                        moduleName: "@Module3",
+                        nextModule: "@Module4",
+                    })} />
             )
         }
     </BeaconContext.Consumer>
@@ -71,7 +76,8 @@ const Info1Module =
                     timeReqdInMins={"3"}
                     isComplete={context.module4}
                     onPress={() => navigation.navigate('@moduleInfo', {
-                        moduleName: "@Module4"
+                        moduleName: "@Module4",
+                        nextModule: "@Module5",
                     })} />
             )
         }
@@ -86,7 +92,10 @@ const TxnModule =
                     key={3} fill={true} label={"Transaction"}
                     label2={"Milestone 2"}
                     isComplete={context.module5}
-                    onPress={() => navigation.navigate('@moduleTxn')} />
+                    onPress={() => navigation.navigate('@moduleTxn', {
+                        moduleName: "@Module5",
+                        nextModule: "@Module6",
+                    })} />
             )
         }
     </BeaconContext.Consumer>
@@ -103,7 +112,8 @@ const Info2Module =
                     timeReqdInMins={"3"}
                     isComplete={context.module6}
                     onPress={() => navigation.navigate('@moduleInfo', {
-                        moduleName: "@Module5"
+                        moduleName: "@Module6",
+                        nextModule: "@Module7",
                     })} />
             )
         }
@@ -121,7 +131,8 @@ const Info3Module =
                     timeReqdInMins={"3"}
                     isComplete={context.module7}
                     onPress={() => navigation.navigate('@moduleInfo', {
-                        moduleName: "@Module6"
+                        moduleName: "@Module7",
+                        nextModule: "@Finish",
                     })} />
             )
         }
