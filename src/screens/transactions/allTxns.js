@@ -41,7 +41,7 @@ const AllTxns = ({ navigation }) => {
         userAdd ?
             setTimeout(() => {
                 getTXNs();
-            }, 2000)
+            }, 1000)
             : ""
     }, [userAdd, refreshing]);
 
@@ -115,7 +115,17 @@ const AllTxns = ({ navigation }) => {
                                             <Buttons.TxnButton
                                                 amount={amount / satoshiToB}
                                                 onPress={() => {
-                                                    navigation.navigate("@txnDetails");
+                                                    navigation.navigate("@txnDetails", {
+                                                        type: type,
+                                                        inputs: inputs,
+                                                        outputs: outputs,
+                                                        type: type, 
+                                                        date: date,
+                                                        fees: item.fees,
+                                                        confirmations: item.confirmations,
+                                                        blockHash: item.block_hash,
+
+                                                    });
                                                     console.log("asd")
                                                 }}
                                                 type={type}

@@ -20,9 +20,6 @@ const HomeDrawer = () => {
       drawerContent={(props) => <CustomDrawer />}
     >
       <Drawer.Screen name="MainModule" component={Screen.MainModule} />
-      {/* <Drawer.Screen name="Learning" component={Screen.Home} />
-      <Drawer.Screen name="Transactions" component={Screen.Transactions} /> */}
-      
     </Drawer.Navigator>
   );
 };

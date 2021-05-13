@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as Screens from "./screens";
-import Main from "./navigation/HomeDrawer";
+import Drawer from "./navigation/HomeDrawer";
 import StackOptions from "./constants/StackOptions";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import BeaconContext from './constants/contextAPI'
@@ -87,12 +87,12 @@ export default function App() {
                         screenOptions={StackOptions}
                     >
                         <Stack.Screen name="@onboarding" component={Screens.Onboarding} />
-                        <Stack.Screen name="@welcome" component={Screens.Welcome} />
-                        <Stack.Screen name="@address" component={Screens.Address} />
-                        <Stack.Screen name="@details" component={Screens.Details} />
-                        <Stack.Screen name="@makeTransaction" component={Screens.MakeTransaction} />
+                        {/* <Stack.Screen name="@welcome" component={Screens.Welcome} /> */}
+                        {/* <Stack.Screen name="@address" component={Screens.Address} /> */}
+                        {/* <Stack.Screen name="@details" component={Screens.Details} /> */}
+                        {/* <Stack.Screen name="@makeTransaction" component={Screens.MakeTransaction} /> */}
                         <Stack.Screen name="@mainModule" component={Screens.MainModule} />
-                        <Stack.Screen name="@main" component={Main} />
+                        {/* <Stack.Screen name="@main" component={Drawer} /> */}
                     </Stack.Navigator>
                 </NavigationContainer>
             </BeaconContext.Provider >

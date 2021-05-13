@@ -5,6 +5,8 @@ import Home from '../home'
 import Transactions from '../transactions'
 import MakeTxn from '../makeTransaction'
 import { Buttons } from '../../components'
+import LearningIconSVG from "_assets/learningIconSVG.svg"
+import TxnsIcnonSVG from "_assets/txnsIcnonSVG.svg"
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +28,6 @@ const Main = ({ navigation, route }) => {
                     backgroundColor: "#EDF1F9"
                 }
             }}
-        // initialParams={{ moduleValues: route.params.moduleValues }}
         >
 
             <Tab.Screen name="Transactions" component={Transactions}
@@ -34,7 +35,7 @@ const Main = ({ navigation, route }) => {
                     showIcon: true,
                     tabBarIcon: () => {
                         return (
-                            <Image source={require("_assets/txnIcon.png")} />
+                            <TxnsIcnonSVG />
                         )
                     }
                 }}
@@ -52,12 +53,11 @@ const Main = ({ navigation, route }) => {
             />
 
             <Tab.Screen name="Learning" component={Home}
-                initialParams={{ fd: "Hello" }}
                 options={{
                     showIcon: true,
                     tabBarIcon: () => {
                         return (
-                            <Image source={require("_assets/learningIcon.png")} />
+                            <LearningIconSVG />
                         )
                     }
                 }}

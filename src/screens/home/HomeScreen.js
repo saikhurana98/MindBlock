@@ -6,6 +6,7 @@ import { Separators, Buttons, Lists, Header } from "_components";
 import DATA from '../../constants/ModuleData';
 import styles from './styles';
 import helpers from "../../helpers";
+import GraphSVG from "_assets/graphSVG.svg"
 import { exp } from "react-native-reanimated";
 
 const windowWidth = Dimensions.get('window').width;
@@ -106,7 +107,8 @@ const Home = ({ route, navigation }) => {
                             <Text style={styles.currentAmountValeuText}>{accountBalance / satoshiToB}฿</Text>
                             <Text style={styles.currentAmountLabelText}>Wallet Balance</Text>
                             {/* <Text style={styles.addressText}>{address}</Text> */}
-                            <Image style={{ top: 60 }} source={require("_assets/btcGraph.png")} />
+                            <GraphSVG style={{ top: 60 }}/>
+                            {/* <Image style={{ top: 60 }} source={require("_assets/btcGraph.png")} /> */}
                         </View>
                     </View>
                 </View>
@@ -130,6 +132,7 @@ const Home = ({ route, navigation }) => {
                         <View style={styles.textContainer} />
                         <Separators.Default label="Send Money" />
                         <Lists.FriendsList list={[buttonAdd, ...friends]} onPress={toggleOverlay} />
+                        <Text style={{top: 200}}></Text>
                     </ScrollView>
                 </View>
             </View >

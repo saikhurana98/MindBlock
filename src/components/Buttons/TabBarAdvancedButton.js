@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Image } from 'react-native';
 import { TabBg } from '../SVG/TabBg';
-
+import PlusIconSVG from '_assets/plusIconSVG.svg'
 
 const TabBarAdvancedButton = ({
     bgColor,
@@ -19,7 +19,9 @@ const TabBarAdvancedButton = ({
             style={styles.button}
             onPress={props.onPress}
         >
-            <Image source={require('_assets/plusIcon.png')} style={styles.buttonIcon}/>
+            <PlusIconSVG  style={styles.buttonIcon} />
+            {/* <Image source={require("_assets/plusIcon.png")}  style={styles.buttonIcon} /> */}
+
         </TouchableOpacity>
     </View>
 );
