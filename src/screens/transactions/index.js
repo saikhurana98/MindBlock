@@ -3,6 +3,7 @@ import { View, Image, SafeAreaView, Dimensions, Text } from "react-native";
 import StackOptions from '../../constants/StackOptions'
 import { createStackNavigator } from "@react-navigation/stack";
 import AllTxns from './allTxns'
+import TxnDetails from './txnDetails'
 
 const Stack = createStackNavigator();
 const INITIAL_ROUTE_NAME = "@allTxns";
@@ -16,6 +17,8 @@ const Transactions = ({ navigation }) => {
             screenOptions={StackOptions}
         >
             <Stack.Screen name="@allTxns" component={AllTxns} />
+            <Stack.Screen name="@txnDetails" component={TxnDetails} />
+
 
 
         </Stack.Navigator>

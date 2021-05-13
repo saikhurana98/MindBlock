@@ -1,17 +1,17 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, Image, StyleSheet, ToastAndroid } from "react-native";
+import { View, TouchableOpacity, Text, Image, StyleSheet } from "react-native";
 
 const ModuleButton = ({ amount, onPress, type, status, date }) => {
     return (
         <TouchableOpacity
-            // onPress={() => (isComplete !== "0" ? onPress ? onPress() : {} : ToastAndroid.show("Module Locked !", ToastAndroid.SHORT))}
+            onPress={onPress ?() =>  onPress() : {}}
             style={styles(type).container}
         >
             {type === "Sent" ?
                 <Image style={styles(type).circle} source={require("_assets/withdrawIcon.png")} />
                 : type === "Deposited" ?
                     <Image style={styles(type).circle} source={require("_assets/depositIcon.png")} />
-                : <View style={styles(type).circle} />
+                    : <View style={styles(type).circle} />
             }
             <Text style={styles(type).text}>{amount} BTC </Text>
             <Text style={styles(type).time}>{status}</Text>

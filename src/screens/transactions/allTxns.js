@@ -12,7 +12,7 @@ const wait = (timeout) => {
 const AllTxns = ({ navigation }) => {
     const [txns, setTxns] = useState([]);
     const [userAdd, setUserAdd] = useState("");
-    // For refresh: 
+    /* For refresh: */
     const [refreshing, setRefreshing] = React.useState(false);
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
@@ -55,6 +55,15 @@ const AllTxns = ({ navigation }) => {
                     onRefresh={onRefresh}
                 />
             }>
+            {/* <Buttons.TxnButton
+                amount={200000000000000 / satoshiToB}
+                onPress={() => {
+                    navigation.navigate("@txnDetails");
+                    console.log("asd")
+                }}
+                type={"type"}
+                status={"status"}
+                date={"date"} /> */}
             <View style={styles.mainContainer}>
                 <View style={styles.greyContainer}>
                     <Text style={styles.mainHeading}> All Transaction </Text>
@@ -63,54 +72,58 @@ const AllTxns = ({ navigation }) => {
                 <View style={styles.cardContainer}>
                     <View style={styles.txnContainer}>
                         {
-                            txns.map((item, index) => {
-                                const inputs = item.inputs;
-                                const outputs = item.outputs;
-                                let date = item.received;
-                                let status = item.confirmations >= 6 ? "Confirmed" : "Unconfirmed"
-                                let amount = 0;
-                                let inputAmount = 0;
-                                let outputAmount = 0;
-                                let type = "";
+                            !txns.length ? <Text>Loading...</Text> :
+                                txns.map((item, index) => {
+                                    const inputs = item.inputs;
+                                    const outputs = item.outputs;
+                                    let date = item.received;
+                                    let status = item.confirmations >= 6 ? "Confirmed" : "Unconfirmed"
+                                    let amount = 0;
+                                    let inputAmount = 0;
+                                    let outputAmount = 0;
+                                    let type = "";
 
-                                /* inputs contains the user address */
-                                if (inputs.some(e => e.addresses.includes(userAdd))) {
-                                    let inputArray = inputs.filter(input => input['addresses'].includes(userAdd));
-                                    if (inputArray.length) {
-                                        inputArray.map((item) => {
-                                            inputAmount += item.output_value;
-                                        })
+                                    /* inputs contains the user address */
+                                    if (inputs.some(e => e.addresses.includes(userAdd))) {
+                                        let inputArray = inputs.filter(input => input['addresses'].includes(userAdd));
+                                        if (inputArray.length) {
+                                            inputArray.map((item) => {
+                                                inputAmount += item.output_value;
+                                            })
+                                        }
+                                        amount = inputAmount;
+                                        type = "Sent";
                                     }
-                                    amount = inputAmount;
-                                    type = "Sent";
-                                }
 
-                                if (outputs.some(e => e.addresses.includes(userAdd))) {
-                                    let outputArray = outputs.filter(output => output['addresses'].includes(userAdd));
-                                    if (outputArray.length) {
-                                        outputArray.map((item) => {
-                                            outputAmount += item.value;
-                                        })
+                                    if (outputs.some(e => e.addresses.includes(userAdd))) {
+                                        let outputArray = outputs.filter(output => output['addresses'].includes(userAdd));
+                                        if (outputArray.length) {
+                                            outputArray.map((item) => {
+                                                outputAmount += item.value;
+                                            })
+                                        }
+                                        /*
+                                            * If we see that the address was there in the input, we consider it to
+                                            * be of "Sent" type.
+                                        */
+
+                                        if (type) { amount = inputAmount - outputAmount - item.fees; }
+                                        else { amount = outputAmount; type = "Deposited" }
                                     }
-                                    /* 
-                                        * If we see that the address was there in the input, we consider it to
-                                        * be of "Sent" type. 
-                                    */
-
-                                    if (type) { amount = inputAmount - outputAmount - item.fees; }
-                                    else { amount = outputAmount; type = "Deposited" }
-                                }
-                                return (
-                                    <View key={index} style={{ padding: 10 }}>
-                                        <Buttons.TxnButton
-                                            amount={amount / satoshiToB}
-                                            onPress={() => console.log("TXN Button Pressed: ")}
-                                            type={type}
-                                            status={status}
-                                            date={date} />
-                                    </View>
-                                )
-                            })
+                                    return (
+                                        <View key={index} style={{ padding: 10 }}>
+                                            <Buttons.TxnButton
+                                                amount={amount / satoshiToB}
+                                                onPress={() => {
+                                                    navigation.navigate("@txnDetails");
+                                                    console.log("asd")
+                                                }}
+                                                type={type}
+                                                status={status}
+                                                date={date} />
+                                        </View>
+                                    )
+                                })
                         }
 
                     </View>

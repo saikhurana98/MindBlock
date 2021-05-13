@@ -42,6 +42,7 @@
     "react-native-screens": "^3.1.0",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-svg": "^12.1.1",
+    "react-native-svg-transformer": "^0.14.3",
     "react-native-vector-icons": "^8.1.0",
     "readable-stream": "^3.6.0",
     "stream-browserify": "^1.0.0",
