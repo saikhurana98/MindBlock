@@ -8,15 +8,13 @@ const ModuleActivityButton = ({ label, label2, onPress, isComplete, fill }) => {
             onPress={() => (onPress ? onPress() : {})}
             style={styles(fill).container}
         >
-            {/* <View style={styles(fill).TextView}> */}
-            {isComplete ?
-                <Image style={styles(isComplete).circle} source={require("_assets/check-circle.png")} />
-                : <View style={styles(isComplete).circle} />
+            {isComplete === "true" ?
+                <Image style={styles(isComplete === "true").circle} source={require("_assets/check-circle.png")} />
+                : <View style={styles(isComplete === "true").circle} />
             }
-            <Text style={styles(isComplete).text}>{label}</Text>
-            <Text style={styles(isComplete).subText}>{label2}</Text>
-            <Text style={styles(isComplete).status}>{isComplete ? "Completed" : "Not Completed"}</Text>
-            {/* </View> */}
+            <Text style={styles(isComplete === "true").text}>{label}</Text>
+            <Text style={styles(isComplete === "true").subText}>{label2}</Text>
+            <Text style={styles(isComplete === "true").status}>{isComplete === "true" ? "Completed" : "Not Completed"}</Text>
         </TouchableOpacity>
     );
 };

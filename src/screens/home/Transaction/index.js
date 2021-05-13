@@ -9,7 +9,8 @@ const Stack = createStackNavigator();
 
 const INITIAL_ROUTE_NAME = "@ScreenOne";
 
-const HomeIndex = () => {
+const HomeIndex = (route) => {
+    console.log("TXN: ", route)
     return (
         <Stack.Navigator
             initialRouteName={INITIAL_ROUTE_NAME}

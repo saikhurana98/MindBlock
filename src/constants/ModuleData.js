@@ -2,6 +2,8 @@ import React from 'react';
 import { Buttons } from "_components";
 import { NAVIGATION as navigation } from '../screens/home/HomeScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import BeaconContext from './contextAPI';
+
 import styles from '../screens/home/styles';
 
 var DATA = []
@@ -11,70 +13,120 @@ var DATA = []
 // }
 
 const IntroModule =
-    <Buttons.ModuleButton
-        key={0} fill={true}
-        label={"Why Bitcoin?"}
-        timeReqdInMins={"3"}
-        isComplete={AsyncStorage.getItem("@Module1")}
-        onPress={() => navigation.navigate('@moduleInfo', {
-            moduleName: "@Module1"
-        })
-        } />
+    <BeaconContext.Consumer>
+        {
+            context => (
+                // console.log(context)
+                <Buttons.ModuleButton
+                    key={0} fill={true}
+                    label={"Why Bitcoin?"}
+                    timeReqdInMins={"3"}
+                    isComplete={context.module1}
+                    onPress={() => navigation.navigate('@moduleInfo', {
+                        moduleName: "@Module1"
+                    })
+                    } />
+            )
+        }
+    </BeaconContext.Consumer>
 
 const AddressInfoModule =
-    <Buttons.ModuleButton
-        key={1} fill={true}
-        label={"A/C Address"}
-        timeReqdInMins={"3"}
-        isComplete={AsyncStorage.getItem("@Module1")}
-        onPress={() => navigation.navigate('@moduleInfo', {
-            moduleName: "@Module2"
-        })} />
+    <BeaconContext.Consumer>
+        {
+            context => (
+                <Buttons.ModuleButton
+                    key={1} fill={true}
+                    label={"A/C Address"}
+                    timeReqdInMins={"3"}
+                    isComplete={context.module2}
+                    onPress={() => navigation.navigate('@moduleInfo', {
+                        moduleName: "@Module2"
+                    })} />
+            )
+        }
+    </BeaconContext.Consumer>
+
 
 const AddModule =
-    <Buttons.ModuleActivityButton
-        key={2} fill={true}
-        label={"Address Generation"}
-        label2={"Milestone 1"}
-        isComplete={false}
-        onPress={() => navigation.navigate('@moduleAddress')} />
+    <BeaconContext.Consumer>
+        {
+            context => (
+                <Buttons.ModuleActivityButton
+                    key={2} fill={true}
+                    label={"Address Generation"}
+                    label2={"Milestone 1"}
+                    isComplete={context.module3}
+                    onPress={() => navigation.navigate('@moduleAddress')} />
+            )
+        }
+    </BeaconContext.Consumer>
 
 const Info1Module =
-    <Buttons.ModuleButton
-        key={4} fill={true}
-        label={"Module Name"}
-        timeReqdInMins={"3"}
-        isComplete={AsyncStorage.getItem("@Module1")}
-        onPress={() => navigation.navigate('@moduleInfo', {
-            moduleName: "@Module4"
-        })} />
+    <BeaconContext.Consumer>
+        {
+            context => (
+                <Buttons.ModuleButton
+                    key={4} fill={true}
+                    label={"Module Name"}
+                    timeReqdInMins={"3"}
+                    isComplete={context.module4}
+                    onPress={() => navigation.navigate('@moduleInfo', {
+                        moduleName: "@Module4"
+                    })} />
+            )
+        }
+    </BeaconContext.Consumer>
+
 
 const TxnModule =
-    <Buttons.ModuleActivityButton
-        key={3} fill={true} label={"Transaction"}
-        label2={"Milestone 2"}
-        isComplete={true}
-        onPress={() => navigation.navigate('@moduleTxn')} />
+    <BeaconContext.Consumer>
+        {
+            context => (
+                <Buttons.ModuleActivityButton
+                    key={3} fill={true} label={"Transaction"}
+                    label2={"Milestone 2"}
+                    isComplete={context.module5}
+                    onPress={() => navigation.navigate('@moduleTxn')} />
+            )
+        }
+    </BeaconContext.Consumer>
+
+
 
 const Info2Module =
-    <Buttons.ModuleButton
-        key={4} fill={true}
-        label={"Module Name"}
-        timeReqdInMins={"3"}
-        isComplete={AsyncStorage.getItem("@Module1")}
-        onPress={() => navigation.navigate('@moduleInfo', {
-            moduleName: "@Module5"
-        })} />
+    <BeaconContext.Consumer>
+        {
+            context => (
+                <Buttons.ModuleButton
+                    key={4} fill={true}
+                    label={"Module Name"}
+                    timeReqdInMins={"3"}
+                    isComplete={context.module6}
+                    onPress={() => navigation.navigate('@moduleInfo', {
+                        moduleName: "@Module5"
+                    })} />
+            )
+        }
+    </BeaconContext.Consumer>
+
 
 const Info3Module =
-    <Buttons.ModuleButton
-        key={5} fill={true}
-        label={"Module Name"}
-        timeReqdInMins={"3"}
-        isComplete={AsyncStorage.getItem("@Module1")}
-        onPress={() => navigation.navigate('@moduleInfo', {
-            moduleName: "@Module6"
-        })} />
+
+    <BeaconContext.Consumer>
+        {
+            context => (
+                <Buttons.ModuleButton
+                    key={5} fill={true}
+                    label={"Module Name"}
+                    timeReqdInMins={"3"}
+                    isComplete={context.module7}
+                    onPress={() => navigation.navigate('@moduleInfo', {
+                        moduleName: "@Module6"
+                    })} />
+            )
+        }
+    </BeaconContext.Consumer>
+
 
 
 DATA.push(IntroModule, AddressInfoModule, AddModule, Info1Module, TxnModule, Info2Module, Info3Module)

@@ -3,7 +3,7 @@ import { View, Image, SafeAreaView, Dimensions, Text } from "react-native";
 import { Separators, Buttons, Lists, Header } from "_components";
 import Carousel from 'react-native-snap-carousel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import BeaconContext from '../../constants/contextAPI';
 import styles from "./ModuleStyles";
 
 const windowWidth = Dimensions.get('window').width;
@@ -16,8 +16,8 @@ for (let i = 0; i < 10; i++) {
 }
 
 const ModuleInfo = ({ route, navigation }) => {
+    const { refresher } = React.useContext(BeaconContext);
     const { moduleName } = route.params;
-    console.log(moduleName);
     const [index, setIndex] = useState(0);
     const carouselRef = useRef(null);
     const renderSlides = ({ item }) => {
@@ -57,7 +57,11 @@ const ModuleInfo = ({ route, navigation }) => {
             </View>
             <View style={styles.moduleInfoNextButton}>
                 {index === 9 ?
-                    <Buttons.Next fill={true} label={"Done"} onPress={() => { AsyncStorage.setItem(moduleName, "true"); navigation.navigate("@home") }} />
+                    <Buttons.Next fill={true} label={"Done"} onPress={() => {
+                        AsyncStorage.setItem(moduleName, "true");
+                        refresher();
+                        navigation.navigate("@home")
+                    }} />
                     : <Buttons.Next fill={true} label={"Next"} onPress={() => carouselRef.current.snapToNext()} />}
             </View>
         </SafeAreaView >

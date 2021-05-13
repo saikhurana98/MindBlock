@@ -25,7 +25,7 @@ const wait = (timeout) => {
 
 var NAVIGATION;
 
-const Home = ({ navigation }) => {
+const Home = ({ route, navigation }) => {
     NAVIGATION = navigation;
     const [accountBalance, setAccountBalance] = useState(0.0);
     const [accountDetails, setAccountDetails] = useState(null);
@@ -71,7 +71,7 @@ const Home = ({ navigation }) => {
                 setAccountDetails(data);
             })
             .catch((err) => {
-                // Alert.alert("An error occurred: ", err)
+                Alert.alert("An error occurred: ", err)
                 console.log("Error in getting details: ", err)
             });
     }
@@ -126,6 +126,7 @@ const Home = ({ navigation }) => {
                                 })
                             }
                         </View>
+
                         <View style={styles.textContainer} />
                         <Separators.Default label="Send Money" />
                         <Lists.FriendsList list={[buttonAdd, ...friends]} onPress={toggleOverlay} />

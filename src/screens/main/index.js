@@ -33,7 +33,7 @@ const CustomTabButton = ({ children, onPress }) => {
     )
 }
 
-const Main = () => {
+const Main = ({ navigation, route }) => {
 
     return (
         <Tab.Navigator initialRouteName="Learning"
@@ -50,17 +50,20 @@ const Main = () => {
                 tabStyle: {
                     backgroundColor: "#EDF1F9"
                 }
-            }}>
+            }}
+        // initialParams={{ moduleValues: route.params.moduleValues }}
+        >
 
             <Tab.Screen name="Transactions" component={Transactions}
                 options={{
                     showIcon: true,
                     tabBarIcon: () => {
                         return (
-                            <Image source={require("_assets/txnIcon.png")} /> 
+                            <Image source={require("_assets/txnIcon.png")} />
                         )
                     }
-                }} />
+                }}
+            />
 
             <Tab.Screen name="Deposit" component={MakeTxn}
                 options={{
@@ -74,14 +77,18 @@ const Main = () => {
             />
 
             <Tab.Screen name="Learning" component={Home}
+                initialParams={{ fd: "Hello" }}
                 options={{
                     showIcon: true,
                     tabBarIcon: () => {
                         return (
-                            <Image source={require("_assets/learningIcon.png")} /> 
+                            <Image source={require("_assets/learningIcon.png")} />
                         )
                     }
-                }} />
+                }}
+
+            />
+
         </Tab.Navigator>
     );
 }
