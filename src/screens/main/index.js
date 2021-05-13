@@ -1,37 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, StatusBar, Image } from "react-native";
 import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import Home from '../home'
 import Transactions from '../transactions'
 import MakeTxn from '../makeTransaction'
 import { Buttons } from '../../components'
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Tab = createBottomTabNavigator();
-const CustomTabButton = ({ children, onPress }) => {
-    return (
-        <TouchableOpacity
-            style={{
-                top: -40,
-                justifyContent: 'center',
-                alignItems: 'center',
-
-            }}>
-            <View
-                style={{
-                    width: 80,
-                    height: 80,
-                    paddingBottom: 30,
-                    borderRadius: 40,
-                    backgroundColor: '#EDF1F9'
-                }}>
-                {children}
-            </View>
-
-        </TouchableOpacity>
-    )
-}
 
 const Main = ({ navigation, route }) => {
 

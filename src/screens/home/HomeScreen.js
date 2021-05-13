@@ -66,7 +66,7 @@ const Home = ({ route, navigation }) => {
             .then(function (response) {
                 return response.json();
             }).then(function (data) {
-                // console.log("TXN: ", address);
+                console.log("TXN: ", address);
                 setAccountBalance(data.final_balance);
                 setAccountDetails(data);
             })
@@ -81,7 +81,7 @@ const Home = ({ route, navigation }) => {
 
         // API call to get the address details
         getDetails();
-    }, [address, refreshing]);
+    }, [refreshing]);
 
     useEffect(() => {
         getData();
