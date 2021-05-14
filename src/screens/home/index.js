@@ -6,6 +6,8 @@ import ModuleAddress from './Address';
 import ModuleTxn from './Transaction';
 import ModuleOne from './ModuleOne';
 import ModuleTwo from './ModuleTwo';
+import ModuleFour from './ModuleFour';
+
 
 
 import StackOptions from '../../constants/StackOptions'
@@ -21,10 +23,14 @@ const HomeIndex = () => {
         >
             <Stack.Screen name="@home" component={HomeScreen} />
             <Stack.Screen name="@moduleInfo" component={ModuleInfo} />
-            <Stack.Screen name="@moduleAddress" component={ModuleAddress} />
-            <Stack.Screen name="@moduleTxn" component={ModuleTxn} />
+
             <Stack.Screen name="@moduleOne" component={ModuleOne} />
             <Stack.Screen name="@moduleTwo" component={ModuleTwo} />
+            <Stack.Screen name="@moduleAddress" component={ModuleAddress} />
+            <Stack.Screen name="@moduleFour" component={ModuleFour} />
+            <Stack.Screen name="@moduleTxn" component={ModuleTxn} />
+
+
 
 
         </Stack.Navigator>
