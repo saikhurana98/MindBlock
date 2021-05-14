@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     fontFamily: "TitilliumWeb-Regular",
     color: "#FFFFFF70",
     fontSize: 15,
-    alignSelf:'center'
+    alignSelf: 'center'
   },
   addressText: {
     color: Colors.blackText,
@@ -38,51 +38,45 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     justifyContent: "space-between"
   },
+
   scrollContainer: {
     flex: 1,
     flexDirection: "column",
-  },
-  pageContainer: {
-    flex: 1,
-    flexDirection: "column",
-    alignItems: 'center',
     backgroundColor: "#347AF0"
   },
 
   topContainer: {
     flex: 2,
+    alignItems: 'center',
     backgroundColor: "#347AF0"
   },
 
   cardContainer: {
     flex: 3,
-    flexDirection: "column",
     backgroundColor: "white",
     borderRadius: 14,
-    width: windowWidth,
-    
   },
 
   subHeadingContainer: {
     top: 20,
-    left: 35
+    left: 35,
+    flex: 1,
   },
 
   subHeading: {
     fontFamily: "TitilliumWeb-SemiBold",
     fontSize: 15,
-    color: "#0D1F3C"
+    color: "#0D1F3C",
   },
 
   modulesContainer: {
-    flex: 1,
+    flex: 4,
     top: 30,
-    justifyContent: 'center',
-    left: 50,
-  }, 
-
-  listContainer: {
-    
+    // width: '100%',
+    // justifyContent: 'center',
+    alignSelf: 'flex-end',
+    // alignItems: 'center',
+    // left: 25,
   },
 
 

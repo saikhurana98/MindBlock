@@ -4,6 +4,7 @@ import HomeScreen from './HomeScreen';
 import ModuleInfo from './ModuleInfo';
 import ModuleAddress from './Address';
 import ModuleTxn from './Transaction';
+import ModuleOne from './ModuleOne';
 
 
 import StackOptions from '../../constants/StackOptions'
@@ -21,7 +22,7 @@ const HomeIndex = () => {
             <Stack.Screen name="@moduleInfo" component={ModuleInfo} />
             <Stack.Screen name="@moduleAddress" component={ModuleAddress} />
             <Stack.Screen name="@moduleTxn" component={ModuleTxn} />
-
+            <Stack.Screen name="@moduleOne" component={ModuleOne} />
 
         </Stack.Navigator>
     )

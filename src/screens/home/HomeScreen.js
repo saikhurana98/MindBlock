@@ -90,52 +90,54 @@ const Home = ({ route, navigation }) => {
 
     return (
         <ScrollView
+            style={styles.scrollContainer}
             refreshControl={
                 <RefreshControl
                     refreshing={refreshing}
                     onRefresh={onRefresh}
                 />
             }>
-            <View style={styles.pageContainer}>
+            <View style={{ flex: 1 }}>
                 <Header.Default
                     openDrawer={() => navigation.dispatch(DrawerActions.openDrawer())}
                 />
+            </View>
 
-                <View style={styles.topContainer} >
-                    <View style={styles.balanceContainer}>
-                        <View>
-                            <Text style={styles.currentAmountValeuText}>{accountBalance / satoshiToB}฿</Text>
-                            <Text style={styles.currentAmountLabelText}>Wallet Balance</Text>
-                            {/* <Text style={styles.addressText}>{address}</Text> */}
-                            <GraphSVG style={{ top: 60 }}/>
-                            {/* <Image style={{ top: 60 }} source={require("_assets/btcGraph.png")} /> */}
-                        </View>
+            <View style={styles.topContainer} >
+                <View style={styles.balanceContainer}>
+                    <View>
+                        <Text style={styles.currentAmountValeuText}>{accountBalance / satoshiToB}฿</Text>
+                        <Text style={styles.currentAmountLabelText}>Wallet Balance</Text>
+                        {/* <Text style={styles.addressText}>{address}</Text> */}
+                        <GraphSVG style={{ top: 60 }} />
+                        {/* <Image style={{ top: 60 }} source={require("_assets/btcGraph.png")} /> */}
                     </View>
                 </View>
-                <View style={styles.cardContainer}>
-                    <ScrollView >
-                        <View style={styles.subHeadingContainer}>
-                            <Text style={styles.subHeading}>Learning Modules</Text>
-                        </View>
-                        <View style={styles.modulesContainer}>
-                            {
-                                DATA.map((item, index) => {
-                                    return (
-                                        <View key={index} style={{ padding: 10 }}>
-                                            {item}
-                                        </View>
-                                    )
-                                })
-                            }
-                        </View>
+            </View>
 
-                        <View style={styles.textContainer} />
-                        <Separators.Default label="Send Money" />
-                        <Lists.FriendsList list={[buttonAdd, ...friends]} onPress={toggleOverlay} />
-                        <Text style={{top: 200}}></Text>
-                    </ScrollView>
+            <View style={styles.cardContainer}>
+                {/* <ScrollView > */}
+                <View style={styles.subHeadingContainer}>
+                    <Text style={styles.subHeading}>Learning Modules</Text>
                 </View>
-            </View >
+                <View style={styles.modulesContainer}>
+                {
+                    DATA.map((item, index) => {
+                        return (
+                            <View key={index} style={{  paddingBottom: 20 }}>
+                                {item}
+                            </View>
+                        )
+                    })
+                }
+                </View>
+                <View style={styles.textContainer} />
+                <Separators.Default label="Send Money" />
+                <Lists.FriendsList list={[buttonAdd, ...friends]} onPress={toggleOverlay} />
+                <Text style={{ top: 200 }}></Text>
+                {/* </ScrollView> */}
+            </View>
+
         </ScrollView>
 
 

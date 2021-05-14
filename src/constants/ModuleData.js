@@ -22,7 +22,7 @@ const IntroModule =
                     label={"Why Bitcoin?"}
                     timeReqdInMins={"3"}
                     isComplete={context.module1}
-                    onPress={() => navigation.navigate('@moduleInfo', {
+                    onPress={() => navigation.navigate('@moduleOne', {
                         moduleName: "@Module1",
                         nextModule: "@Module2",
                     })
