@@ -26,7 +26,8 @@ const Main = ({ navigation, route }) => {
                 style: styles.navigator,
                 tabStyle: {
                     backgroundColor: "#EDF1F9"
-                }
+                },
+                labelPosition: 'beside-icon'
             }}
         >
 
@@ -88,7 +89,8 @@ const styles = StyleSheet.create({
     navigator: {
         borderTopWidth: 0,
         backgroundColor: 'transparent',
-        elevation: 30
+        elevation: 30,
+        height: 50,
     },
     xFillLine: {
         position: 'absolute',
