@@ -40,7 +40,7 @@ const AddressInfoModule =
                     label={"A/C Address"}
                     timeReqdInMins={"3"}
                     isComplete={context.module2}
-                    onPress={() => navigation.navigate('@moduleInfo', {
+                    onPress={() => navigation.navigate('@moduleTwo', {
                         moduleName: "@Module2",
                         nextModule: "@Module3",
                     })} />
