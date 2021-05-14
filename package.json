@@ -44,6 +44,8 @@
     "react-native-svg": "^12.1.1",
     "react-native-svg-transformer": "^0.14.3",
     "react-native-vector-icons": "^8.1.0",
+    "react-native-webview": "^11.4.4",
+    "react-native-youtube": "^2.0.1",
     "readable-stream": "^3.6.0",
     "stream-browserify": "^1.0.0",
     "vm-browserify": "^0.0.4"
