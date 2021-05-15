@@ -22,7 +22,7 @@ const Page = ({
             }}
         >
             <View style={{ marginTop: 16, flex: 2 }}>
-                <Image source={imgSrc} height={200} />
+                {imgSrc}
             </View>
             <View style={styles.cardContainer}>
                 <View style={styles.image} source={require("_assets/walk-bottom.png")}>

@@ -30,10 +30,12 @@ const ModuleInfo = ({ route, navigation }) => {
                     <Text style={styles.carouselHeadingText}>{item.heading}</Text>
                 </View>
 
-
-                <View style={styles.cardImage}>
-                    {item.image}
-                </View>
+                {item.image ?
+                    <View style={styles.cardImage}>
+                        {item.image}
+                    </View>
+                    : null
+                }
 
 
                 <View style={styles.carouselTextContainer}>
@@ -50,10 +52,10 @@ const ModuleInfo = ({ route, navigation }) => {
         <SafeAreaView style={styles.mainContainer}>
             <Header.Default />
             <View style={styles.headingContainer}>
-                <Text style={styles.headingText}>Blockchain Architecture</Text>
+                <Text style={styles.headingText}>Anatomy of a Transaction</Text>
             </View>
             <View style={styles.descriptionContainer}>
-                <Text style={styles.descriptionText}>Bitcoin is bassed on blockchain and this is what essentially makes the whole thing actually work. </Text>
+                <Text style={styles.descriptionText}>Now that you know about blocks and mining. Let’s take a look at some actual transaction and see what they’re made of. </Text>
             </View>
             <View style={styles.carouselContainer}>
                 <Carousel

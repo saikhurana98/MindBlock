@@ -112,12 +112,12 @@ const AddressActivity = ({ navigation }) => {
                     ?
                     <View style={cardStyle(false).addressNextButton}>
                         <View>
-                            <Buttons.Next fill={true} label={"Back"} onPress={() =>setVisible(true)} />
+                            <Buttons.Next fill={true} label={"Back"} onPress={() => setVisible(true)} />
                         </View>
                     </View>
                     : null
                 : <View style={cardStyle(false).addressNextButton}>
-                    <View style={{ width: 20, padding: 20 }}>
+                    <View >
                         <Buttons.Next fill={true} label={"Done"} onPress={() => qrCodeHandler()} />
                     </View>
                 </View>}

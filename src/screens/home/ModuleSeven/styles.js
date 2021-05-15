@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         top: 80,
         width: windowWidth * 0.8,
         height: windowHeight * 0.6,
-        backgroundColor: '#FFFFFF'
+        backgroundColor: '#FFFFFF',
     },
     cardImage: {
         flex: 2,

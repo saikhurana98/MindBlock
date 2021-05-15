@@ -1,6 +1,10 @@
 import React, { useRef } from 'react';
 import { Image, View, StyleSheet, Text } from 'react-native'
 import PagerView from 'react-native-pager-view';
+import IdeaImage from "_assets/ideaImage.svg"
+import SocialImage from "_assets/socialImage.svg"
+import MobileImage from "_assets/mobileImage.svg"
+
 import Page from './page';
 
 const OnboardingScreen = ({ navigation }) => {
@@ -22,8 +26,8 @@ const OnboardingScreen = ({ navigation }) => {
                         backgroundColor="#F2F2F2"
                         iconName="sun"
                         title="Welcome"
-                        content={"Welcome to payBTC. \n This app will help you get started with the world of blockchain and cryptocurrencies. "}
-                        imgSrc={require("_assets/walk1.png")}
+                        content={"Welcome to MindBlock. \n This app will help you get started with the world of blockchain and cryptocurrencies. "}
+                        imgSrc={<IdeaImage />}
                         nextLabel="Next"
                         nextButtonPress={() => {
                             handlePageChange(1);
@@ -37,7 +41,7 @@ const OnboardingScreen = ({ navigation }) => {
                         iconName="sun"
                         title="What is this app about?"
                         content={"This application is a learning app. All the topics are arranged in different modules. You need to complete a module to move onto your next one. Some modules are just informative while others are interactive. So have fun learning!"}
-                        imgSrc={require("_assets/scene2-walk.png")}
+                        imgSrc={<SocialImage />}
                         nextLabel="Next"
                         nextButtonPress={() => {
                             handlePageChange(2);
@@ -50,7 +54,7 @@ const OnboardingScreen = ({ navigation }) => {
                         backgroundColor="#F2F2F2"
                         title="What the app isn't about?"
                         content={"This application includes features that can let you interact with a blockchain network. Under no circumstances do we promote the use of this application as a wallet. With that important disclaimer out of the way. let’s get started!"}
-                        imgSrc={require("_assets/scene3-walk.png")}
+                        imgSrc={<MobileImage />}
                         nextLabel="Let's Get Started"
                         nextButtonPress={() => {
                             handlePageChange(3);

@@ -98,8 +98,9 @@ var moduleSevenSlideTwo = {
     text: "Coming to input & output field. For these let’s imagine going to a store with a $10 Bill to buy a 1$ item. Just the way cashier would pay you back $9, similarly a bitcoin transaction is spent in it’s entirety.  "
 };
 var moduleSevenSlideThree = {
-    heading: "Spending of a Transaction", image: <NotepadImage />,
-    text: "In Bitcoin, a transaction is not half spent. for example. "
+    heading: "Spending of a Transaction", image: "",
+    text: "In Bitcoin, a transaction is not half spent. for example. if Alice Paid Bob 3 BTC and now Bob wants to send  2 BTC to Jack out of these 3BTC. Bob would create a transaction where this 3BTC transaction is refrenced as input and Jack’s Wallet key as one of the output with 2BTC as the ammount. This where things get a little confusing. Now, Bob would take his own Public key and write 1 BTC written next to it.\
+    Also note that there can be multiple inputs as well.In that casee you add the ammounts and spend that as a whole "
 };
 
 var moduleSevenSlideFour = {
@@ -229,7 +230,7 @@ const Info3Module =
             context => (
                 <Buttons.ModuleButton
                     key={5} fill={true}
-                    label={"Transaction Inspection"}
+                    label={"Anatomy of a Transaction"}
                     timeReqdInMins={"3"}
                     isComplete={context.module7}
                     onPress={() => navigation.navigate('@moduleSeven', {
