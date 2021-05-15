@@ -7,6 +7,8 @@ import BeaconContext from '../../../constants/contextAPI';
 import styles from "./styles";
 
 const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 
 const DATA = [];
 
@@ -51,9 +53,11 @@ const ModuleInfo = ({ route, navigation }) => {
                     ref={carouselRef}
                     data={moduleData}
                     layout={"default"}
+                    // style={{borderRadius: 20}}
                     renderItem={renderSlides}
                     sliderWidth={windowWidth}
                     itemWidth={295}
+                    // sliderHeight={windowHeight * 0.1}
                     onSnapToItem={(index) => setIndex(index)}
                     useScrollView={false}
                 />

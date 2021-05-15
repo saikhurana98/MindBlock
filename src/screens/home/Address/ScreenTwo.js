@@ -33,17 +33,6 @@ const AddressActivity = ({ navigation }) => {
         handleButtonPress();
     }, []);
 
-    const renderAddressComponent = () => {
-        return (
-            <View>
-                <AddressCard />
-                <View style={styles.addressNextButton}>
-                    <Buttons.Next fill={true} label={"Woohoo!"} onPress={() => navigation.navigate("@ScreenThree")} />
-                </View>
-            </View>
-        )
-    }
-
     const copyAddressToClipboard = () => {
         Clipboard.setString(userAddress);
     };
@@ -119,7 +108,7 @@ const AddressActivity = ({ navigation }) => {
         )
     }
     return (
-        <>
+        !addressLoaded ?
             <View style={styles.addressImage}>
                 <AnimatedLoader
                     visible={visible}
@@ -128,8 +117,14 @@ const AddressActivity = ({ navigation }) => {
                     speed={1}
                 />
             </View>
-            {!addressLoaded ? null : renderAddressComponent()}
-        </>
+            :
+            <View style={styles.addressDisplayContainer}>
+                <AddressCard />
+                <View style={{ flex: 1 }} />
+                <View style={styles.addressNextButton}>
+                    <Buttons.Next fill={true} label={"Woohoo!"} onPress={() => navigation.navigate("@ScreenThree")} />
+                </View>
+            </View>
     )
 }
 

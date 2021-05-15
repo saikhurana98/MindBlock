@@ -30,7 +30,7 @@ const styles = (isComplete) => StyleSheet.create({
         backgroundColor: "#EDF1F9",
         height: 60,
         width: 340,
-        right: 30,
+        // right: 30,
         shadowColor: '#000000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.9,

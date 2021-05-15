@@ -25,11 +25,12 @@ const AllTxns = ({ navigation }) => {
     }
 
     const getTXNs = () => {
-        fetch("https://api.blockcypher.com/v1/bcy/test/addrs/C3ZQeNV1Uf8KDcyeEuxT35DmqPFDJdahdP/full")
+        fetch(`https://api.blockcypher.com/v1/bcy/test/addrs/${userAdd}/full`)
             .then(function (res) {
                 return res.json();
             }).then(function (data) {
                 setTxns(data.txs)
+                console.log(data.txs)
             }).catch((err) => {
                 Alert.alert("An error occurred: ", err)
                 console.log("Error in getting TXN details: ", err)
@@ -77,6 +78,10 @@ const AllTxns = ({ navigation }) => {
                                     const inputs = item.inputs;
                                     const outputs = item.outputs;
                                     let date = item.received;
+                                    var fullDateTime = Date(date);
+                                    var tokens = fullDateTime.split(' ');
+                                    var newDate = tokens[1] + " " + tokens[2] + ", " + tokens[3]
+                                    var timeComp = tokens[4].split(':'); var time = timeComp[0] + ":" + timeComp[1];
                                     let status = item.confirmations >= 6 ? "Confirmed" : "Unconfirmed"
                                     let amount = 0;
                                     let inputAmount = 0;
@@ -119,18 +124,19 @@ const AllTxns = ({ navigation }) => {
                                                         type: type,
                                                         inputs: inputs,
                                                         outputs: outputs,
-                                                        type: type, 
+                                                        type: type,
                                                         date: date,
-                                                        fees: item.fees,
+                                                        fees: item.fees / satoshiToB,
                                                         confirmations: item.confirmations,
                                                         blockHash: item.block_hash,
+                                                        amount: amount / satoshiToB,
 
                                                     });
                                                     console.log("asd")
                                                 }}
                                                 type={type}
                                                 status={status}
-                                                date={date} />
+                                                date={newDate + " at " + time} />
                                         </View>
                                     )
                                 })
@@ -175,7 +181,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         top: 30,
-        left: 30,
+        // left: 30,
         // padding: 10
     }
 

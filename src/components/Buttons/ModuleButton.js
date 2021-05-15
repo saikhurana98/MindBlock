@@ -1,8 +1,19 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Image, StyleSheet, ToastAndroid } from "react-native";
-
+const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
 const ModuleButton = ({ label, timeReqdInMins, onPress, isComplete, percentage }) => {
     // isComplete = isComplete === "100"
+    var date = "";
+    if (isComplete === "100") {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = monthNames[today.getMonth()]
+        var yyyy = today.getFullYear();
+
+        date = mm + " " + dd + ", " + yyyy;
+    }
     return (
         <TouchableOpacity
             onPress={() => (isComplete !== "0" ? onPress ? onPress() : {} : ToastAndroid.show("Module Locked !", ToastAndroid.SHORT))}
@@ -15,8 +26,10 @@ const ModuleButton = ({ label, timeReqdInMins, onPress, isComplete, percentage }
             <Text style={styles(isComplete).text}>{label}</Text>
             <Text style={styles(isComplete).time}>{timeReqdInMins} Mins</Text>
             <Text style={styles(isComplete).percentage}>{isComplete}%</Text>
+            {date ? <Text style={styles(isComplete).date}>{date}</Text> : null}
 
-        </TouchableOpacity>
+
+        </TouchableOpacity >
     );
 };
 
@@ -28,7 +41,7 @@ const styles = (isComplete) => StyleSheet.create({
         backgroundColor: "#EDF1F9",
         height: 60,
         width: 340,
-        right: 30,
+        // right: 30,
         shadowColor: '#000000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.9,
@@ -36,8 +49,10 @@ const styles = (isComplete) => StyleSheet.create({
         elevation: 3,
     },
     text: {
+        alignSelf: 'flex-start',
+        left: 50,
         color: isComplete === "0" ? "#0D1F3C60" : "#0D1F3C",
-        marginRight: 140,
+        // marginRight: 140,
         fontFamily: 'TitilliumWeb-SemiBold',
         fontSize: 15,
         bottom: 20,
@@ -64,6 +79,12 @@ const styles = (isComplete) => StyleSheet.create({
         bottom: 60,
         right: 15,
     },
+    date: {
+        color: "#485068",
+        alignSelf: 'flex-end',
+        bottom: 55,
+        right: 15,
+    }
 });
 
 export default ModuleButton;

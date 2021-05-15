@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
 
     carouselContainer: {
-        flex: 1,
+        flex: 7,
         right: 10,
         bottom: 40,
     },
@@ -71,15 +71,10 @@ const styles = StyleSheet.create({
         color: 'blue',
         fontSize: 24
     },
-    counter: {
-        marginTop: 25,
-        fontSize: 30,
-        fontWeight: 'bold',
-        textAlign: 'center'
-    },
     moduleInfoNextButton: {
+        flex: 2,
         alignSelf: 'center',
-        bottom: 90
+        // bottom: 90
 
     },
 

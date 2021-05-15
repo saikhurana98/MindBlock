@@ -8,7 +8,7 @@ import StackOptions from '../../../constants/StackOptions'
 import { createStackNavigator } from "@react-navigation/stack";
 const Stack = createStackNavigator();
 
-const INITIAL_ROUTE_NAME = "@ScreenOne";
+const INITIAL_ROUTE_NAME = "@ScreenTwo";
 
 const TxnIndex = ({ route }) => {
     console.log("TXN: ", route)

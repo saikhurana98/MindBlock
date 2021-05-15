@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Image, SafeAreaView, Dimensions, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Image, SafeAreaView, Dimensions, Text, TouchableOpacity, StyleSheet, KeyboardAvoidingView } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AnimatedLoader from 'react-native-animated-loader';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -49,8 +49,8 @@ const AddressActivity = ({ navigation }) => {
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
         { label: 'P2PKH', value: 'P2PKH' },
-        { label: 'P2PSH', value: 'P2PSH', disabled: true },
-        { label: 'Bech32', value: 'Bech32', disabled: true },
+        // { label: 'P2PSH', value: 'P2PSH', disabled: true },
+        // { label: 'Bech32', value: 'Bech32', disabled: true },
     ]);
     const pasteHandler = async () => {
         // console.log("her")
@@ -109,7 +109,8 @@ const AddressActivity = ({ navigation }) => {
                         />
                     </View>
                 </View>
-                : <Card containerStyle={styles.addressCard}>
+                :
+                <Card containerStyle={cardStyle(false).addressCard}>
                     <Text style={styles.txnAddressCardHeading} >Public Address </Text>
                     <View style={styles.txnAddressCardContentContainer}>
                         <Input
@@ -141,9 +142,7 @@ const AddressActivity = ({ navigation }) => {
                     </View>
                 </Card>}
             <View style={cardStyle(false).addressNextButton}>
-                <View>
-                    <Buttons.Next fill={true} label={enableAddress ? "Pay" : "Next"} onPress={() => enableAddress ? makeTXN() : setEnableAddress(true)} disabled={disabled} />
-                </View>
+                <Buttons.Next fill={true} label={enableAddress ? "Pay" : "Next"} onPress={() => enableAddress ? makeTXN() : setEnableAddress(true)} disabled={disabled} />
             </View>
 
         </SafeAreaView>
@@ -151,7 +150,21 @@ const AddressActivity = ({ navigation }) => {
 }
 
 const cardStyle = (val) => StyleSheet.create({
+    addressCard: {
+        // top: 80,
+        flex: 5,
+        // alignSelf: 'center',
+        borderRadius: 20,
+        // height: 280,
+        // padding: 20,
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+    },
     cardsContainerStyleTxn: {
+        flex: 6,
         backgroundColor: 'white',
         borderRadius: 16,
         padding: 10,
@@ -163,15 +176,15 @@ const cardStyle = (val) => StyleSheet.create({
         borderColor: 'black',
         marginTop: 50,
         elevation: 10,
-        height: 250,
+        // height: 250,
         width: 300,
         alignSelf: 'center'
     },
 
     addressNextButton: {
         alignSelf: 'center',
-        top: 0.3 * windowHeight,
-        flex: 2,
+        top: 40,
+        flex: 4,
 
     },
     cardHeading: {

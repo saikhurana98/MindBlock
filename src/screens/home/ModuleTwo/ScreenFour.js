@@ -32,15 +32,15 @@ const ScreenThree = ({ route, navigation }) => {
                 <Text></Text>
 
             </View>
-
+            <View style={styles.privacyImage}>
+                <FingerprintImage />
+            </View>
+            
             <View style={styles.disclaimerTextContainer}>
                 <Text style={styles.disclaimerText}>
                     IMPORTANT NOTE: It’s not a safe practice
                     to share your secret key with any person or application.
                 </Text>
-            </View>
-            <View style={styles.privacyImage}>
-                <FingerprintImage />
             </View>
 
             <View style={styles.moduleInfoNextButton}>

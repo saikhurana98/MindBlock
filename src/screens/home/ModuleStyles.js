@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#EDF1F9",
     },
     headingContainer: {
-        alignSelf: 'center'
+        alignSelf: 'center', 
+        flex: 1,
     },
     headingText: {
         fontFamily: "TitilliumWeb-SemiBold",
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
         fontSize: 26,
     },
     descriptionContainer: {
-        top: 10,
+        flex: 2,
         width: windowHeight * 0.4,
         alignSelf: 'center'
     },
@@ -80,12 +81,14 @@ const styles = StyleSheet.create({
 
     // FOR ADDRESS ACTIVITY: 
     addressImage: {
-        top: 0.2 * windowHeight,
+        flex: 7,
+        // top: 0.2 * windowHeight,
         alignSelf: 'center'
     },
     addressNextButton: {
+        flex: 3,
         alignSelf: 'center',
-        top: 140,
+        // top: 140,
     },
     loadingContainer: {
         top: 80,
@@ -99,11 +102,17 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
     },
+    addressDisplayContainer: {
+        flex: 10,
+    },
+
     addressCard: {
-        top: 80,
+        // top: 80,
+        flex: 4,
+        // alignSelf: 'center',
         borderRadius: 20,
-        height: 280,
-        padding: 20,
+        // height: 280,
+        // padding: 20,
         elevation: 5,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 0 },
@@ -132,8 +141,9 @@ const styles = StyleSheet.create({
         bottom: 35,
     },
     rewardContainer: {
+        flex: 3,
         alignSelf: 'center',
-        top: 80,
+        // top: 80,
     },
 
     rewardHeading: {
@@ -147,12 +157,14 @@ const styles = StyleSheet.create({
         fontSize: 40,
     },
     rewardImage: {
+        flex: 10,
         alignSelf: "center",
-        top: 0.15 * windowHeight
+        // top: 0.15 * windowHeight
     },
     rewardNextButton: {
+        flex: 4,
         alignSelf: 'center',
-        top: 130,
+        // top: 130,
     },
 
     // Transactions:

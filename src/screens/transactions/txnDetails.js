@@ -5,8 +5,9 @@ import { Buttons } from '../../components'
 const satoshiToB = 100000000 //100,000,000
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-
 import WithdrawSVG from "_assets/withdrawn.svg";
+import DepositedSVG from "_assets/depositedImage.svg";
+
 import Separator from '_assets/separatorTxn.svg'
 
 const wait = (timeout) => {
@@ -21,7 +22,8 @@ const TxnDetails = ({ route, navigation }) => {
         date,
         fees,
         confirmations,
-        blockHash } = route.params
+        blockHash,
+        amount } = route.params
     let inputAddDone = [];
     var fullDateTime = Date(date);
     var tokens = fullDateTime.split(' ');
@@ -45,9 +47,12 @@ const TxnDetails = ({ route, navigation }) => {
                     style={styles.cardContainer}
                 >
                     <View style={styles.svgImg}>
-                        <WithdrawSVG fill="white" />
+                        {type === "Deposited" ?
+                            <DepositedSVG fill="white" />
+                            :
+                            <WithdrawSVG fill="white" />}
                     </View>
-                    <Text style={styles.cardHeading}>Sent</Text>
+                    <Text style={styles.cardHeading}>{type}</Text>
                     <View style={styles.dateTimeHeading}>
                         <Text style={styles.dateHeading}>Date</Text>
                         <Text style={styles.timeHeading}>Time</Text>
@@ -58,24 +63,21 @@ const TxnDetails = ({ route, navigation }) => {
                     </View>
                     <Separator width={windowWidth} style={{ top: 40 }} />
                     <Text style={styles.amountHeading}>Total Amount</Text>
-                    <Text style={styles.amountValue}>0.00008 BTC</Text>
+                    <Text style={styles.amountValue}>{amount} BTC</Text>
                     <Text style={styles.feesHeading}>Fees</Text>
-                    <Text style={styles.amountValue}>0.00008 BTC</Text>
+                    <Text style={styles.amountValue}>{fees} BTC</Text>
                     <Text style={styles.feesHeading}>Confirmations</Text>
-                    <Text style={styles.amountValue}>6</Text>
+                    <Text style={styles.amountValue}>{confirmations}</Text>
                     <Separator width={windowWidth} style={{ top: 100 }} />
                     <Text style={styles.hashHeading}>Block Hash</Text>
                     <View style={{ width: windowWidth * 0.8 }}>
-                        <Text style={styles.hashValue}>00008ed513966140db88dafe3102b2c903c064f81959e6a8722946842bc87295</Text>
+                        <Text style={styles.hashValue}>{blockHash}</Text>
                     </View>
                     <Text style={styles.hashHeading}>Inputs</Text>
                     <View style={styles.txnContainer}>
                         {
                             inputs.length ? inputs.map((item, index) => {
                                 return item.addresses.length ? item.addresses.map((address, key) => {
-                                    // if (inputAddDone.includes(address)) {
-                                    // } else {
-                                    //     inputAddDone.push(address)
                                     return (
                                         <View key={key} style={{ padding: 3, top: 20, left: 20 }}>
                                             <Text>{index + 1}. {address}</Text>

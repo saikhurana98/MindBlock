@@ -27,18 +27,19 @@ const MainHeader = ({ nomargin = false, openDrawer }) => (
       /> */}
       <Text
         style={{
-          fontWeight: "bold",
+          fontFamily: "TitilliumWeb-SemiBold",
+          // fontWeight: "bold",
           fontSize: 18,
           marginLeft: 10,
-          color: 'black',
+          color: '#FFFFFF',
         }}
       >
-        eWallet
+        MindBlock
       </Text>
     </View>
-    <TouchableOpacity onPress={openDrawer}>
+    {/* <TouchableOpacity onPress={openDrawer}>
       <AntDesign name="appstore1" size={24} color={Colors.darkBlue} />
-    </TouchableOpacity>
+    </TouchableOpacity> */}
   </View>
 );
 

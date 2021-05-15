@@ -53,7 +53,7 @@ const AddressActivity = ({ route, navigation }) => {
             </View>
             <View style={styles.rewardNextButton}>
                 <Buttons.Next fill={true} label={"Collect Reward"} onPress={() => {
-                    navigation.navigate("@home");
+                    navigation.navigate("@home", { pleaseRefresh: true });
                     AsyncStorage.setItem(moduleName, "100");
                     AsyncStorage.setItem(nextModule, "1");
                     refresher();

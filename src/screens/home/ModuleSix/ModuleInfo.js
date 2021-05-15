@@ -49,7 +49,7 @@ const ModuleInfo = ({ route, navigation }) => {
                             apiKey="AIzaSyBoKd6BObc94P1fR5HsE7Y07cLhknmWff"
                             videoId={item.videoKey} // The YouTube video ID
                             play={playing} // control playback of video with true/false
-                            fullscreen={false} // control whether the video should play in fullscreen or inline
+                            fullscreen={true} // control whether the video should play in fullscreen or inline
                             loop={false}// control whether the video should loop when ended
                             resumePlayAndroid={false}
                             // onReady={e => this.setState({ isReady: true })}

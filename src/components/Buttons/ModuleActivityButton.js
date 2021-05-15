@@ -2,10 +2,22 @@ import React from 'react';
 import { View, TouchableOpacity, Text, Image, StyleSheet, ToastAndroid } from "react-native";
 import Colors from "../../constants/Colors";
 
+const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
 const ModuleActivityButton = ({ label, label2, onPress, isComplete, fill }) => {
+    var date = "";
+    if (isComplete === "100") {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = monthNames[today.getMonth()]
+        var yyyy = today.getFullYear();
+
+        date = mm + " " + dd + ", " + yyyy;
+    }
     return (
         <TouchableOpacity
-            onPress={() => (isComplete !== "100" && isComplete !== "0" ? onPress ? onPress() : {} : ToastAndroid.show("Module Locked !", ToastAndroid.SHORT))}
+            onPress={() => (isComplete !== "0" ? onPress ? onPress() : {} : ToastAndroid.show("Module Locked !", ToastAndroid.SHORT))}
             style={styles(fill).container}
         >
             { isComplete === "100" ?
@@ -16,6 +28,7 @@ const ModuleActivityButton = ({ label, label2, onPress, isComplete, fill }) => {
             <Text style={styles(isComplete).subText}>{label2}</Text>
             <Text style={styles(isComplete).status}>{isComplete === "100" ? "Completed" : "Not Completed"}</Text>
             <Text style={styles(isComplete).percentage}>{isComplete}%</Text>
+            {date ? <Text style={styles(isComplete).date}>{date}</Text> : null}
         </TouchableOpacity >
     );
 };
@@ -28,7 +41,7 @@ const styles = (isComplete) => StyleSheet.create({
         backgroundColor: "#EDF1F9",
         height: 140,
         width: 340,
-        right: 30,
+        // right: 30,
         elevation: 3,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 0 },
@@ -71,6 +84,12 @@ const styles = (isComplete) => StyleSheet.create({
         color: isComplete === "0" ? "#DF5060" : isComplete === "100" ? "#75BF72" : "#347AF0",
         alignSelf: 'flex-end',
         bottom: 90,
+        right: 15,
+    },
+    date: {
+        color: "#485068",
+        alignSelf: 'flex-end',
+        bottom: 27,
         right: 15,
     },
 });

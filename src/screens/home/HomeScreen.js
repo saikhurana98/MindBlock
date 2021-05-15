@@ -13,11 +13,11 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const satoshiToB = 100000000 //100,000,000
-const buttonAdd = {
-    id: "1",
-    fullName: "template",
-    avatar: "",
-};
+// const buttonAdd = {
+//     id: "1",
+//     fullName: "template",
+//     avatar: "",
+// };
 
 const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
@@ -28,23 +28,31 @@ var NAVIGATION;
 
 const Home = ({ route, navigation }) => {
     NAVIGATION = navigation;
+
     const [accountBalance, setAccountBalance] = useState(0.0);
     const [accountDetails, setAccountDetails] = useState(null);
-    const [friends, setFriends] = useState(helpers.genFriendsList());
+    // const [friends, setFriends] = useState(helpers.genFriendsList());
     const [address, setAddress] = useState('');
 
     // For overlay: 
-    const [visible, setVisible] = useState(false);
-    const toggleOverlay = () => {
-        setVisible(!visible);
-    };
+    // const [visible, setVisible] = useState(false);
+    // const toggleOverlay = () => {
+    //     setVisible(!visible);
+    // };
 
     // For refresh: 
+    const [manualRefresh, setManualRefresh] = useState(false);
     const [refreshing, setRefreshing] = React.useState(false);
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         wait(2000).then(() => setRefreshing(false));
     }, []);
+    useEffect(() => {
+        setManualRefresh(true);
+    }, [route.params && route.params.pleaseRefresh])
+    // if (route.params && route.params.pleaseRefresh) {
+    //     setManualRefresh(true)
+    // }
 
     const getData = async () => {
         try {
@@ -116,26 +124,24 @@ const Home = ({ route, navigation }) => {
             </View>
 
             <View style={styles.cardContainer}>
-                {/* <ScrollView > */}
                 <View style={styles.subHeadingContainer}>
                     <Text style={styles.subHeading}>Learning Modules</Text>
                 </View>
                 <View style={styles.modulesContainer}>
-                {
-                    DATA.map((item, index) => {
-                        return (
-                            <View key={index} style={{  paddingBottom: 20 }}>
-                                {item}
-                            </View>
-                        )
-                    })
-                }
+                    {
+                        DATA.map((item, index) => {
+                            return (
+                                <View key={index} style={{ paddingBottom: 20 }}>
+                                    {item}
+                                </View>
+                            )
+                        })
+                    }
                 </View>
                 <View style={styles.textContainer} />
-                <Separators.Default label="Send Money" />
-                <Lists.FriendsList list={[buttonAdd, ...friends]} onPress={toggleOverlay} />
+                {/* <Separators.Default label="Send Money" /> */}
+                {/* <Lists.FriendsList list={[buttonAdd, ...friends]} onPress={toggleOverlay} /> */}
                 <Text style={{ top: 200 }}></Text>
-                {/* </ScrollView> */}
             </View>
 
         </ScrollView>

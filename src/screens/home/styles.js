@@ -53,11 +53,13 @@ const styles = StyleSheet.create({
 
   cardContainer: {
     flex: 3,
+    alignItems: 'center',
     backgroundColor: "white",
     borderRadius: 14,
   },
 
   subHeadingContainer: {
+    alignSelf: 'flex-start',
     top: 20,
     left: 35,
     flex: 1,
@@ -70,11 +72,11 @@ const styles = StyleSheet.create({
   },
 
   modulesContainer: {
-    flex: 4,
+    flex: 6,
     top: 30,
     // width: '100%',
     // justifyContent: 'center',
-    alignSelf: 'flex-end',
+    // alignSelf: 'flex-end',
     // alignItems: 'center',
     // left: 25,
   },

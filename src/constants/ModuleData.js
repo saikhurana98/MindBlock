@@ -94,7 +94,7 @@ const IntroModule =
                 <Buttons.ModuleButton
                     key={0} fill={true}
                     label={"Why Bitcoin?"}
-                    timeReqdInMins={"3"}
+                    timeReqdInMins={"6"}
                     isComplete={context.module1}
                     onPress={() => navigation.navigate('@moduleOne', {
                         moduleName: "@Module1",
@@ -146,7 +146,7 @@ const Info1Module =
             context => (
                 <Buttons.ModuleButton
                     key={4} fill={true}
-                    label={"Module Name"}
+                    label={"What is a Bitcoin Transaction?"}
                     timeReqdInMins={"3"}
                     isComplete={context.module4}
                     onPress={() => navigation.navigate('@moduleFour', {
@@ -164,7 +164,7 @@ const TxnModule =
         {
             context => (
                 <Buttons.ModuleActivityButton
-                    key={3} fill={true} label={"Transaction"}
+                    key={3} fill={true} label={"Transaction Creation"}
                     label2={"Milestone 2"}
                     isComplete={context.module5}
                     onPress={() => navigation.navigate('@moduleTxn', {
@@ -183,7 +183,7 @@ const Info2Module =
             context => (
                 <Buttons.ModuleButton
                     key={4} fill={true}
-                    label={"Module Name"}
+                    label={"Blockchain Architecture "}
                     timeReqdInMins={"3"}
                     isComplete={context.module6}
                     onPress={() => navigation.navigate('@moduleSix', {
@@ -203,7 +203,7 @@ const Info3Module =
             context => (
                 <Buttons.ModuleButton
                     key={5} fill={true}
-                    label={"Module Name"}
+                    label={"Transaction Inspection"}
                     timeReqdInMins={"3"}
                     isComplete={context.module7}
                     onPress={() => navigation.navigate('@moduleInfo', {

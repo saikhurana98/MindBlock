@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     privacyImage: {
-        flex: 2,
+        flex: 3,
         justifyContent: 'center',
         top: 50,
         flexDirection: 'row'
@@ -72,10 +72,14 @@ const styles = StyleSheet.create({
         right: 0,
     },
     disclaimerTextContainer: {
-        flex: 0.4
+        flex: 0.4,
+        width: 0.8 * windowWidth,
+        alignSelf: 'center',
+        bottom: 30,
     },
     disclaimerText: {
         fontFamily: "TitilliumWeb-Regular",
+        alignSelf: 'center',
         textAlign: 'center',
         fontSize: 15,
         color: "#FF0000"
