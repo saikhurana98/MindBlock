@@ -67,10 +67,10 @@ const ModuleInfo = ({ route, navigation }) => {
         <SafeAreaView style={styles.mainContainer}>
             <Header.Default />
             <View style={styles.headingContainer}>
-                <Text style={styles.headingText}>Module</Text>
+                <Text style={styles.headingText}>Blockchain Architecture</Text>
             </View>
             <View style={styles.descriptionContainer}>
-                <Text style={styles.descriptionText}>A short description of what the topics that this module covers. cannto be longer than this much. </Text>
+                <Text style={styles.descriptionText}>Bitcoin is bassed on blockchain and this is what essentially makes the whole thing actually work. </Text>
             </View>
             <View style={styles.carouselContainer}>
                 <Carousel

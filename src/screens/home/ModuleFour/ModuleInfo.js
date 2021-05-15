@@ -41,10 +41,10 @@ const ModuleInfo = ({ route, navigation }) => {
         <SafeAreaView style={styles.mainContainer}>
             <Header.Default />
             <View style={styles.headingContainer}>
-                <Text style={styles.headingText}>Module Name</Text>
+                <Text style={styles.headingText}>Bitcoin Transaction</Text>
             </View>
             <View style={styles.descriptionContainer}>
-                <Text style={styles.descriptionText}>A short description of what the topics that this module covers. cannto be longer than this much. </Text>
+                <Text style={styles.descriptionText}>A Bitcoing Transaction is very similar to any other transaction just with a few minor tweeks.</Text>
             </View>
             <View style={styles.carouselContainer}>
                 <Carousel
