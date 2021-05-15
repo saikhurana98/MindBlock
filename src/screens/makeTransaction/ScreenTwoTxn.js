@@ -3,18 +3,14 @@ import { View, Image, SafeAreaView, Dimensions, Text, TouchableOpacity, StyleShe
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AnimatedLoader from 'react-native-animated-loader';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { Separators, Buttons, Lists, Header } from "_components";
+import { Buttons, Header } from "_components";
 import { Card, Input } from 'react-native-elements'
+import QRCodeScanner from 'react-native-qrcode-scanner';
+import { RNCamera } from 'react-native-camera';
 import styles from "./ModuleStyles";
 import createP2PKH from '../../helpers/createTxn'
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').width;
-
-const ITEM_WIDTH = Math.round(windowWidth * 0.7);
-const ITEM_HEIGHT = Math.round(ITEM_WIDTH * 3 / 4);
-
-
+const windowHeight = Dimensions.get("window").width
 const AddressActivity = ({ navigation }) => {
     const [visible, setVisible] = useState(false);
     const [open, setOpen] = useState(false);
@@ -67,7 +63,7 @@ const AddressActivity = ({ navigation }) => {
             </View>
             <View style={styles.descriptionContainer}>
                 <Text style={styles.descriptionText}>
-                    A short description of what the topics that this module covers. cannto be longer than this much. ? </Text>
+                    You can send bitcoins(fake) from here! </Text>
             </View>
             <AnimatedLoader
                 visible={visible}
@@ -77,7 +73,7 @@ const AddressActivity = ({ navigation }) => {
             />
             {!enableAddress ?
                 <View style={cardStyle(false).cardsContainerStyleTxn}>
-                    <Text style={cardStyle(false).cardHeading}>Choose the type of transaction</Text>
+                    <Text style={cardStyle(false).cardHeading}>Choose the type of transaction (only P2PKH available in this version)</Text>
                     <View>
 
                         <DropDownPicker
@@ -124,7 +120,14 @@ const AddressActivity = ({ navigation }) => {
                             onPress={() => pasteHandler()}>
                             <Text style={styles.txnAddressCardContentPaste}>
                                 +Paste Our Address
-                        </Text>
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.txnAddressCardContentPasteContainer}
+                            onPress={() => pasteHandler()}>
+                            <Text style={styles.txnAddressCardContentPaste}>
+                                +Paste Our Address
+                            </Text>
                         </TouchableOpacity>
                     </View>
 

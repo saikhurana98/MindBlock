@@ -45,7 +45,7 @@ const ScreenOne = ({ route, navigation }) => {
                     // onReady={e => this.setState({ isReady: true })}
                     onChangeState={e => onStateChange(e)}
                     // onChangeQuality={e => this.setState({ quality: e.quality })}
-                    onError={e => Alert.alert("An error ocurred while playing!", err)}
+                    onError={e => Alert.alert("An error ocurred while playing!")}
                     style={{ width: windowWidth * 0.9, height: 300 }}
                 />
 

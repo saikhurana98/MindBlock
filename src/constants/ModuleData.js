@@ -9,7 +9,11 @@ import ConfusedImage from '_assets/confusedImage.svg'
 import CreditImage from "_assets/creditImage.svg"
 import ArchImage from '_assets/archImage.svg'
 import ShieldImage from '_assets/shieldImage.svg'
-// import ShieldImage from '_assets/shieldImage.svg'
+import TxnPartsImage from '_assets/txnpartsImage.svg'
+import NotepadImage from '_assets/notepadImage.svg'
+import VerificationImage from '_assets/txnverificationImage.svg'
+
+
 
 
 
@@ -18,6 +22,8 @@ import styles from '../screens/home/styles';
 var DATA = []
 const ModuleFourData = [];
 const ModuleSixData = [];
+const ModuleSevenData = [];
+
 
 var slideOne = {
     heading: "Owning a Bitcoin",
@@ -82,6 +88,26 @@ var moduleFiveSlideThree = {
 }
 
 ModuleSixData.push(moduleFiveSlideOne, moduleFiveSlideTwo, moduleFiveSlideThree);
+
+var moduleSevenSlideOne = {
+    heading: "Parts of a transaction", image: <TxnPartsImage />,
+    text: "A bitcoin transaction contains a lot of things. but mainly there’s input, output, lock script & unlock script. Lock and unlock script are something magically tied to your secret key and we won’t be going into their details. That’s all you need to know as far as lock and unlokck scripts are concerned"
+};
+var moduleSevenSlideTwo = {
+    heading: "Spending of a Transaction", image: <NotepadImage />,
+    text: "Coming to input & output field. For these let’s imagine going to a store with a $10 Bill to buy a 1$ item. Just the way cashier would pay you back $9, similarly a bitcoin transaction is spent in it’s entirety.  "
+};
+var moduleSevenSlideThree = {
+    heading: "Spending of a Transaction", image: <NotepadImage />,
+    text: "In Bitcoin, a transaction is not half spent. for example. "
+};
+
+var moduleSevenSlideFour = {
+    heading: "Transaction Verification", image: <VerificationImage />,
+    text: "In the bitcoin world, Transactions don’t happen instantaneously. They take a few minutes to get “approved”. A transaction is considered approved when a block is added to the global blockchain containing that transaction."
+}
+
+ModuleSevenData.push(moduleSevenSlideOne, moduleSevenSlideTwo, moduleSevenSlideThree, moduleSevenSlideFour);
 // const initStatus = async () => {
 //     await AsyncStorage.getItem("@Module1");
 // }
@@ -206,9 +232,10 @@ const Info3Module =
                     label={"Transaction Inspection"}
                     timeReqdInMins={"3"}
                     isComplete={context.module7}
-                    onPress={() => navigation.navigate('@moduleInfo', {
+                    onPress={() => navigation.navigate('@moduleSeven', {
                         moduleName: "@Module7",
                         nextModule: "@Finish",
+                        moduleData: ModuleSevenData,
                     })} />
             )
         }

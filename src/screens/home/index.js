@@ -8,6 +8,8 @@ import ModuleAddress from './Address';
 import ModuleFour from './ModuleFour';
 import ModuleTxn from './Transaction'
 import ModuleSix from './ModuleSix';
+import ModuleSeven from './ModuleSeven';
+
 
 
 
@@ -32,6 +34,8 @@ const HomeIndex = () => {
             <Stack.Screen name="@moduleFour" component={ModuleFour} />
             <Stack.Screen name="@moduleTxn" component={ModuleTxn} />
             <Stack.Screen name="@moduleSix" component={ModuleSix} />
+            <Stack.Screen name="@moduleSeven" component={ModuleSeven} />
+
 
 
 
