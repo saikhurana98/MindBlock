@@ -1,18 +1,54 @@
 import React, { useState } from "react";
-import { View, Image, SafeAreaView, Dimensions, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Image, SafeAreaView, Dimensions, Text, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AnimatedLoader from 'react-native-animated-loader';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { Buttons, Header } from "_components";
+import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
 import { Card, Input } from 'react-native-elements'
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
+
+import { Buttons, Header } from "_components";
 import styles from "./ModuleStyles";
 import createP2PKH from '../../helpers/createTxn'
 
-const windowHeight = Dimensions.get("window").width
+const windowHeight = Dimensions.get("window").height
+const windowWidth = Dimensions.get("window").width
+
+
+const QRScanner = ({ QRHandler }) => {
+    const onSuccess = e => {
+        console.log(e.data)
+    };
+    return (
+        <QRCodeScanner
+            cameraStyle={{ width: windowWidth * 0.6, alignSelf: 'center', bottom: 20, flex: 2 }}
+            topViewStyle={{ flex: 1, alignSelf: 'center', width: 250 }}
+            bottomViewStyle={{ flex: 2 }}
+
+            onRead={onSuccess}
+            // flashMode={RNCamera.Constants.FlashMode.torch}
+            topContent={
+                <Text style={cardStyle(false).centerText}>
+                    Scan an address{' '}
+                    <Text style={cardStyle(false).textBold}>
+                        generated via this app</Text>.
+                </Text>
+            }
+            bottomContent={
+                <TouchableOpacity
+                    style={cardStyle(false).buttonTouchable}
+                    onPress={() => QRHandler()}>
+                    <Text style={cardStyle(false).buttonText}>Dismiss</Text>
+                </TouchableOpacity>
+            }
+        />
+    );
+}
+
 const AddressActivity = ({ navigation }) => {
     const [visible, setVisible] = useState(false);
+    const [qrVisible, setQRVisible] = useState(false);
     const [open, setOpen] = useState(false);
     const [disabled, setDisabled] = useState(true);
     const [currentAddress, setCurrentAddress] = useState("");
@@ -24,8 +60,47 @@ const AddressActivity = ({ navigation }) => {
         let userAddr = await AsyncStorage.getItem("@address");
         setCurrentAddress(userAddr)
     }
+    const checkCameraPermissions = () => {
+        check(PERMISSIONS.ANDROID.CAMERA)
+            .then((result) => {
+                switch (result) {
+                    case RESULTS.UNAVAILABLE:
+                        console.log('This feature is not available (on this device / in this context)');
+                        break;
+                    case RESULTS.DENIED:
+                        Alert.alert("Please allow camera permission to use QR Scanner")
+                        request(PERMISSIONS.ANDROID.CAMERA).then((result) => {
+                            switch (result) {
+                                case RESULTS.DENIED:
+                                    Alert.alert("Please allow camera permission to use QR Scanner")
+                                    break;
+                                case RESULTS.GRANTED:
+                                    console.log('The permission is granted');
+                                    break;
+                                case RESULTS.BLOCKED:
+                                    console.log('The permission is denied and not requestable anymore');
+                                    break;
+                            }
+                        })
+                        break;
+                    case RESULTS.LIMITED:
+                        console.log('The permission is limited: some actions are possible');
+                        break;
+                    case RESULTS.GRANTED:
+                        console.log('The permission is granted');
+                        break;
+                    case RESULTS.BLOCKED:
+                        console.log('The permission is denied and not requestable anymore');
+                        break;
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
 
     React.useEffect(() => {
+        checkCameraPermissions();
         getDetails();
     }, [])
 
@@ -52,6 +127,9 @@ const AddressActivity = ({ navigation }) => {
         const testAddress = await AsyncStorage.getItem("@testAddress");
         setInputAddress(testAddress);
     }
+    const QRHandler = () => {
+        setQRVisible(!qrVisible);
+    }
 
 
 
@@ -71,42 +149,8 @@ const AddressActivity = ({ navigation }) => {
                 animationStyle={styles.lottie}
                 speed={1}
             />
-            {!enableAddress ?
-                <View style={cardStyle(false).cardsContainerStyleTxn}>
-                    <Text style={cardStyle(false).cardHeading}>Choose the type of transaction (only P2PKH available in this version)</Text>
-                    <View>
-
-                        <DropDownPicker
-                            style={cardStyle(false).cardDropdownContainer}
-                            textStyle={cardStyle(false).cardDropdownText}
-                            dropDownContainerStyle={cardStyle(false).cardDropdownListContainer}
-                            listParentLabelStyle={{
-                                fontFamily: "TitilliumWeb-Light"
-                            }}
-                            listItemContainer={cardStyle(false).cardDropdownItemContainer}
-                            itemSeparatorStyle={{
-                                // backgroundColor: "#000",
-                                // borderColor: 'red'
-                                borderWidth: 0
-                            }}
-                            // itemSeparator={true}
-                            onPress={(open) => console.log('was the picker open?', open)}
-                            showTickIcon={true}
-                            // disabled={true}
-                            open={open}
-                            value={value}
-                            items={items}
-                            setValue={setValue}
-                            setItems={setItems}
-                            setOpen={setOpen}
-                            placeholder={"Select"}
-                            searchable={false}
-                            closeAfterSelecting={true}
-                            onClose={() => setDisabled(false)}
-                        />
-                    </View>
-                </View>
-                : <Card containerStyle={styles.addressCard}>
+            {!qrVisible ?
+                <Card containerStyle={styles.addressCard}>
                     <Text style={styles.txnAddressCardHeading} >Public Address </Text>
                     <View style={styles.txnAddressCardContentContainer}>
                         <Input
@@ -123,10 +167,10 @@ const AddressActivity = ({ navigation }) => {
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity
-                            style={styles.txnAddressCardContentPasteContainer}
-                            onPress={() => pasteHandler()}>
+                            style={cardStyle(false).txnAddressCardQR}
+                            onPress={() => QRHandler()}>
                             <Text style={styles.txnAddressCardContentPaste}>
-                                +Paste Our Address
+                                +Scan QR
                             </Text>
                         </TouchableOpacity>
                     </View>
@@ -142,12 +186,19 @@ const AddressActivity = ({ navigation }) => {
                             keyboardType={"number-pad"}
                         />
                     </View>
-                </Card>}
-            <View style={cardStyle(false).addressNextButton}>
-                <View>
-                    <Buttons.Next fill={true} label={enableAddress ? "Pay" : "Next"} onPress={() => enableAddress ? makeTXN() : setEnableAddress(true)} disabled={disabled} />
-                </View>
-            </View>
+                </Card>
+                :
+                <View style={{ flex: 1 }}>
+                    <QRScanner QRHandler={QRHandler} />
+                </View>}
+
+            {!qrVisible ?
+                <View style={cardStyle(false).addressNextButton}>
+                    <View>
+                        <Buttons.Next fill={true} label={"Pay"} onPress={() => makeTXN()} />
+                    </View>
+                </View> : null}
+
 
         </SafeAreaView>
     )
@@ -211,6 +262,34 @@ const cardStyle = (val) => StyleSheet.create({
     cardDropdownText: {
         fontFamily: "TitilliumWeb-SemiBold",
         fontSize: 19,
+    },
+    txnAddressCardQR: {
+        // flex: 100,
+        alignSelf: 'flex-start',
+        // width:80
+        bottom: 40,
+    },
+
+
+    // For QR:
+    centerText: {
+        flex: 1,
+        fontSize: 18,
+        padding: 32,
+        color: '#777',
+        textAlign: 'center'
+    },
+    textBold: {
+        fontWeight: '500',
+        color: '#000',
+        textAlign: 'center'
+    },
+    buttonText: {
+        fontSize: 21,
+        color: 'rgb(0,122,255)'
+    },
+    buttonTouchable: {
+        padding: 16
     }
 })
 

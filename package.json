@@ -38,6 +38,7 @@
     "react-native-onboarding-swiper": "^1.1.4",
     "react-native-pager-view": "^5.1.6",
     "react-native-permissions": "^3.0.3",
+    "react-native-qrcode-generator": "^1.2.2",
     "react-native-qrcode-scanner": "^1.5.4",
     "react-native-randombytes": "^3.6.0",
     "react-native-reanimated": "^2.1.0",
