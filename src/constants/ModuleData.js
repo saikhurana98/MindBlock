@@ -7,10 +7,18 @@ import BitcoinImage from '_assets/bitcoinImage.svg'
 import MobileScanImage from '_assets/mobileScanImage.svg'
 import ConfusedImage from '_assets/confusedImage.svg'
 import CreditImage from "_assets/creditImage.svg"
+import ArchImage from '_assets/archImage.svg'
+import ShieldImage from '_assets/shieldImage.svg'
+// import ShieldImage from '_assets/shieldImage.svg'
+
+
+
 import styles from '../screens/home/styles';
 
 var DATA = []
 const ModuleFourData = [];
+const ModuleSixData = [];
+
 var slideOne = {
     heading: "Owning a Bitcoin",
     text: "In fiat banking, we would say a person owns $5 if the person has currency notes &\
@@ -52,6 +60,28 @@ var slideFour = {
 
 ModuleFourData.push(slideOne, slideTwo, slideThree, slideFour);
 
+var moduleFiveSlideOne = {
+    heading: "It’s Awesome",
+    text: "Now that you’ve created your first bitcoin transaction,\
+    let’s see what all happens behind the scenes and how blockchain makes it secure and completely decentralised. ",
+    image: <ArchImage />
+}
+
+
+var moduleFiveSlideTwo = {
+    text: "Blockchain is bassed on modern cryptographic tools like SHA256 Hash Function. What this basically means is that\
+    a Cryptocurrencies like Bitcoin instead on relying on the system of vesting trust in a central body, basses trust in computaional work. ",
+    heading: "is it secure?",
+    image: <ShieldImage />
+}
+
+
+var moduleFiveSlideThree = {
+    heading: "Sounds Cool but how does it work?",
+    videoKey: "BFXb3M7OjGo",
+}
+
+ModuleSixData.push(moduleFiveSlideOne, moduleFiveSlideTwo, moduleFiveSlideThree);
 // const initStatus = async () => {
 //     await AsyncStorage.getItem("@Module1");
 // }
@@ -156,9 +186,10 @@ const Info2Module =
                     label={"Module Name"}
                     timeReqdInMins={"3"}
                     isComplete={context.module6}
-                    onPress={() => navigation.navigate('@moduleInfo', {
+                    onPress={() => navigation.navigate('@moduleSix', {
                         moduleName: "@Module6",
                         nextModule: "@Module7",
+                        moduleData: ModuleSixData,
                     })} />
             )
         }

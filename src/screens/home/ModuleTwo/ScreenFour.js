@@ -12,13 +12,6 @@ const windowWidth = Dimensions.get("window").width
 const ScreenThree = ({ route, navigation }) => {
     const { refresher } = React.useContext(BeaconContext);
     const { moduleName, nextModule } = React.useContext(MoudleOneIndexContext).params;
-    const [playing, setPlaying] = useState(false);
-    const onStateChange = React.useCallback((state) => {
-        if (state === "ended") {
-            setPlaying(false);
-            Alert.alert("You may proceed now!");
-        }
-    }, []);
 
     return (
         <SafeAreaView style={styles.mainContainer}>

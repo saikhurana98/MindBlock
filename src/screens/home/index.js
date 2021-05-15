@@ -2,11 +2,13 @@ import React from "react";
 import { StyleSheet, Text, View, StatusBar } from "react-native";
 import HomeScreen from './HomeScreen';
 import ModuleInfo from './ModuleInfo';
-import ModuleAddress from './Address';
-import ModuleTxn from './Transaction';
 import ModuleOne from './ModuleOne';
 import ModuleTwo from './ModuleTwo';
+import ModuleAddress from './Address';
 import ModuleFour from './ModuleFour';
+import ModuleTxn from './Transaction'
+import ModuleSix from './ModuleSix';
+
 
 
 
@@ -29,6 +31,8 @@ const HomeIndex = () => {
             <Stack.Screen name="@moduleAddress" component={ModuleAddress} />
             <Stack.Screen name="@moduleFour" component={ModuleFour} />
             <Stack.Screen name="@moduleTxn" component={ModuleTxn} />
+            <Stack.Screen name="@moduleSix" component={ModuleSix} />
+
 
 
 
