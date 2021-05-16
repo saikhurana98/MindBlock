@@ -37,6 +37,8 @@ const ModuleButton = ({ label, timeReqdInMins, onPress, isComplete, percentage }
 const styles = (isComplete) => StyleSheet.create({
     container: {
         alignItems: 'center',
+        minWidth: wp("40%"),
+        minHeight: hp("10%"),
         borderRadius: 30,
         padding: 5,
         backgroundColor: "#EDF1F9",
@@ -50,7 +52,7 @@ const styles = (isComplete) => StyleSheet.create({
     },
     text: {
         alignSelf: 'flex-start',
-        left: 50,
+        left: wp("8%"),
         color: isComplete === "0" ? "#0D1F3C60" : "#0D1F3C",
         fontFamily: 'TitilliumWeb-SemiBold',
         fontSize: 15,
@@ -58,14 +60,15 @@ const styles = (isComplete) => StyleSheet.create({
     },
     time: {
         color: "#485068",
-        marginRight: 180,
+        alignSelf: 'flex-start',
+        left: wp("8%"),
         fontFamily: 'TitilliumWeb-Regular',
         fontSize: 15,
         bottom: 15,
     },
     circle: {
-        top: 15,
-        right: 150,
+        top: wp("2%"),
+        right: wp("38%"),
         width: 20,
         height: 20,
         borderRadius: 20 / 2,
@@ -75,13 +78,13 @@ const styles = (isComplete) => StyleSheet.create({
     percentage: {
         color: isComplete === "0" ? "#DF5060" : isComplete === "100" ? "#75BF72" : "#347AF0",
         alignSelf: 'flex-end',
-        bottom: 60,
+        bottom: wp("16%"),
         right: 15,
     },
     date: {
         color: "#485068",
         alignSelf: 'flex-end',
-        bottom: 55,
+        bottom: wp("14%"),
         right: 15,
     }
 });
