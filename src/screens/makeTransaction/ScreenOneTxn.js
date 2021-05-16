@@ -3,6 +3,7 @@ import { View, Image, SafeAreaView, Dimensions, Text, TouchableOpacity, StyleShe
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import QRCode from 'react-native-qrcode-generator';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Buttons, Header } from "_components";
 import styles from "./ModuleStyles";
 
@@ -48,7 +49,7 @@ const AddressActivity = ({ navigation }) => {
                     You can send/recieve bitcoins(fake) from here! </Text>
             </View>
             <View style={cardStyle(false).cardsContainerStyleTxn}>
-                <Text style={cardStyle(false).cardHeading}>Choose the type of transaction</Text>
+                {!qrVisible ? <Text style={cardStyle(false).cardHeading}>Choose the type of transaction</Text> : <Text style={cardStyle(false).cardHeading}>Scan QR</Text>}
                 {!qrVisible ?
                     !visible ?
                         <>
@@ -64,11 +65,8 @@ const AddressActivity = ({ navigation }) => {
                                     }}
                                     listItemContainer={cardStyle(false).cardDropdownItemContainer}
                                     itemSeparatorStyle={{
-                                        // backgroundColor: "#000",
-                                        // borderColor: 'red'
                                         borderWidth: 0
                                     }}
-                                    // itemSeparator={true}
                                     onPress={(open) => console.log('was the picker open?', open)}
                                     showTickIcon={true}
                                     // disabled={true}
@@ -128,7 +126,6 @@ const AddressActivity = ({ navigation }) => {
 
 const cardStyle = (val) => StyleSheet.create({
     cardsContainerStyleTxn: {
-        // flex: 1,
         backgroundColor: 'white',
         borderRadius: 16,
         padding: 10,
@@ -140,8 +137,8 @@ const cardStyle = (val) => StyleSheet.create({
         borderColor: 'black',
         marginTop: 50,
         elevation: 10,
-        height: 350,
-        width: 350,
+        height: hp('45%'),
+        width: wp("80%"),
         alignSelf: 'center'
     },
 
@@ -151,8 +148,6 @@ const cardStyle = (val) => StyleSheet.create({
         flex: 2,
         flexDirection: 'row',
         alignContent: 'space-between'
-        // width: 0.1 * windowWidth
-
     },
     cardHeading: {
         width: 250,

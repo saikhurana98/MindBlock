@@ -16,9 +16,10 @@ const windowHeight = Dimensions.get("window").height
 const windowWidth = Dimensions.get("window").width
 
 
-const QRScanner = ({ QRHandler }) => {
+const QRScanner = ({ QRHandler, addressSetter }) => {
     const onSuccess = e => {
-        console.log(e.data)
+        QRHandler();
+        addressSetter(e.data);
     };
     return (
         <QRCodeScanner
@@ -189,7 +190,9 @@ const AddressActivity = ({ navigation }) => {
                 </Card>
                 :
                 <View style={{ flex: 1 }}>
-                    <QRScanner QRHandler={QRHandler} />
+                    <QRScanner
+                        QRHandler={QRHandler}
+                        addressSetter={setInputAddress} />
                 </View>}
 
             {!qrVisible ?
