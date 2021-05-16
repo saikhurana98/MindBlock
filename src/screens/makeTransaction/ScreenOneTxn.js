@@ -83,7 +83,7 @@ const AddressActivity = ({ navigation }) => {
                                 />
                             </View>
                             <View style={{ alignSelf: 'center', top: 50 }}>
-                                <Buttons.Next fill={true} label={"Next"} onPress={() => navigation.navigate("@ScreenTwo")} />
+                                <Buttons.Next fill={true} label={"Next"} disabled={value ? false : true} onPress={() => navigation.navigate("@ScreenTwo")} />
                             </View>
                         </>
                         :
