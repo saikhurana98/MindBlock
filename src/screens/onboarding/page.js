@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, Dimensions, ImageBackground, StyleSheet } from 'react-native';
 import { Dots, Dot } from '../../components/DotProgressBar'
 import { Buttons } from '../../components'
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -75,17 +76,18 @@ const styles = StyleSheet.create({
 
     headingContainer: {
         flex: 5,
-        marginBottom: 300,
+        // marginBottom: 300,
         alignSelf: 'center',
-        width: 0.8 * windowWidth,
+        width: wp('80%'),
         // left: 20
     },
 
     textContainer: {
         alignSelf: 'center',
+        flex: 5,
         // justifyContent: 'center',
-        position: 'absolute',
-        width: 0.8 * windowWidth
+        // position: 'absolute',
+        width: wp('80%'), //0.8 * windowWidth
         // marginTop: 200,
     },
 
@@ -102,7 +104,12 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontFamily: "TitilliumWeb-Bold",
     },
-    buttonContainer: { position: "absolute", bottom: 100, alignSelf: 'center' },
+    buttonContainer: {
+        flex: 6,
+        // position: "absolute",
+        // bottom: 100,
+        alignSelf: 'center'
+    },
 });
 
 export default Page;

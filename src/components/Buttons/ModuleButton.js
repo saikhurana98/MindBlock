@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Image, StyleSheet, ToastAndroid } from "react-native";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
 ];
@@ -39,9 +40,8 @@ const styles = (isComplete) => StyleSheet.create({
         borderRadius: 30,
         padding: 5,
         backgroundColor: "#EDF1F9",
-        height: 60,
-        width: 340,
-        // right: 30,
+        height: hp('8%'),
+        width: wp('85%'),
         shadowColor: '#000000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.9,
@@ -52,7 +52,6 @@ const styles = (isComplete) => StyleSheet.create({
         alignSelf: 'flex-start',
         left: 50,
         color: isComplete === "0" ? "#0D1F3C60" : "#0D1F3C",
-        // marginRight: 140,
         fontFamily: 'TitilliumWeb-SemiBold',
         fontSize: 15,
         bottom: 20,
