@@ -1,18 +1,13 @@
 import React, { useState } from "react";
-import { View, Image, SafeAreaView, Dimensions, Text, TouchableOpacity, StyleSheet, KeyboardAvoidingView } from "react-native";
+import { View, SafeAreaView, Dimensions, Text, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AnimatedLoader from 'react-native-animated-loader';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { Separators, Buttons, Lists, Header } from "_components";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { Buttons, Header } from "_components";
 import { Card, Input } from 'react-native-elements'
 import styles from "../ModuleStyles";
 import createP2PKH from '../../../helpers/createTxn'
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').width;
-
-const ITEM_WIDTH = Math.round(windowWidth * 0.7);
-const ITEM_HEIGHT = Math.round(ITEM_WIDTH * 3 / 4);
 
 
 const AddressActivity = ({ navigation }) => {
@@ -53,7 +48,6 @@ const AddressActivity = ({ navigation }) => {
         // { label: 'Bech32', value: 'Bech32', disabled: true },
     ]);
     const pasteHandler = async () => {
-        // console.log("her")
         const testAddress = await AsyncStorage.getItem("@testAddress");
         setInputAddress(testAddress);
     }
@@ -79,35 +73,30 @@ const AddressActivity = ({ navigation }) => {
             {!enableAddress ?
                 <View style={cardStyle(false).cardsContainerStyleTxn}>
                     <Text style={cardStyle(false).cardHeading}>Choose the type of transaction</Text>
-                    <View>
-
-                        <DropDownPicker
-                            style={cardStyle(false).cardDropdownContainer}
-                            textStyle={cardStyle(false).cardDropdownText}
-                            dropDownContainerStyle={cardStyle(false).cardDropdownListContainer}
-                            listParentLabelStyle={{
-                                fontFamily: "TitilliumWeb-Light"
-                            }}
-                            listItemContainer={cardStyle(false).cardDropdownItemContainer}
-                            itemSeparatorStyle={{
-                                // backgroundColor: "#000",
-                                // borderColor: 'red'
-                                borderWidth: 0
-                            }}
-                            onPress={(open) => console.log('was the picker open?', open)}
-                            showTickIcon={true}
-                            open={open}
-                            value={value}
-                            items={items}
-                            setValue={setValue}
-                            setItems={setItems}
-                            setOpen={setOpen}
-                            placeholder={"Select"}
-                            searchable={false}
-                            closeAfterSelecting={true}
-                            onClose={() => setDisabled(false)}
-                        />
-                    </View>
+                    <DropDownPicker
+                        style={cardStyle(false).cardDropdownContainer}
+                        textStyle={cardStyle(false).cardDropdownText}
+                        dropDownContainerStyle={cardStyle(false).cardDropdownListContainer}
+                        listParentLabelStyle={{
+                            fontFamily: "TitilliumWeb-Light"
+                        }}
+                        listItemContainer={cardStyle(false).cardDropdownItemContainer}
+                        itemSeparatorStyle={{
+                            borderWidth: 0
+                        }}
+                        onPress={(open) => console.log('was the picker open?', open)}
+                        showTickIcon={true}
+                        open={open}
+                        value={value}
+                        items={items}
+                        setValue={setValue}
+                        setItems={setItems}
+                        setOpen={setOpen}
+                        placeholder={"Select"}
+                        searchable={false}
+                        closeAfterSelecting={true}
+                        onClose={() => setDisabled(false)}
+                    />
                 </View>
                 :
                 <Card containerStyle={cardStyle(false).addressCard}>
@@ -151,12 +140,9 @@ const AddressActivity = ({ navigation }) => {
 
 const cardStyle = (val) => StyleSheet.create({
     addressCard: {
-        // top: 80,
         flex: 5,
-        // alignSelf: 'center',
+        minHeight: hp("10%"),
         borderRadius: 20,
-        // height: 280,
-        // padding: 20,
         elevation: 5,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 0 },
@@ -176,8 +162,7 @@ const cardStyle = (val) => StyleSheet.create({
         borderColor: 'black',
         marginTop: 50,
         elevation: 10,
-        // height: 250,
-        width: 300,
+        width: wp("80%"),
         alignSelf: 'center'
     },
 
@@ -188,7 +173,7 @@ const cardStyle = (val) => StyleSheet.create({
 
     },
     cardHeading: {
-        width: 200,
+        width: wp("70%"),
         textAlign: 'center',
         fontFamily: "TitilliumWeb-SemiBold",
         fontSize: 24,
@@ -196,7 +181,7 @@ const cardStyle = (val) => StyleSheet.create({
     },
 
     cardDropdownContainer: {
-        top: 20,
+        top: 40,
         borderRadius: 26.5,
         backgroundColor: "#EDF1F9",
         paddingLeft: 20,
@@ -206,7 +191,7 @@ const cardStyle = (val) => StyleSheet.create({
     },
 
     cardDropdownListContainer: {
-        top: 70,
+        top: 90,
         backgroundColor: "#EDF1F9",
         borderRadius: 20,
         elevation: 3,

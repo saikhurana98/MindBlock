@@ -1,23 +1,12 @@
-import React, { useState, useRef } from "react";
-import { View, Image, SafeAreaView, Dimensions, Text } from "react-native";
-import { Buttons, Lists, Header } from "_components";
-import { Card } from 'react-native-elements'
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from "react";
+import { View, Image, SafeAreaView, Text } from "react-native";
+import { Buttons, Header } from "_components";
 import ScanImage from '_assets/scanImage.svg'
-import BeaconContext from '../../../constants/contextAPI';
 import styles from "./styles";
 
-const windowWidth = Dimensions.get('window').width;
 
-const DATA = [];
-for (let i = 0; i < 10; i++) {
-    DATA.push(i)
-}
 
-const ScreenTwo = ({ route, navigation }) => {
-    const { refresher } = React.useContext(BeaconContext);
-    const [index, setIndex] = useState(0);
-
+const ScreenTwo = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.mainContainer}>
             <Header.Default />

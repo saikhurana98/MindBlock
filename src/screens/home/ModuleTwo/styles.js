@@ -1,8 +1,5 @@
 import { StyleSheet } from "react-native";
-import { Dimensions } from 'react-native'
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const styles = StyleSheet.create({
     mainContainer: {
@@ -10,6 +7,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#EDF1F9",
     },
     headingContainer: {
+        flex: 2,
         alignSelf: 'center'
     },
     headingText: {
@@ -18,8 +16,8 @@ const styles = StyleSheet.create({
         fontSize: 26,
     },
     descriptionContainer: {
-        top: 10,
-        width: windowHeight * 0.4,
+        flex: 4,
+        width: wp("80%"),
         alignSelf: 'center'
     },
     descriptionText: {
@@ -30,25 +28,21 @@ const styles = StyleSheet.create({
     },
     moduleInfoNextButton: {
         alignSelf: 'center',
-        // bottom: 100,
-        flex: 1,
+        flex: 3,
     },
     wonderingImage: {
-        flex: 3,
+        flex: 6,
         justifyContent: 'center',
         alignSelf: 'center'
     },
     privacyImage: {
-        flex: 3,
+        flex: 6,
         justifyContent: 'center',
-        top: 50,
         flexDirection: 'row'
     },
     addressCard: {
         flex: -2,
         bottom: 20,
-        // top: 80,
-        // width: 100,
         borderRadius: 20,
         height: 200,
         padding: 20,
@@ -72,8 +66,8 @@ const styles = StyleSheet.create({
         right: 0,
     },
     disclaimerTextContainer: {
-        flex: 0.4,
-        width: 0.8 * windowWidth,
+        flex: 1,
+        width: wp("80%"),
         alignSelf: 'center',
         bottom: 30,
     },

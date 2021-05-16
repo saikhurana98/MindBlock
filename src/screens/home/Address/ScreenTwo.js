@@ -19,10 +19,6 @@ const windowHeight = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(windowWidth * 0.7);
 const ITEM_HEIGHT = Math.round(ITEM_WIDTH * 3 / 4);
 
-const DATA = [];
-for (let i = 0; i < 10; i++) {
-    DATA.push(i)
-}
 const AddressActivity = ({ navigation }) => {
     const [visible, setVisible] = useState(false);
     const [addressLoaded, setAddressLoaded] = useState(false);

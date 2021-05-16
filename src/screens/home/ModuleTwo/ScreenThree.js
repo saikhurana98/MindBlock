@@ -1,10 +1,10 @@
-import React, { useState, useRef } from "react";
-import { View, Image, SafeAreaView, Dimensions, Text, Alert } from "react-native";
-import { Buttons, Lists, Header } from "_components";
+import React from "react";
+import { View, SafeAreaView, Text } from "react-native";
+import { Buttons, Header } from "_components";
 import MobileImage from '_assets/mobileImage.svg'
 import styles from "./styles";
 
-const ScreenThree = ({ route, navigation }) => {
+const ScreenThree = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.mainContainer}>
             <Header.Default />

@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Dimensions } from 'react-native'
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -10,6 +11,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#EDF1F9",
     },
     headingContainer: {
+        flex: 2,
         alignSelf: 'center'
     },
     headingText: {
@@ -18,8 +20,8 @@ const styles = StyleSheet.create({
         fontSize: 26,
     },
     descriptionContainer: {
-        top: 10,
-        width: windowHeight * 0.4,
+        flex: 2,
+        width: wp("80%"),
         alignSelf: 'center'
     },
     descriptionText: {
@@ -30,27 +32,22 @@ const styles = StyleSheet.create({
     },
     moduleInfoNextButton: {
         alignSelf: 'center',
-        // bottom: 100,
-        flex: 1,
+        flex: 3,
     },
     wonderingImage: {
-        flex: 3,
+        flex: 9,
         justifyContent: 'center',
         alignSelf: 'center'
     },
     privacyImage: {
-        flex: 2,
+        flex: 5,
         justifyContent: 'center',
-        top: 50,
         flexDirection: 'row'
     },
     addressCard: {
-        flex: -2,
-        bottom: 20,
-        // top: 80,
-        // width: 100,
+        flex: 4,
         borderRadius: 20,
-        height: 200,
+        // height: hp("10%"),
         padding: 20,
         elevation: 5,
         shadowColor: '#000',
@@ -64,7 +61,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: "#0D1F3C"
     },
-    introVideo:{
+    introVideo: {
         position: 'absolute',
         top: 0,
         left: 0,

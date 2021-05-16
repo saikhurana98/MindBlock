@@ -91,7 +91,7 @@ ModuleSixData.push(moduleFiveSlideOne, moduleFiveSlideTwo, moduleFiveSlideThree)
 
 var moduleSevenSlideOne = {
     heading: "Parts of a transaction", image: <TxnPartsImage />,
-    text: "A bitcoin transaction contains a lot of things. but mainly there’s input, output, lock script & unlock script. Lock and unlock script are something magically tied to your secret key and we won’t be going into their details. That’s all you need to know as far as lock and unlokck scripts are concerned"
+    text: "A bitcoin transaction contains a lot of things. but mainly there’s input, output, lock script & unlock script. Lock and unlock script are something magically tied to your secret key and we won’t be going into their details. That’s all you need to know as far as lock and unlokck scripts are concerned."
 };
 var moduleSevenSlideTwo = {
     heading: "Spending of a Transaction", image: <NotepadImage />,
@@ -100,7 +100,7 @@ var moduleSevenSlideTwo = {
 var moduleSevenSlideThree = {
     heading: "Spending of a Transaction", image: "",
     text: "In Bitcoin, a transaction is not half spent. for example. if Alice Paid Bob 3 BTC and now Bob wants to send  2 BTC to Jack out of these 3BTC. Bob would create a transaction where this 3BTC transaction is refrenced as input and Jack’s Wallet key as one of the output with 2BTC as the ammount. This where things get a little confusing. Now, Bob would take his own Public key and write 1 BTC written next to it.\
-    Also note that there can be multiple inputs as well.In that casee you add the ammounts and spend that as a whole "
+    Also note that there can be multiple inputs as well. In that case you add the amount and spend that as a whole. "
 };
 
 var moduleSevenSlideFour = {

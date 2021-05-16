@@ -10,16 +10,9 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 
-const DATA = [];
-
-for (let i = 0; i < 4; i++) {
-    DATA.push(i)
-}
-
 const ModuleInfo = ({ route, navigation }) => {
     const { refresher } = React.useContext(BeaconContext);
     const { moduleName, nextModule, moduleData } = route.params;
-    // console.log(route.params);
     const [index, setIndex] = useState(0);
     const carouselRef = useRef(null);
     const renderSlides = ({ item }) => {
@@ -53,11 +46,9 @@ const ModuleInfo = ({ route, navigation }) => {
                     ref={carouselRef}
                     data={moduleData}
                     layout={"default"}
-                    // style={{borderRadius: 20}}
                     renderItem={renderSlides}
                     sliderWidth={windowWidth}
                     itemWidth={295}
-                    // sliderHeight={windowHeight * 0.1}
                     onSnapToItem={(index) => setIndex(index)}
                     useScrollView={false}
                 />

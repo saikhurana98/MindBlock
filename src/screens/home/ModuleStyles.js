@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import Colors from "../../constants/Colors";
 import { Dimensions } from 'react-native'
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#EDF1F9",
     },
     headingContainer: {
-        alignSelf: 'center', 
+        alignSelf: 'center',
         flex: 1,
     },
     headingText: {
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     },
     descriptionContainer: {
         flex: 2,
-        width: windowHeight * 0.4,
+        width: wp("80%"),
         alignSelf: 'center'
     },
     descriptionText: {
@@ -82,13 +83,11 @@ const styles = StyleSheet.create({
     // FOR ADDRESS ACTIVITY: 
     addressImage: {
         flex: 7,
-        // top: 0.2 * windowHeight,
         alignSelf: 'center'
     },
     addressNextButton: {
         flex: 3,
         alignSelf: 'center',
-        // top: 140,
     },
     loadingContainer: {
         top: 80,
@@ -107,12 +106,8 @@ const styles = StyleSheet.create({
     },
 
     addressCard: {
-        // top: 80,
         flex: 4,
-        // alignSelf: 'center',
         borderRadius: 20,
-        // height: 280,
-        // padding: 20,
         elevation: 5,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 0 },
@@ -127,23 +122,21 @@ const styles = StyleSheet.create({
     },
     addressCardContentContainer: {
         marginTop: 15,
-        width: 300,
-        height: 50
+        width: wp("80%"),
+        height: hp("5%")
     },
 
     addressCardContent: {
         textAlign: 'left',
-        width: 250,
+        width: wp("70%"),
     },
     copyButton: {
         alignSelf: 'flex-end',
-        // left: 30,
         bottom: 35,
     },
     rewardContainer: {
         flex: 3,
         alignSelf: 'center',
-        // top: 80,
     },
 
     rewardHeading: {
@@ -159,12 +152,10 @@ const styles = StyleSheet.create({
     rewardImage: {
         flex: 10,
         alignSelf: "center",
-        // top: 0.15 * windowHeight
     },
     rewardNextButton: {
         flex: 4,
         alignSelf: 'center',
-        // top: 130,
     },
 
     // Transactions:
@@ -188,18 +179,19 @@ const styles = StyleSheet.create({
     },
     txnAddressCardHeading: {
         marginTop: 20,
+        // flex: 1,
         fontFamily: "TitilliumWeb-SemiBold",
         color: "#0D1F3C",
         fontSize: 20,
     },
     txnAddressCardContentContainer: {
         // marginTop: 15,
-        width: 300,
-        height: 50
+        width: wp("80%"),
+        height: hp("10%")
     },
     txnAddressCardContent: {
         textAlign: 'left',
-        width: 250,
+        width: wp("75%"),
     },
     txnAddressCardContentPasteContainer: {
         alignSelf: 'flex-end',

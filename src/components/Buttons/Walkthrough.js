@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, ImageBackground, StyleSheet } from "react-native";
-import Colors from "../../constants/Colors";
 
 const Next = ({ label, onPress, fill, disabled }) => {
     return (

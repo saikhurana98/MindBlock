@@ -1,13 +1,11 @@
-import React, { useState, useRef } from "react";
-import { View, Image, SafeAreaView, Dimensions, Text, Alert } from "react-native";
-import { Buttons, Lists, Header } from "_components";
+import React from "react";
+import { View, Image, SafeAreaView, Text, Alert } from "react-native";
+import { Buttons, Header } from "_components";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import BeaconContext from '../../../constants/contextAPI';
 import MoudleOneIndexContext from './moduleOneContext'
 import FingerprintImage from '_assets/fingerprintImage.svg'
-
 import styles from "./styles";
-const windowWidth = Dimensions.get("window").width
 
 const ScreenThree = ({ route, navigation }) => {
     const { refresher } = React.useContext(BeaconContext);
@@ -35,7 +33,7 @@ const ScreenThree = ({ route, navigation }) => {
             <View style={styles.privacyImage}>
                 <FingerprintImage />
             </View>
-            
+
             <View style={styles.disclaimerTextContainer}>
                 <Text style={styles.disclaimerText}>
                     IMPORTANT NOTE: It’s not a safe practice

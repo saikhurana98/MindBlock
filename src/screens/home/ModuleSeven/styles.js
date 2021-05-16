@@ -1,7 +1,6 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet } from "react-native";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
     mainContainer: {
@@ -9,6 +8,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#EDF1F9",
     },
     headingContainer: {
+        flex: 1,
         alignSelf: 'center'
     },
     headingText: {
@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
         fontSize: 26,
     },
     descriptionContainer: {
-        top: 10,
-        width: windowHeight * 0.4,
+        flex: 2,
+        width: wp("80%"),
         alignSelf: 'center'
     },
     descriptionText: {
@@ -30,26 +30,22 @@ const styles = StyleSheet.create({
 
 
     carouselContainer: {
-        flex: 4,
-        right: 10,
-        bottom: 40,
+        flex: 14,
     },
     itemContainer: {
         flex: 1,
-        top: 80,
-        width: windowWidth * 0.8,
-        height: windowHeight * 0.6,
-        backgroundColor: '#FFFFFF',
+        width: wp("80%"),
+        backgroundColor: '#FFFFFF'
     },
     cardImage: {
-        flex: 2,
+        flex: 3,
         alignSelf: 'center'
     },
     carouselHeading: {
-        flex: 1,
+        flex: 2,
         alignItems: 'center',
         top: 20,
-        
+
     },
     carouselHeadingText: {
         fontFamily: "TitilliumWeb-SemiBold",
@@ -59,9 +55,8 @@ const styles = StyleSheet.create({
     },
     carouselTextContainer: {
         flex: 5,
-        // top: 150,
         alignSelf: 'center',
-        width: windowWidth * 0.7
+        width: wp("70%")
     },
     carouselText: {
         textAlign: 'center',
@@ -73,16 +68,10 @@ const styles = StyleSheet.create({
         color: 'blue',
         fontSize: 24
     },
-    counter: {
-        marginTop: 25,
-        fontSize: 30,
-        fontWeight: 'bold',
-        textAlign: 'center'
-    },
     moduleInfoNextButton: {
-        flex: 1,
+        flex: 5,
+        top: 20,
         alignSelf: 'center',
-        bottom: 10
 
     },
 
