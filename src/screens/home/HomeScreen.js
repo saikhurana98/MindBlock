@@ -94,7 +94,7 @@ const Home = ({ route, navigation }) => {
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [address]);
 
     return (
         <ScrollView
