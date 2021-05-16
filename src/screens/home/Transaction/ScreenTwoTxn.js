@@ -62,7 +62,7 @@ const AddressActivity = ({ navigation }) => {
             </View>
             <View style={styles.descriptionContainer}>
                 <Text style={styles.descriptionText}>
-                    A short description of what the topics that this module covers. cannto be longer than this much. ? </Text>
+                    Now we'll finally make our first transaction! All you have to do is chose a transaction type (we'll) cover this more later, and then just enter an address. Enter ours if you can't find any! </Text>
             </View>
             <AnimatedLoader
                 visible={visible}
